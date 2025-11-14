@@ -1,0 +1,8 @@
+/home/landerson/PEGASUS/build/CMakeFiles/MyQtQuickApp.dir
+/home/landerson/PEGASUS/build/CMakeFiles/oled_test.dir
+/home/landerson/PEGASUS/build/CMakeFiles/edit_cache.dir
+/home/landerson/PEGASUS/build/CMakeFiles/rebuild_cache.dir
+/home/landerson/PEGASUS/build/CMakeFiles/MyQtQuickApp_autogen_timestamp_deps.dir
+/home/landerson/PEGASUS/build/CMakeFiles/MyQtQuickApp_autogen.dir
+/home/landerson/PEGASUS/build/CMakeFiles/oled_test_autogen_timestamp_deps.dir
+/home/landerson/PEGASUS/build/CMakeFiles/oled_test_autogen.dir

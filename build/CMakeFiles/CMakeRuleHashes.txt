@@ -1,0 +1,6 @@
+# Hashes of file build rules.
+235a2faf6633ff4db0f2c154df51356c CMakeFiles/MyQtQuickApp_autogen
+235a2faf6633ff4db0f2c154df51356c CMakeFiles/oled_test_autogen
+495d0933cddf9b7077194a84b749e178 MyQtQuickApp_autogen/CCBC4FUR7J/qrc_qml.cpp
+9e98b239e1eca1f8309a659f303fc0d9 MyQtQuickApp_autogen/timestamp
+3e6eeb8657ccd03cb7270ff196209cf2 oled_test_autogen/timestamp

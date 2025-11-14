@@ -14,6 +14,7 @@ endif()
 
 add_executable(MyQtQuickApp
   src/main.cpp
+  src/ssd1306.cpp
   qml/qml.qrc
 )
 

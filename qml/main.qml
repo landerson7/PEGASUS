@@ -5,12 +5,12 @@ import QtQuick.Controls
 Rectangle {
     width: 128
     height: 64
-    color: "black"
+    color: "blue"
 
     Text {
         anchors.centerIn: parent
         text: "PEGASUS"
         color: "white"
-        font.pixelSize: 18
+        font.pixelSize: 22
     }
 }
