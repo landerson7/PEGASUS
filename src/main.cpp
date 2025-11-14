@@ -14,7 +14,10 @@ static std::vector<uint8_t> imageToOledBuffer(const QImage &img) {
     // We assume the image is already 128x64
     for (int y = 0; y < SSD1306::Height; ++y) {
         for (int x = 0; x < SSD1306::Width; ++x) {
-            int gray = qGray(mono.pixel(x, y));
+	    int srcX = SSD1306::Width - 1 - x;
+	    int srcY = SSD1306::Height - 1 - y;
+
+            int gray = qGray(mono.pixel(srcX, srcY));
             bool on = gray > 128; // threshold
 
             if (on) {
