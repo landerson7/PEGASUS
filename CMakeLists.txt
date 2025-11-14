@@ -17,6 +17,12 @@ add_executable(MyQtQuickApp
   qml/qml.qrc
 )
 
+add_executable(oled_test
+    src/oled_test_main.cpp
+    src/ssd1306.cpp
+)
+
+
 if (Qt6_FOUND)
   target_link_libraries(MyQtQuickApp PRIVATE Qt6::Quick)
 else()
