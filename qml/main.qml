@@ -1,13 +1,16 @@
+// qml/main.qml
 import QtQuick
 import QtQuick.Controls
 
 Rectangle {
-  width: 480; height: 320
-  color: "black"
-  Text {
-    anchors.centerIn: parent
-    text: "Hello, Pi + Qt Quick!"
-    color: "white"
-    font.pixelSize: 28
-  }
+    width: 128
+    height: 64
+    color: "black"
+
+    Text {
+        anchors.centerIn: parent
+        text: "PEGASUS"
+        color: "white"
+        font.pixelSize: 18
+    }
 }
