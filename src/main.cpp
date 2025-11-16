@@ -7,6 +7,7 @@
 #include "ssd1306.h"
 
 static std::vector<uint8_t> imageToOledBuffer(const QImage &img) {
+    // 1. Normalize the frame to 128xHeight grayscale
     QImage mono = img.convertToFormat(QImage::Format_Grayscale8)
                       .scaled(SSD1306::Width,
                               SSD1306::Height,
@@ -15,22 +16,24 @@ static std::vector<uint8_t> imageToOledBuffer(const QImage &img) {
 
     std::vector<uint8_t> buf(SSD1306::BufferSize, 0x00);
 
-    for (int page = 0; page < SSD1306::Pages; ++page) {
+    // 2. Build buffer in the same way as oled_test
+    for (int y = 0; y < SSD1306::Height; ++y) {
         for (int x = 0; x < SSD1306::Width; ++x) {
-            uint8_t byte = 0;
-            for (int bit = 0; bit < 8; ++bit) {
-                int y = page * 8 + bit;
-                int gray = qGray(mono.pixel(x, y));
-                bool on = gray > 128;
+            int gray = qGray(mono.pixel(x, y));
+            bool on  = gray > 128;  // threshold
 
-                if (on) byte |= (1 << bit);
+            if (on) {
+                int page    = y / 8;
+                int bit     = y % 8;
+                int byteIdx = page * SSD1306::Width + x;
+                buf[byteIdx] |= (1 << bit);
             }
-            buf[page * SSD1306::Width + x] = byte;
         }
     }
 
     return buf;
 }
+
 
 
 int main(int argc, char *argv[]) {
@@ -63,7 +66,8 @@ int main(int argc, char *argv[]) {
         oled.update(buf);
     });
 
-    timer.start(50); // ~20 FPS
+    timer.start(50);  // ~20 FPS
+
 
 
 
