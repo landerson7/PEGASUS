@@ -23,6 +23,8 @@ add_executable(oled_test
     src/ssd1306.cpp
 )
 
+target_include_directories(oled_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
 
 if (Qt6_FOUND)
   target_link_libraries(MyQtQuickApp PRIVATE Qt6::Quick)

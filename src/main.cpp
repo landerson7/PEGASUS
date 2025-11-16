@@ -6,31 +6,32 @@
 
 #include "ssd1306.h"
 
-// Convert a 128x64 QImage into 1bpp SSD1306 buffer
 static std::vector<uint8_t> imageToOledBuffer(const QImage &img) {
-    QImage mono = img.convertToFormat(QImage::Format_Grayscale8);
+    QImage mono = img.convertToFormat(QImage::Format_Grayscale8)
+                      .scaled(SSD1306::Width,
+                              SSD1306::Height,
+                              Qt::IgnoreAspectRatio,
+                              Qt::FastTransformation);
+
     std::vector<uint8_t> buf(SSD1306::BufferSize, 0x00);
 
-    // We assume the image is already 128x64
-    for (int y = 0; y < SSD1306::Height; ++y) {
+    for (int page = 0; page < SSD1306::Pages; ++page) {
         for (int x = 0; x < SSD1306::Width; ++x) {
-	    int srcX = SSD1306::Width - 1 - x;
-	    int srcY = SSD1306::Height - 1 - y;
+            uint8_t byte = 0;
+            for (int bit = 0; bit < 8; ++bit) {
+                int y = page * 8 + bit;
+                int gray = qGray(mono.pixel(x, y));
+                bool on = gray > 128;
 
-            int gray = qGray(mono.pixel(srcX, srcY));
-            bool on = gray > 128; // threshold
-
-            if (on) {
-                int page     = y / 8;
-                int bit      = y % 8;
-                int byteIdx  = page * SSD1306::Width + x;
-                buf[byteIdx] |= (1 << bit);
+                if (on) byte |= (1 << bit);
             }
+            buf[page * SSD1306::Width + x] = byte;
         }
     }
 
     return buf;
 }
+
 
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
@@ -56,16 +57,14 @@ int main(int argc, char *argv[]) {
     QTimer timer;
     QObject::connect(&timer, &QTimer::timeout, [&]() {
         QImage frame = view.grabWindow();
-        if (frame.isNull())
-            return;
+        if (frame.isNull()) return;
 
-        // Convert and send
         auto buf = imageToOledBuffer(frame);
         oled.update(buf);
     });
 
-    // Try 100 ms first (10 FPS) for testing
-    timer.start(100);
+    timer.start(50); // ~20 FPS
+
 
 
     return app.exec();
