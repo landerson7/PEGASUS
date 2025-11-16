@@ -55,24 +55,18 @@ int main(int argc, char *argv[]) {
 
     QTimer timer;
     QObject::connect(&timer, &QTimer::timeout, [&]() {
-        // Grab the current contents of the QML scene
         QImage frame = view.grabWindow();
-        if (frame.isNull()) {
-            return; // nothing to send yet
-        }
+        if (frame.isNull())
+            return;
 
-        // Optionally enforce exact size (just in case)
-        if (frame.width() != SSD1306::Width || frame.height() != SSD1306::Height) {
-            frame = frame.scaled(SSD1306::Width, SSD1306::Height,
-                                 Qt::IgnoreAspectRatio,
-                                 Qt::SmoothTransformation);
-        }
-
+        // Convert and send
         auto buf = imageToOledBuffer(frame);
         oled.update(buf);
     });
 
-    timer.start(30); // ~20 FPS
+    // Try 100 ms first (10 FPS) for testing
+    timer.start(100);
+
 
     return app.exec();
 }
