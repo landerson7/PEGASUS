@@ -12,7 +12,7 @@ public:
     void clear();
     void update(const std::vector<uint8_t> &buffer); // 128x64 = 1024 bytes
     static constexpr int Width  = 128;
-    static constexpr int Height = 64;
+    static constexpr int Height = 32;
     static constexpr int BufferSize = Width * Height / 8; // 1bpp
 
 private:
