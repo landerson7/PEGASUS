@@ -19,7 +19,7 @@ Rectangle {
         y: 10
 
         NumberAnimation on x {
-            from: parent.width
+            from: scrollingText.parent.width
             to: -scrollingText.width
             duration: 6000          // 6 seconds for a full pass
             loops: Animation.Infinite
