@@ -1,13 +1,19 @@
-#include <QGuiApplication>
-#include <QQuickView>
-#include <QImage>
-#include <QTimer>
-#include <QUrl>
-
 #include "ssd1306.h"
 
+#include <QGuiApplication>
+#include <QImage>
+#include <QPainter>
+#include <QFont>
+#include <QDateTime>
+#include <QTimeZone>
+
+#include <vector>
+#include <chrono>
+#include <thread>
+#include <iostream>
+
+// Convert a QImage into the SSD1306 buffer format (same logic as before)
 static std::vector<uint8_t> imageToOledBuffer(const QImage &img) {
-    // 1. Normalize the frame to 128xHeight grayscale
     QImage mono = img.convertToFormat(QImage::Format_Grayscale8)
                       .scaled(SSD1306::Width,
                               SSD1306::Height,
@@ -16,7 +22,6 @@ static std::vector<uint8_t> imageToOledBuffer(const QImage &img) {
 
     std::vector<uint8_t> buf(SSD1306::BufferSize, 0x00);
 
-    // 2. Build buffer in the same way as oled_test
     for (int y = 0; y < SSD1306::Height; ++y) {
         for (int x = 0; x < SSD1306::Width; ++x) {
             int gray = qGray(mono.pixel(x, y));
@@ -34,49 +39,74 @@ static std::vector<uint8_t> imageToOledBuffer(const QImage &img) {
     return buf;
 }
 
+// Render "HH:MM:SS" for EST into a QImage of OLED size
+static QImage renderClockFrame() {
+    QImage frame(SSD1306::Width, SSD1306::Height, QImage::Format_Grayscale8);
+    frame.fill(Qt::black);
 
+    QPainter p(&frame);
+    p.setRenderHint(QPainter::Antialiasing, true);
+    p.setPen(Qt::white);
+
+    // Time in America/New_York (EST/EDT)
+    QTimeZone nyTz("America/New_York");
+    QDateTime now = QDateTime::currentDateTime().toTimeZone(nyTz);
+    QString timeStr = now.toString("HH:mm:ss");
+
+    // Optional: show timezone too (small)
+    QString tzStr = "EST";  // you could switch to EDT dynamically if you want
+
+    // Choose font sizes that fit 128x64
+    QFont timeFont("Monospace");
+    timeFont.setStyleHint(QFont::TypeWriter);
+    timeFont.setPointSize(18);  // adjust if it clips
+    p.setFont(timeFont);
+
+    QFontMetrics fmTime(timeFont);
+    int timeWidth = fmTime.horizontalAdvance(timeStr);
+    int timeHeight = fmTime.height();
+
+    int timeX = (SSD1306::Width  - timeWidth)  / 2;
+    int timeY = (SSD1306::Height + timeHeight) / 2 - fmTime.descent();
+
+    p.drawText(timeX, timeY, timeStr);
+
+    // Small timezone label at the top-left
+    QFont tzFont("Monospace");
+    tzFont.setStyleHint(QFont::TypeWriter);
+    tzFont.setPointSize(8);
+    p.setFont(tzFont);
+    p.drawText(2, 10, tzStr);
+
+    p.end();
+    return frame;
+}
 
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
 
     // Init OLED
     SSD1306 oled("/dev/i2c-1", 0x3C);
+
+    if (!oled.isOpen()) {
+        std::cerr << "Failed to open I2C\n";
+        return 1;
+    }
     if (!oled.init()) {
-        qCritical("Failed to init SSD1306 OLED over I2C");
+        std::cerr << "Failed to init SSD1306\n";
         return 1;
     }
 
-    // Qt Quick view at the OLED resolution
-    QQuickView view;
-    view.setSource(QUrl(QStringLiteral("qrc:/main.qml")));
-    view.setColor(Qt::black);
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-    view.resize(SSD1306::Width, SSD1306::Height);
+    std::cout << "Showing EST clock on OLED...\n";
 
-    // Important: ensure the window is actually created.
-    // This can be minimized or off to the side; it's mostly for debugging.
-    view.show();
-
-    QTimer timer;
-    QObject::connect(&timer, &QTimer::timeout, [&]() {
-        QImage frame = view.grabWindow();
-        if (frame.isNull()) return;
-
-        // Optionally enforce exact size (just in case)
-        if (frame.width() != SSD1306::Width || frame.height() != SSD1306::Height) {
-            frame = frame.scaled(SSD1306::Width, SSD1306::Height,
-                                 Qt::IgnoreAspectRatio,
-                                 Qt::SmoothTransformation);
-        }
-
+    // Main loop: update once per second
+    while (true) {
+        QImage frame = renderClockFrame();
         auto buf = imageToOledBuffer(frame);
         oled.update(buf);
-    });
 
-    timer.start(50);  // ~20 FPS
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
 
-
-
-
-    return app.exec();
+    return 0; // never reached
 }
