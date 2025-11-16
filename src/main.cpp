@@ -62,6 +62,13 @@ int main(int argc, char *argv[]) {
         QImage frame = view.grabWindow();
         if (frame.isNull()) return;
 
+        // Optionally enforce exact size (just in case)
+        if (frame.width() != SSD1306::Width || frame.height() != SSD1306::Height) {
+            frame = frame.scaled(SSD1306::Width, SSD1306::Height,
+                                 Qt::IgnoreAspectRatio,
+                                 Qt::SmoothTransformation);
+        }
+
         auto buf = imageToOledBuffer(frame);
         oled.update(buf);
     });
