@@ -12,7 +12,7 @@
 #include <thread>
 #include <iostream>
 
-// Convert a QImage into the SSD1306 buffer format (same logic as before)
+// Convert a QImage into the SSD1306 buffer format
 static std::vector<uint8_t> imageToOledBuffer(const QImage &img) {
     QImage mono = img.convertToFormat(QImage::Format_Grayscale8)
                       .scaled(SSD1306::Width,
@@ -20,7 +20,7 @@ static std::vector<uint8_t> imageToOledBuffer(const QImage &img) {
                               Qt::IgnoreAspectRatio,
                               Qt::FastTransformation);
 
-    std::vector<uint8_t> buf(SSD1306::BufferSize, 0x00);
+    std::vector<uint8_t> buf(SSD1306::BufferSize, 0x00);  // start fully black
 
     for (int y = 0; y < SSD1306::Height; ++y) {
         for (int x = 0; x < SSD1306::Width; ++x) {
@@ -39,27 +39,26 @@ static std::vector<uint8_t> imageToOledBuffer(const QImage &img) {
     return buf;
 }
 
-// Render "HH:MM:SS" for EST into a QImage of OLED size
+// Render "HH:MM:SS" clock in America/New_York
 static QImage renderClockFrame() {
     QImage frame(SSD1306::Width, SSD1306::Height, QImage::Format_Grayscale8);
-    frame.fill(Qt::black);
+    frame.fill(Qt::black);  // make sure background is black
 
     QPainter p(&frame);
     p.setRenderHint(QPainter::Antialiasing, true);
     p.setPen(Qt::white);
 
-    // Time in America/New_York (EST/EDT)
     QTimeZone nyTz("America/New_York");
     QDateTime now = QDateTime::currentDateTime().toTimeZone(nyTz);
     QString timeStr = now.toString("HH:mm:ss");
 
-    // Optional: show timezone too (small)
-    QString tzStr = "EST";  // you could switch to EDT dynamically if you want
+    // Optional: dynamic abbreviation instead of hard-coded EST
+    QString tzStr = now.timeZoneAbbreviation(); // "EST" or "EDT"
 
-    // Choose font sizes that fit 128x64
+    // Big time font
     QFont timeFont("Monospace");
     timeFont.setStyleHint(QFont::TypeWriter);
-    timeFont.setPointSize(18);  // adjust if it clips
+    timeFont.setPointSize(18);
     p.setFont(timeFont);
 
     QFontMetrics fmTime(timeFont);
@@ -71,7 +70,7 @@ static QImage renderClockFrame() {
 
     p.drawText(timeX, timeY, timeStr);
 
-    // Small timezone label at the top-left
+    // Small TZ label in corner
     QFont tzFont("Monospace");
     tzFont.setStyleHint(QFont::TypeWriter);
     tzFont.setPointSize(8);
@@ -85,7 +84,6 @@ static QImage renderClockFrame() {
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
 
-    // Init OLED
     SSD1306 oled("/dev/i2c-1", 0x3C);
 
     if (!oled.isOpen()) {
@@ -97,16 +95,23 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    std::cout << "Showing EST clock on OLED...\n";
+    // Explicit clear once at startup
+    oled.clear();
 
-    // Main loop: update once per second
+    std::cout << "Showing America/New_York clock on OLED...\n";
+
     while (true) {
+        // Build a fresh frame each time
         QImage frame = renderClockFrame();
         auto buf = imageToOledBuffer(frame);
+
+        // Optional: clear before each new frame if your driver is weird
+        // oled.clear();
+
         oled.update(buf);
 
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
-    return 0; // never reached
+    return 0;
 }
