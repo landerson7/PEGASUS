@@ -65,7 +65,7 @@ bool SSD1306::init() {
     if (!writeCommand(0xD9)) return false; // pre-charge
     if (!writeCommand(0xF1)) return false;
     if (!writeCommand(0xDA)) return false; // COM pins
-    if (!writeCommand(0x02)) return false;
+    if (!writeCommand(0x12)) return false;
     if (!writeCommand(0xDB)) return false; // VCOM detect
     if (!writeCommand(0x40)) return false;
     if (!writeCommand(0x8D)) return false; // charge pump
