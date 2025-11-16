@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
         oled.update(buf);
     });
 
-    timer.start(50); // ~20 FPS
+    timer.start(30); // ~20 FPS
 
     return app.exec();
 }
