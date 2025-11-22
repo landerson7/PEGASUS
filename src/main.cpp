@@ -71,6 +71,9 @@ static int openSerial(const char* dev) {
         throw std::runtime_error("tcsetattr failed");
     }
 
+    // 🔴 Add this:
+    tcflush(fd, TCIFLUSH);   // discard any unread input
+
     return fd;
 }
 
@@ -93,56 +96,84 @@ static void readExact(int fd, uint8_t* buf, size_t n) {
 // Read one CBOR packet, decode, compute altitude (ft).
 // Returns true if successful and fills altitudeFt.
 static bool readAltitudeFromEsp32(int fd, double &altitudeFt) {
-    // 1) 4-byte big-endian length prefix
-    uint8_t lenBuf[4];
-    readExact(fd, lenBuf, 4);
+    // Sliding 4-byte window for length prefix
+    uint8_t window[4];
+    // Initial fill
+    readExact(fd, window, 4);
 
-    uint32_t lenNet = 0;
-    std::memcpy(&lenNet, lenBuf, 4);
-    uint32_t payloadLen = ntohl(lenNet);
+    while (true) {
+        // Interpret current 4-byte window as big-endian length
+        uint32_t lenNet = 0;
+        std::memcpy(&lenNet, window, 4);
+        uint32_t payloadLen = ntohl(lenNet);
 
-    if (payloadLen == 0 || payloadLen > 4096) {
+        // We expect a small CBOR map, ~40–80 bytes
+        if (payloadLen > 0 && payloadLen < 256) {
+            // Try reading that many bytes
+            std::vector<uint8_t> payload(payloadLen);
+            readExact(fd, payload.data(), payloadLen);
+
+            try {
+                json j = json::from_cbor(payload);
+
+                if (!j.contains("pressure")) {
+                    std::cerr << "CBOR missing 'pressure': " << j.dump() << "\n";
+                    // keep scanning for a valid frame
+                } else {
+                    double pressure_hPa = j["pressure"].get<double>();
+
+                    static bool   baselineSet = false;
+                    static double p0_hPa      = 1013.25;
+
+                    if (!baselineSet) {
+                        p0_hPa = pressure_hPa;
+                        baselineSet = true;
+                        std::cout << "Baseline pressure set to " << p0_hPa << " hPa\n";
+                    }
+
+                    double altitude_m  = 44330.0 * (1.0 - std::pow(pressure_hPa / p0_hPa, 0.1903));
+                    altitudeFt         = altitude_m * 3.28084;
+                    return true;
+                }
+            } catch (const std::exception &e) {
+                std::cerr << "CBOR decode error (len=" << payloadLen
+                          << "): " << e.what() << "\n";
+                // fall through to resync logic below
+            }
+
+            // If we got here, we *thought* we had a frame but decode failed.
+            // Resync by shifting the window by 1 byte from the *end* of this payload.
+            // Put the last 4 bytes of payload into the window and continue scanning.
+            if (payloadLen >= 4) {
+                std::memcpy(window, &payload[payloadLen - 4], 4);
+                continue;
+            } else {
+                // Very short / weird, just refill the window from the stream
+                readExact(fd, window, 4);
+                continue;
+            }
+        }
+
+        // If payloadLen is clearly bogus, slide window by 1 byte and try again
+        // (this is where your 0x73 0x73 0x75 0x72 bytes came from before)
         std::cerr << "Suspicious payload length: " << payloadLen
-                << " (bytes: 0x"
-                << std::hex << std::setw(2) << std::setfill('0') << (int)lenBuf[0]
-                << " 0x" << std::setw(2) << (int)lenBuf[1]
-                << " 0x" << std::setw(2) << (int)lenBuf[2]
-                << " 0x" << std::setw(2) << (int)lenBuf[3]
-                << std::dec << ")\n";
-        return false;
+                  << " (bytes: 0x"
+                  << std::hex << std::setw(2) << std::setfill('0') << (int)window[0]
+                  << " 0x" << std::setw(2) << (int)window[1]
+                  << " 0x" << std::setw(2) << (int)window[2]
+                  << " 0x" << std::setw(2) << (int)window[3]
+                  << std::dec << ")\n";
+
+        // Shift window left by 1
+        window[0] = window[1];
+        window[1] = window[2];
+        window[2] = window[3];
+        // Read one new byte into window[3]
+        readExact(fd, &window[3], 1);
+        // Loop and re-check
     }
-
-
-    // 2) CBOR payload
-    std::vector<uint8_t> payload(payloadLen);
-    readExact(fd, payload.data(), payloadLen);
-
-    // 3) Decode CBOR → JSON
-    json j = json::from_cbor(payload);
-
-    if (!j.contains("pressure")) {
-        std::cerr << "CBOR missing 'pressure': " << j.dump() << "\n";
-        return false;
-    }
-
-    double pressure_hPa = j["pressure"].get<double>();  // hPa
-
-    // Baseline pressure → altitude relative to startup
-    static bool   baselineSet = false;
-    static double p0_hPa      = 1013.25;                // fallback
-
-    if (!baselineSet) {
-        p0_hPa = pressure_hPa;
-        baselineSet = true;
-        std::cout << "Baseline pressure set to " << p0_hPa << " hPa\n";
-    }
-
-    // Barometric formula (relative altitude)
-    double altitude_m  = 44330.0 * (1.0 - std::pow(pressure_hPa / p0_hPa, 0.1903));
-    altitudeFt         = altitude_m * 3.28084;
-
-    return true;
 }
+
 
 // ---------- Existing OLED helpers ----------
 
