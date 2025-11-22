@@ -4,13 +4,140 @@
 #include <QImage>
 #include <QPainter>
 #include <QFont>
-#include <QDateTime>
-#include <QTimeZone>
 
 #include <vector>
 #include <chrono>
 #include <thread>
 #include <iostream>
+#include <cmath>
+#include <cstdint>
+#include <cstring>
+#include <stdexcept>
+#include <algorithm>
+#include <sstream>
+#include <iomanip>
+
+// POSIX / serial
+#include <fcntl.h>
+#include <unistd.h>
+#include <termios.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <arpa/inet.h>
+
+// CBOR / JSON
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
+
+// ---------- Serial config ----------
+
+static const char* SERIAL_PORT = "/dev/ttyUSB0";   // change to "/dev/ttyACM0" if needed
+static const int   SERIAL_BAUD = B115200;
+
+// Open and configure serial port (8N1, raw)
+static int openSerial(const char* dev) {
+    int fd = ::open(dev, O_RDWR | O_NOCTTY | O_SYNC);
+    if (fd < 0) {
+        std::perror("open serial");
+        throw std::runtime_error("Failed to open serial port");
+    }
+
+    termios tty{};
+    if (tcgetattr(fd, &tty) != 0) {
+        std::perror("tcgetattr");
+        ::close(fd);
+        throw std::runtime_error("tcgetattr failed");
+    }
+
+    cfsetospeed(&tty, SERIAL_BAUD);
+    cfsetispeed(&tty, SERIAL_BAUD);
+
+    tty.c_cflag = (tty.c_cflag & ~CSIZE) | CS8; // 8 bits
+    tty.c_iflag &= ~IGNBRK;
+    tty.c_lflag  = 0;                           // raw
+    tty.c_oflag  = 0;
+    tty.c_cc[VMIN]  = 1;                        // block until at least 1 byte
+    tty.c_cc[VTIME] = 5;                        // 0.5s timeout
+
+    tty.c_iflag &= ~(IXON | IXOFF | IXANY);     // no XON/XOFF
+    tty.c_cflag |= (CLOCAL | CREAD);            // enable receiver
+    tty.c_cflag &= ~(PARENB | PARODD);          // no parity
+    tty.c_cflag &= ~CSTOPB;                     // 1 stop bit
+    tty.c_cflag &= ~CRTSCTS;                    // no HW flow control
+
+    if (tcsetattr(fd, TCSANOW, &tty) != 0) {
+        std::perror("tcsetattr");
+        ::close(fd);
+        throw std::runtime_error("tcsetattr failed");
+    }
+
+    return fd;
+}
+
+static void readExact(int fd, uint8_t* buf, size_t n) {
+    size_t off = 0;
+    while (off < n) {
+        ssize_t r = ::read(fd, buf + off, n - off);
+        if (r < 0) {
+            if (errno == EINTR) continue;
+            std::perror("read");
+            throw std::runtime_error("serial read error");
+        }
+        if (r == 0) {
+            throw std::runtime_error("serial EOF");
+        }
+        off += static_cast<size_t>(r);
+    }
+}
+
+// Read one CBOR packet, decode, compute altitude (ft).
+// Returns true if successful and fills altitudeFt.
+static bool readAltitudeFromEsp32(int fd, double &altitudeFt) {
+    // 1) 4-byte big-endian length prefix
+    uint8_t lenBuf[4];
+    readExact(fd, lenBuf, 4);
+
+    uint32_t lenNet = 0;
+    std::memcpy(&lenNet, lenBuf, 4);
+    uint32_t payloadLen = ntohl(lenNet);
+
+    if (payloadLen == 0 || payloadLen > 4096) {
+        std::cerr << "Suspicious payload length: " << payloadLen << "\n";
+        return false;
+    }
+
+    // 2) CBOR payload
+    std::vector<uint8_t> payload(payloadLen);
+    readExact(fd, payload.data(), payloadLen);
+
+    // 3) Decode CBOR → JSON
+    json j = json::from_cbor(payload);
+
+    if (!j.contains("pressure")) {
+        std::cerr << "CBOR missing 'pressure': " << j.dump() << "\n";
+        return false;
+    }
+
+    double pressure_hPa = j["pressure"].get<double>();  // hPa
+
+    // Baseline pressure → altitude relative to startup
+    static bool   baselineSet = false;
+    static double p0_hPa      = 1013.25;                // fallback
+
+    if (!baselineSet) {
+        p0_hPa = pressure_hPa;
+        baselineSet = true;
+        std::cout << "Baseline pressure set to " << p0_hPa << " hPa\n";
+    }
+
+    // Barometric formula (relative altitude)
+    double altitude_m  = 44330.0 * (1.0 - std::pow(pressure_hPa / p0_hPa, 0.1903));
+    altitudeFt         = altitude_m * 3.28084;
+
+    return true;
+}
+
+// ---------- Existing OLED helpers ----------
 
 // Convert a QImage into the SSD1306 buffer format
 static std::vector<uint8_t> imageToOledBuffer(const QImage &img) {
@@ -39,78 +166,109 @@ static std::vector<uint8_t> imageToOledBuffer(const QImage &img) {
     return buf;
 }
 
-// Render "HH:MM:SS" clock in America/New_York
-static QImage renderClockFrame() {
+// Render a frame with altitude in feet, centered
+static QImage renderAltitudeFrame(double altitudeFt, bool haveAltitude) {
     QImage frame(SSD1306::Width, SSD1306::Height, QImage::Format_Grayscale8);
-    frame.fill(Qt::black);  // make sure background is black
+    frame.fill(Qt::black);
 
     QPainter p(&frame);
     p.setRenderHint(QPainter::Antialiasing, true);
     p.setPen(Qt::white);
 
-    QTimeZone nyTz("America/New_York");
-    QDateTime now = QDateTime::currentDateTime().toTimeZone(nyTz);
-    QString timeStr = now.toString("HH:mm:ss");
+    if (!haveAltitude) {
+        // Show "WAITING..." until first valid packet
+        QFont font("Monospace");
+        font.setStyleHint(QFont::TypeWriter);
+        font.setPointSize(12);
+        p.setFont(font);
 
-    // Optional: dynamic abbreviation instead of hard-coded EST
-    QString tzStr = now.timeZoneAbbreviation(); // "EST" or "EDT"
+        QString msg = "WAITING...";
+        QFontMetrics fm(font);
+        int w = fm.horizontalAdvance(msg);
+        int h = fm.height();
 
-    // Big time font
-    QFont timeFont("Monospace");
-    timeFont.setStyleHint(QFont::TypeWriter);
-    timeFont.setPointSize(18);
-    p.setFont(timeFont);
+        int x = (SSD1306::Width  - w) / 2;
+        int y = (SSD1306::Height + h) / 2 - fm.descent();
 
-    QFontMetrics fmTime(timeFont);
-    int timeWidth = fmTime.horizontalAdvance(timeStr);
-    int timeHeight = fmTime.height();
+        p.drawText(x, y, msg);
+    } else {
+        // Big altitude number, e.g. "1234 FT"
+        int altInt = static_cast<int>(std::round(altitudeFt));
+        QString altStr = QString::number(altInt) + " FT";
 
-    int timeX = (SSD1306::Width  - timeWidth)  / 2;
-    int timeY = (SSD1306::Height + timeHeight) / 2 - fmTime.descent();
+        QFont bigFont("Monospace");
+        bigFont.setStyleHint(QFont::TypeWriter);
+        bigFont.setPointSize(18);
+        p.setFont(bigFont);
 
-    p.drawText(timeX, timeY, timeStr);
+        QFontMetrics fm(bigFont);
+        int w = fm.horizontalAdvance(altStr);
+        int h = fm.height();
 
-    // Small TZ label in corner
-    QFont tzFont("Monospace");
-    tzFont.setStyleHint(QFont::TypeWriter);
-    tzFont.setPointSize(8);
-    p.setFont(tzFont);
-    p.drawText(2, 10, tzStr);
+        int x = (SSD1306::Width  - w) / 2;
+        int y = (SSD1306::Height + h) / 2 - fm.descent();
+
+        p.drawText(x, y, altStr);
+    }
 
     p.end();
     return frame;
 }
 
+// ---------- main ----------
+
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
 
+    // Open OLED
     SSD1306 oled("/dev/i2c-1", 0x3C);
-
     if (!oled.isOpen()) {
-        std::cerr << "Failed to open I2C\n";
+        std::cerr << "Failed to open I2C for OLED\n";
         return 1;
     }
     if (!oled.init()) {
         std::cerr << "Failed to init SSD1306\n";
         return 1;
     }
-
-    // Explicit clear once at startup
     oled.clear();
 
-    std::cout << "Showing America/New_York clock on OLED...\n";
+    // Open serial to ESP32
+    int serialFd = -1;
+    try {
+        serialFd = openSerial(SERIAL_PORT);
+        std::cout << "Opened serial " << SERIAL_PORT << " for ESP32\n";
+    } catch (const std::exception &e) {
+        std::cerr << "Serial error: " << e.what() << "\n";
+        return 1;
+    }
+
+    double lastAltitudeFt = 0.0;
+    bool   haveAltitude   = false;
+
+    std::cout << "Displaying altitude on OLED...\n";
 
     while (true) {
-        // Build a fresh frame each time
-        QImage frame = renderClockFrame();
-        auto buf = imageToOledBuffer(frame);
+        try {
+            double altFt = lastAltitudeFt;
+            if (readAltitudeFromEsp32(serialFd, altFt)) {
+                lastAltitudeFt = altFt;
+                haveAltitude   = true;
+            }
 
-        // Optional: clear before each new frame if your driver is weird
-        // oled.clear();
+            QImage frame = renderAltitudeFrame(lastAltitudeFt, haveAltitude);
+            auto buf     = imageToOledBuffer(frame);
+            oled.update(buf);
 
-        oled.update(buf);
+        } catch (const std::exception &e) {
+            std::cerr << "Error reading altitude: " << e.what() << "\n";
+            // keep lastAltitudeFt, just redraw it
+            QImage frame = renderAltitudeFrame(lastAltitudeFt, haveAltitude);
+            auto buf     = imageToOledBuffer(frame);
+            oled.update(buf);
+        }
 
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        // Limit update rate a bit so we’re not hammering the OLED
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
 
     return 0;
