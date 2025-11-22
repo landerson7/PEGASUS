@@ -204,54 +204,118 @@ static std::vector<uint8_t> imageToOledBuffer(const QImage &img) {
     return buf;
 }
 
-// Render a frame with altitude in feet, centered
+// Render a HUD-style frame with altitude tape + crosshair
 static QImage renderAltitudeFrame(double altitudeFt, bool haveAltitude) {
-    QImage frame(SSD1306::Width, SSD1306::Height, QImage::Format_Grayscale8);
+    const int W = SSD1306::Width;   // 128
+    const int H = SSD1306::Height;  // 64
+
+    QImage frame(W, H, QImage::Format_Grayscale8);
     frame.fill(Qt::black);
 
     QPainter p(&frame);
     p.setRenderHint(QPainter::Antialiasing, true);
     p.setPen(Qt::white);
 
+    // =========================
+    // 1) Crosshair in the middle
+    // =========================
+    int cx = W / 2;
+    int cy = H / 2;
+    int crossHalf = 14;      // half-length of crosshair arms
+    int gap = 3;             // small gap at the center
+
+    // Horizontal line (left)
+    p.drawLine(cx - crossHalf, cy, cx - gap, cy);
+    // Horizontal line (right)
+    p.drawLine(cx + gap, cy, cx + crossHalf, cy);
+    // Vertical line (top)
+    p.drawLine(cx, cy - crossHalf, cx, cy - gap);
+    // Vertical line (bottom)
+    p.drawLine(cx, cy + gap, cx, cy + crossHalf);
+
+    // Optional small box at the center
+    p.drawRect(cx - 2, cy - 2, 4, 4);
+
+    // =========================================
+    // 2) Altitude "tape" / box on the right side
+    // =========================================
+    int boxW = 44;
+    int boxH = 48;
+    int boxX = W - boxW - 4;       // small margin from right edge
+    int boxY = (H - boxH) / 2;
+
+    // Outer box
+    p.drawRect(boxX, boxY, boxW, boxH);
+
+    // Small label "ALT" at top of box
+    {
+        QFont labelFont("Monospace");
+        labelFont.setStyleHint(QFont::TypeWriter);
+        labelFont.setPointSize(7);
+        p.setFont(labelFont);
+
+        QString label = "ALT";
+        QFontMetrics fm(labelFont);
+        int lw = fm.horizontalAdvance(label);
+        int lx = boxX + (boxW - lw) / 2;
+        int ly = boxY - 2;   // slightly above box
+        p.drawText(lx, ly, label);
+    }
+
+    // ==========================
+    // 3) Altitude numeric display
+    // ==========================
     if (!haveAltitude) {
-        // Show "WAITING..." until first valid packet
-        QFont font("Monospace");
-        font.setStyleHint(QFont::TypeWriter);
-        font.setPointSize(12);
-        p.setFont(font);
+        // Show "WAIT" in the box until we get real data
+        QFont waitFont("Monospace");
+        waitFont.setStyleHint(QFont::TypeWriter);
+        waitFont.setPointSize(10);
+        p.setFont(waitFont);
 
-        QString msg = "WAITING...";
-        QFontMetrics fm(font);
-        int w = fm.horizontalAdvance(msg);
-        int h = fm.height();
+        QString msg = "WAIT";
+        QFontMetrics fm(waitFont);
+        int tw = fm.horizontalAdvance(msg);
+        int th = fm.height();
 
-        int x = (SSD1306::Width  - w) / 2;
-        int y = (SSD1306::Height + h) / 2 - fm.descent();
-
-        p.drawText(x, y, msg);
+        int tx = boxX + (boxW - tw) / 2;
+        int ty = boxY + (boxH + th) / 2 - fm.descent();
+        p.drawText(tx, ty, msg);
     } else {
-        // Big altitude number, e.g. "1234 FT"
+        // Big altitude number (integer feet) in the center of the box
         int altInt = static_cast<int>(std::round(altitudeFt));
-        QString altStr = QString::number(altInt) + " FT";
+        QString altStr = QString::number(altInt);
 
         QFont bigFont("Monospace");
         bigFont.setStyleHint(QFont::TypeWriter);
-        bigFont.setPointSize(18);
+        bigFont.setPointSize(14);   // adjust if it clips; 12–14 works well
         p.setFont(bigFont);
 
         QFontMetrics fm(bigFont);
-        int w = fm.horizontalAdvance(altStr);
-        int h = fm.height();
+        int tw = fm.horizontalAdvance(altStr);
+        int th = fm.height();
 
-        int x = (SSD1306::Width  - w) / 2;
-        int y = (SSD1306::Height + h) / 2 - fm.descent();
+        int tx = boxX + (boxW - tw) / 2;
+        int ty = boxY + (boxH + th) / 2 - fm.descent();
+        p.drawText(tx, ty, altStr);
 
-        p.drawText(x, y, altStr);
+        // Small "FT" label at bottom of box
+        QFont unitFont("Monospace");
+        unitFont.setStyleHint(QFont::TypeWriter);
+        unitFont.setPointSize(7);
+        p.setFont(unitFont);
+
+        QString unit = "FT";
+        QFontMetrics fm2(unitFont);
+        int uw = fm2.horizontalAdvance(unit);
+        int ux = boxX + (boxW - uw) / 2;
+        int uy = boxY + boxH + fm2.ascent();   // just under box
+        p.drawText(ux, uy, unit);
     }
 
     p.end();
     return frame;
 }
+
 
 // ---------- main ----------
 
