@@ -102,9 +102,16 @@ static bool readAltitudeFromEsp32(int fd, double &altitudeFt) {
     uint32_t payloadLen = ntohl(lenNet);
 
     if (payloadLen == 0 || payloadLen > 4096) {
-        std::cerr << "Suspicious payload length: " << payloadLen << "\n";
+        std::cerr << "Suspicious payload length: " << payloadLen
+                << " (bytes: 0x"
+                << std::hex << std::setw(2) << std::setfill('0') << (int)lenBuf[0]
+                << " 0x" << std::setw(2) << (int)lenBuf[1]
+                << " 0x" << std::setw(2) << (int)lenBuf[2]
+                << " 0x" << std::setw(2) << (int)lenBuf[3]
+                << std::dec << ")\n";
         return false;
     }
+
 
     // 2) CBOR payload
     std::vector<uint8_t> payload(payloadLen);
