@@ -311,6 +311,7 @@
 	],
 	"MOC_INCLUDES" : 
 	[
+		"/home/landerson/PEGASUS/src",
 		"/usr/include/c++/14",
 		"/usr/include/aarch64-linux-gnu/c++/14",
 		"/usr/include/c++/14/backward",

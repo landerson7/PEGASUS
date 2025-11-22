@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/landerson/PEGASUS/build/oled_test_autogen/include
+CXX_INCLUDES = -I/home/landerson/PEGASUS/build/oled_test_autogen/include -I/home/landerson/PEGASUS/src
 
 CXX_FLAGS = -std=gnu++17
 

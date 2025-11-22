@@ -31,7 +31,7 @@ using json = nlohmann::json;
 
 // ---------- Serial config ----------
 
-static const char* SERIAL_PORT = "/dev/ttyUSB0";   // change to "/dev/ttyACM0" if needed
+static const char* SERIAL_PORT = "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0";   // change to "/dev/ttyACM0" if needed
 static const int   SERIAL_BAUD = B115200;
 
 // Open and configure serial port (8N1, raw)

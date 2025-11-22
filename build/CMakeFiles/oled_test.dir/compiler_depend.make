@@ -287,11 +287,16 @@ CMakeFiles/oled_test.dir/src/oled_test_main.cpp.o: /home/landerson/PEGASUS/src/o
   /usr/include/aarch64-linux-gnu/bits/waitflags.h \
   /usr/include/aarch64-linux-gnu/bits/waitstatus.h \
   /usr/include/aarch64-linux-gnu/bits/wchar.h \
+  /usr/include/aarch64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/aarch64-linux-gnu/bits/wordsize.h \
+  /usr/include/aarch64-linux-gnu/c++/14/bits/atomic_word.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/c++allocator.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/c++config.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/c++locale.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/cpu_defines.h \
+  /usr/include/aarch64-linux-gnu/c++/14/bits/ctype_base.h \
+  /usr/include/aarch64-linux-gnu/c++/14/bits/ctype_inline.h \
+  /usr/include/aarch64-linux-gnu/c++/14/bits/error_constants.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/gthr-default.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/gthr.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/os_defines.h \
@@ -299,6 +304,7 @@ CMakeFiles/oled_test.dir/src/oled_test_main.cpp.o: /home/landerson/PEGASUS/src/o
   /usr/include/aarch64-linux-gnu/gnu/stubs.h \
   /usr/include/aarch64-linux-gnu/sys/cdefs.h \
   /usr/include/aarch64-linux-gnu/sys/select.h \
+  /usr/include/aarch64-linux-gnu/sys/single_threaded.h \
   /usr/include/aarch64-linux-gnu/sys/types.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
@@ -311,6 +317,8 @@ CMakeFiles/oled_test.dir/src/oled_test_main.cpp.o: /home/landerson/PEGASUS/src/o
   /usr/include/c++/14/bit \
   /usr/include/c++/14/bits/alloc_traits.h \
   /usr/include/c++/14/bits/allocator.h \
+  /usr/include/c++/14/bits/basic_ios.h \
+  /usr/include/c++/14/bits/basic_ios.tcc \
   /usr/include/c++/14/bits/basic_string.h \
   /usr/include/c++/14/bits/basic_string.tcc \
   /usr/include/c++/14/bits/char_traits.h \
@@ -319,17 +327,27 @@ CMakeFiles/oled_test.dir/src/oled_test_main.cpp.o: /home/landerson/PEGASUS/src/o
   /usr/include/c++/14/bits/concept_check.h \
   /usr/include/c++/14/bits/cpp_type_traits.h \
   /usr/include/c++/14/bits/cxxabi_forced.h \
+  /usr/include/c++/14/bits/cxxabi_init_exception.h \
   /usr/include/c++/14/bits/exception.h \
   /usr/include/c++/14/bits/exception_defines.h \
+  /usr/include/c++/14/bits/exception_ptr.h \
   /usr/include/c++/14/bits/functexcept.h \
   /usr/include/c++/14/bits/functional_hash.h \
   /usr/include/c++/14/bits/hash_bytes.h \
   /usr/include/c++/14/bits/invoke.h \
+  /usr/include/c++/14/bits/ios_base.h \
+  /usr/include/c++/14/bits/istream.tcc \
+  /usr/include/c++/14/bits/locale_classes.h \
+  /usr/include/c++/14/bits/locale_classes.tcc \
+  /usr/include/c++/14/bits/locale_facets.h \
+  /usr/include/c++/14/bits/locale_facets.tcc \
   /usr/include/c++/14/bits/localefwd.h \
   /usr/include/c++/14/bits/memory_resource.h \
   /usr/include/c++/14/bits/memoryfwd.h \
   /usr/include/c++/14/bits/move.h \
+  /usr/include/c++/14/bits/nested_exception.h \
   /usr/include/c++/14/bits/new_allocator.h \
+  /usr/include/c++/14/bits/ostream.tcc \
   /usr/include/c++/14/bits/ostream_insert.h \
   /usr/include/c++/14/bits/parse_numbers.h \
   /usr/include/c++/14/bits/postypes.h \
@@ -350,6 +368,8 @@ CMakeFiles/oled_test.dir/src/oled_test_main.cpp.o: /home/landerson/PEGASUS/src/o
   /usr/include/c++/14/bits/stl_pair.h \
   /usr/include/c++/14/bits/stl_uninitialized.h \
   /usr/include/c++/14/bits/stl_vector.h \
+  /usr/include/c++/14/bits/streambuf.tcc \
+  /usr/include/c++/14/bits/streambuf_iterator.h \
   /usr/include/c++/14/bits/string_view.tcc \
   /usr/include/c++/14/bits/stringfwd.h \
   /usr/include/c++/14/bits/this_thread_sleep.h \
@@ -370,23 +390,34 @@ CMakeFiles/oled_test.dir/src/oled_test_main.cpp.o: /home/landerson/PEGASUS/src/o
   /usr/include/c++/14/cstdlib \
   /usr/include/c++/14/ctime \
   /usr/include/c++/14/cwchar \
+  /usr/include/c++/14/cwctype \
   /usr/include/c++/14/debug/assertions.h \
   /usr/include/c++/14/debug/debug.h \
+  /usr/include/c++/14/exception \
   /usr/include/c++/14/ext/alloc_traits.h \
+  /usr/include/c++/14/ext/atomicity.h \
   /usr/include/c++/14/ext/numeric_traits.h \
   /usr/include/c++/14/ext/string_conversions.h \
   /usr/include/c++/14/ext/type_traits.h \
   /usr/include/c++/14/initializer_list \
+  /usr/include/c++/14/ios \
   /usr/include/c++/14/iosfwd \
+  /usr/include/c++/14/iostream \
+  /usr/include/c++/14/istream \
   /usr/include/c++/14/limits \
   /usr/include/c++/14/new \
+  /usr/include/c++/14/ostream \
   /usr/include/c++/14/pstl/pstl_config.h \
   /usr/include/c++/14/ratio \
+  /usr/include/c++/14/stdexcept \
+  /usr/include/c++/14/streambuf \
   /usr/include/c++/14/string \
   /usr/include/c++/14/string_view \
+  /usr/include/c++/14/system_error \
   /usr/include/c++/14/thread \
   /usr/include/c++/14/tuple \
   /usr/include/c++/14/type_traits \
+  /usr/include/c++/14/typeinfo \
   /usr/include/c++/14/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
@@ -407,6 +438,7 @@ CMakeFiles/oled_test.dir/src/oled_test_main.cpp.o: /home/landerson/PEGASUS/src/o
   /usr/include/stdlib.h \
   /usr/include/time.h \
   /usr/include/wchar.h \
+  /usr/include/wctype.h \
   /usr/lib/gcc/aarch64-linux-gnu/14/include/stdarg.h \
   /usr/lib/gcc/aarch64-linux-gnu/14/include/stddef.h \
   /usr/lib/gcc/aarch64-linux-gnu/14/include/stdint.h \
@@ -519,8 +551,10 @@ CMakeFiles/oled_test.dir/src/ssd1306.cpp.o: /home/landerson/PEGASUS/src/ssd1306.
   /usr/include/asm-generic/ioctls.h \
   /usr/include/asm-generic/posix_types.h \
   /usr/include/asm-generic/types.h \
+  /usr/include/c++/14/algorithm \
   /usr/include/c++/14/backward/binders.h \
   /usr/include/c++/14/bit \
+  /usr/include/c++/14/bits/algorithmfwd.h \
   /usr/include/c++/14/bits/alloc_traits.h \
   /usr/include/c++/14/bits/allocator.h \
   /usr/include/c++/14/bits/basic_ios.h \
@@ -561,20 +595,24 @@ CMakeFiles/oled_test.dir/src/ssd1306.cpp.o: /home/landerson/PEGASUS/src/ssd1306.
   /usr/include/c++/14/bits/refwrap.h \
   /usr/include/c++/14/bits/requires_hosted.h \
   /usr/include/c++/14/bits/std_abs.h \
+  /usr/include/c++/14/bits/stl_algo.h \
   /usr/include/c++/14/bits/stl_algobase.h \
   /usr/include/c++/14/bits/stl_bvector.h \
   /usr/include/c++/14/bits/stl_construct.h \
   /usr/include/c++/14/bits/stl_function.h \
+  /usr/include/c++/14/bits/stl_heap.h \
   /usr/include/c++/14/bits/stl_iterator.h \
   /usr/include/c++/14/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/14/bits/stl_iterator_base_types.h \
   /usr/include/c++/14/bits/stl_pair.h \
+  /usr/include/c++/14/bits/stl_tempbuf.h \
   /usr/include/c++/14/bits/stl_uninitialized.h \
   /usr/include/c++/14/bits/stl_vector.h \
   /usr/include/c++/14/bits/streambuf.tcc \
   /usr/include/c++/14/bits/streambuf_iterator.h \
   /usr/include/c++/14/bits/string_view.tcc \
   /usr/include/c++/14/bits/stringfwd.h \
+  /usr/include/c++/14/bits/uniform_int_dist.h \
   /usr/include/c++/14/bits/uses_allocator.h \
   /usr/include/c++/14/bits/uses_allocator_args.h \
   /usr/include/c++/14/bits/utility.h \
@@ -606,6 +644,8 @@ CMakeFiles/oled_test.dir/src/ssd1306.cpp.o: /home/landerson/PEGASUS/src/ssd1306.
   /usr/include/c++/14/istream \
   /usr/include/c++/14/new \
   /usr/include/c++/14/ostream \
+  /usr/include/c++/14/pstl/execution_defs.h \
+  /usr/include/c++/14/pstl/glue_algorithm_defs.h \
   /usr/include/c++/14/pstl/pstl_config.h \
   /usr/include/c++/14/stdexcept \
   /usr/include/c++/14/streambuf \
@@ -705,37 +745,11 @@ CMakeFiles/oled_test.dir/oled_test_autogen/mocs_compilation.cpp.o:
 
 /usr/include/linux/close_range.h:
 
-/usr/include/c++/14/typeinfo:
+/usr/include/c++/14/pstl/glue_algorithm_defs.h:
 
-/usr/include/c++/14/system_error:
-
-/usr/include/linux/ioctl.h:
-
-/usr/include/c++/14/stdexcept:
-
-/usr/include/c++/14/istream:
-
-/usr/include/c++/14/iostream:
-
-/usr/include/c++/14/ext/atomicity.h:
-
-/usr/include/c++/14/cwctype:
-
-/usr/include/c++/14/bits/locale_facets.tcc:
-
-/usr/include/c++/14/bits/istream.tcc:
-
-/usr/include/c++/14/bits/ios_base.h:
-
-/usr/include/c++/14/bits/cxxabi_init_exception.h:
-
-/usr/include/c++/14/bits/basic_ios.h:
+/usr/include/c++/14/bits/stl_algo.h:
 
 /usr/include/asm-generic/ioctls.h:
-
-/usr/include/aarch64-linux-gnu/sys/single_threaded.h:
-
-/usr/include/aarch64-linux-gnu/c++/14/bits/ctype_base.h:
 
 /usr/include/aarch64-linux-gnu/bits/unistd_ext.h:
 
@@ -747,13 +761,13 @@ CMakeFiles/oled_test.dir/oled_test_autogen/mocs_compilation.cpp.o:
 
 /usr/include/aarch64-linux-gnu/bits/getopt_core.h:
 
-/usr/include/aarch64-linux-gnu/c++/14/bits/ctype_inline.h:
-
-/usr/include/aarch64-linux-gnu/bits/confname.h:
+/usr/include/c++/14/bits/uniform_int_dist.h:
 
 /usr/include/aarch64-linux-gnu/bits/fcntl.h:
 
 /usr/lib/linux/uapi/arm64/asm/types.h:
+
+/usr/include/c++/14/algorithm:
 
 /usr/lib/linux/uapi/arm64/asm/posix_types.h:
 
@@ -769,6 +783,8 @@ CMakeFiles/oled_test.dir/oled_test_autogen/mocs_compilation.cpp.o:
 
 /usr/include/pthread.h:
 
+/usr/include/c++/14/bits/stl_tempbuf.h:
+
 /usr/include/linux/stddef.h:
 
 /usr/include/linux/errno.h:
@@ -783,31 +799,43 @@ CMakeFiles/oled_test.dir/oled_test_autogen/mocs_compilation.cpp.o:
 
 /usr/include/endian.h:
 
-/usr/include/aarch64-linux-gnu/c++/14/bits/error_constants.h:
-
-/usr/include/ctype.h:
-
 /usr/include/c++/14/vector:
+
+/usr/include/c++/14/typeinfo:
 
 /usr/include/c++/14/type_traits:
 
 /usr/include/c++/14/thread:
 
+/usr/include/c++/14/system_error:
+
 /usr/include/c++/14/string_view:
 
 /usr/include/c++/14/string:
+
+/usr/include/linux/ioctl.h:
+
+/usr/include/c++/14/stdexcept:
 
 /usr/include/c++/14/ratio:
 
 /usr/include/c++/14/new:
 
+/usr/include/c++/14/istream:
+
+/usr/include/c++/14/iostream:
+
 /usr/include/c++/14/iosfwd:
 
 /usr/include/c++/14/ext/type_traits.h:
 
+/usr/include/c++/14/ext/atomicity.h:
+
 /usr/include/c++/14/ext/alloc_traits.h:
 
 /usr/include/c++/14/debug/debug.h:
+
+/usr/include/c++/14/cwctype:
 
 /usr/include/c++/14/ext/numeric_traits.h:
 
@@ -869,6 +897,14 @@ CMakeFiles/oled_test.dir/oled_test_autogen/mocs_compilation.cpp.o:
 
 /usr/include/c++/14/bits/localefwd.h:
 
+/usr/include/c++/14/bits/locale_facets.tcc:
+
+/usr/include/c++/14/bits/algorithmfwd.h:
+
+/usr/include/c++/14/bits/istream.tcc:
+
+/usr/include/c++/14/bits/ios_base.h:
+
 /usr/include/c++/14/bits/hash_bytes.h:
 
 /usr/include/c++/14/limits:
@@ -876,6 +912,8 @@ CMakeFiles/oled_test.dir/oled_test_autogen/mocs_compilation.cpp.o:
 /usr/include/c++/14/bits/functional_hash.h:
 
 /usr/include/c++/14/bits/functexcept.h:
+
+/usr/include/c++/14/bits/cxxabi_init_exception.h:
 
 /usr/include/c++/14/bits/cxxabi_forced.h:
 
@@ -886,6 +924,8 @@ CMakeFiles/oled_test.dir/oled_test_autogen/mocs_compilation.cpp.o:
 /usr/include/c++/14/bits/locale_facets.h:
 
 /usr/include/c++/14/bits/basic_string.h:
+
+/usr/include/c++/14/bits/basic_ios.h:
 
 /usr/include/c++/14/backward/binders.h:
 
@@ -899,13 +939,25 @@ CMakeFiles/oled_test.dir/oled_test_autogen/mocs_compilation.cpp.o:
 
 /usr/include/aarch64-linux-gnu/sys/types.h:
 
-/usr/include/c++/14/bits/locale_classes.h:
+/usr/include/aarch64-linux-gnu/sys/single_threaded.h:
 
 /usr/include/asm-generic/ioctl.h:
+
+/usr/include/c++/14/bits/locale_classes.h:
 
 /usr/include/aarch64-linux-gnu/gnu/stubs.h:
 
 /usr/include/aarch64-linux-gnu/c++/14/bits/gthr-default.h:
+
+/usr/include/ctype.h:
+
+/usr/include/aarch64-linux-gnu/c++/14/bits/error_constants.h:
+
+/usr/include/aarch64-linux-gnu/bits/confname.h:
+
+/usr/include/aarch64-linux-gnu/c++/14/bits/ctype_inline.h:
+
+/usr/include/aarch64-linux-gnu/c++/14/bits/ctype_base.h:
 
 /usr/include/aarch64-linux-gnu/c++/14/bits/c++config.h:
 
@@ -963,9 +1015,9 @@ CMakeFiles/oled_test.dir/oled_test_autogen/mocs_compilation.cpp.o:
 
 /usr/include/aarch64-linux-gnu/bits/types/clock_t.h:
 
-/usr/include/c++/14/bits/basic_ios.tcc:
-
 /usr/include/c++/14/bits/charconv.h:
+
+/usr/include/c++/14/bits/basic_ios.tcc:
 
 /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h:
 
@@ -1373,9 +1425,9 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 
 /usr/include/aarch64-linux-gnu/bits/pthread_stack_min-dynamic.h:
 
-/usr/include/aarch64-linux-gnu/c++/14/bits/atomic_word.h:
-
 /usr/include/c++/14/clocale:
+
+/usr/include/aarch64-linux-gnu/c++/14/bits/atomic_word.h:
 
 /usr/include/aarch64-linux-gnu/bits/struct_rwlock.h:
 
@@ -1549,6 +1601,8 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 
 /usr/share/cmake-3.31/Modules/CheckLibraryExists.cmake:
 
+/usr/include/c++/14/pstl/execution_defs.h:
+
 /usr/include/asm-generic/types.h:
 
 /usr/include/asm-generic/bitsperlong.h:
@@ -1574,6 +1628,8 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 /usr/include/aarch64-linux-gnu/sys/cdefs.h:
 
 /usr/share/cmake-3.31/Modules/FindVulkan.cmake:
+
+/usr/include/c++/14/bits/stl_heap.h:
 
 /usr/include/aarch64-linux-gnu/bits/select.h:
 
@@ -1609,9 +1665,9 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 
 /usr/share/cmake-3.31/Modules/Platform/Linux-GNU.cmake:
 
-/usr/include/aarch64-linux-gnu/bits/wctype-wchar.h:
-
 /usr/include/time.h:
+
+/usr/include/aarch64-linux-gnu/bits/wctype-wchar.h:
 
 /usr/share/cmake-3.31/Modules/Platform/UnixPaths.cmake:
 

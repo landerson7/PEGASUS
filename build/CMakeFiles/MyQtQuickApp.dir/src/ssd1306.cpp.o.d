@@ -149,7 +149,14 @@ CMakeFiles/MyQtQuickApp.dir/src/ssd1306.cpp.o: \
  /usr/lib/linux/uapi/arm64/asm/bitsperlong.h \
  /usr/include/asm-generic/bitsperlong.h /usr/include/linux/posix_types.h \
  /usr/include/linux/stddef.h /usr/lib/linux/uapi/arm64/asm/posix_types.h \
- /usr/include/asm-generic/posix_types.h /usr/include/c++/14/cstring \
+ /usr/include/asm-generic/posix_types.h /usr/include/c++/14/algorithm \
+ /usr/include/c++/14/bits/stl_algo.h \
+ /usr/include/c++/14/bits/algorithmfwd.h \
+ /usr/include/c++/14/bits/stl_heap.h \
+ /usr/include/c++/14/bits/uniform_int_dist.h \
+ /usr/include/c++/14/bits/stl_tempbuf.h \
+ /usr/include/c++/14/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/14/pstl/execution_defs.h /usr/include/c++/14/cstring \
  /usr/include/string.h /usr/include/strings.h \
  /usr/include/c++/14/iostream /usr/include/c++/14/ostream \
  /usr/include/c++/14/ios /usr/include/c++/14/exception \

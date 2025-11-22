@@ -233,15 +233,22 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /home/landerson/PEGASUS/src/ssd1306.h \
   /usr/include/aarch64-linux-gnu/bits/atomic_wide_counter.h \
   /usr/include/aarch64-linux-gnu/bits/byteswap.h \
+  /usr/include/aarch64-linux-gnu/bits/confname.h \
   /usr/include/aarch64-linux-gnu/bits/cpu-set.h \
   /usr/include/aarch64-linux-gnu/bits/endian.h \
   /usr/include/aarch64-linux-gnu/bits/endianness.h \
+  /usr/include/aarch64-linux-gnu/bits/environments.h \
   /usr/include/aarch64-linux-gnu/bits/errno.h \
+  /usr/include/aarch64-linux-gnu/bits/fcntl-linux.h \
+  /usr/include/aarch64-linux-gnu/bits/fcntl.h \
   /usr/include/aarch64-linux-gnu/bits/floatn-common.h \
   /usr/include/aarch64-linux-gnu/bits/floatn.h \
   /usr/include/aarch64-linux-gnu/bits/flt-eval-method.h \
   /usr/include/aarch64-linux-gnu/bits/fp-fast.h \
   /usr/include/aarch64-linux-gnu/bits/fp-logb.h \
+  /usr/include/aarch64-linux-gnu/bits/getopt_core.h \
+  /usr/include/aarch64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/aarch64-linux-gnu/bits/in.h \
   /usr/include/aarch64-linux-gnu/bits/iscanonical.h \
   /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
   /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -255,12 +262,19 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/aarch64-linux-gnu/bits/mathcalls.h \
   /usr/include/aarch64-linux-gnu/bits/posix1_lim.h \
   /usr/include/aarch64-linux-gnu/bits/posix2_lim.h \
+  /usr/include/aarch64-linux-gnu/bits/posix_opt.h \
   /usr/include/aarch64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/aarch64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/aarch64-linux-gnu/bits/sched.h \
   /usr/include/aarch64-linux-gnu/bits/select.h \
   /usr/include/aarch64-linux-gnu/bits/setjmp.h \
+  /usr/include/aarch64-linux-gnu/bits/sockaddr.h \
+  /usr/include/aarch64-linux-gnu/bits/socket.h \
+  /usr/include/aarch64-linux-gnu/bits/socket_type.h \
+  /usr/include/aarch64-linux-gnu/bits/stat.h \
+  /usr/include/aarch64-linux-gnu/bits/statx-generic.h \
+  /usr/include/aarch64-linux-gnu/bits/statx.h \
   /usr/include/aarch64-linux-gnu/bits/stdint-intn.h \
   /usr/include/aarch64-linux-gnu/bits/stdint-least.h \
   /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h \
@@ -268,6 +282,17 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/aarch64-linux-gnu/bits/stdlib-float.h \
   /usr/include/aarch64-linux-gnu/bits/struct_mutex.h \
   /usr/include/aarch64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_stat.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-baud.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_cc.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_cflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_iflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_lflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-c_oflag.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-misc.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-struct.h \
+  /usr/include/aarch64-linux-gnu/bits/termios-tcflow.h \
+  /usr/include/aarch64-linux-gnu/bits/termios.h \
   /usr/include/aarch64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/aarch64-linux-gnu/bits/time.h \
   /usr/include/aarch64-linux-gnu/bits/time64.h \
@@ -290,8 +315,12 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/aarch64-linux-gnu/bits/types/sigset_t.h \
   /usr/include/aarch64-linux-gnu/bits/types/struct_FILE.h \
   /usr/include/aarch64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h \
   /usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_osockaddr.h \
   /usr/include/aarch64-linux-gnu/bits/types/struct_sched_param.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_statx.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_statx_timestamp.h \
   /usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h \
   /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h \
   /usr/include/aarch64-linux-gnu/bits/types/struct_tm.h \
@@ -301,9 +330,11 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/aarch64-linux-gnu/bits/typesizes.h \
   /usr/include/aarch64-linux-gnu/bits/uintn-identity.h \
   /usr/include/aarch64-linux-gnu/bits/uio_lim.h \
+  /usr/include/aarch64-linux-gnu/bits/unistd_ext.h \
   /usr/include/aarch64-linux-gnu/bits/waitflags.h \
   /usr/include/aarch64-linux-gnu/bits/waitstatus.h \
   /usr/include/aarch64-linux-gnu/bits/wchar.h \
+  /usr/include/aarch64-linux-gnu/bits/wctype-wchar.h \
   /usr/include/aarch64-linux-gnu/bits/wordsize.h \
   /usr/include/aarch64-linux-gnu/bits/xopen_lim.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/atomic_word.h \
@@ -311,22 +342,16 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/aarch64-linux-gnu/c++/14/bits/c++config.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/c++locale.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/cpu_defines.h \
+  /usr/include/aarch64-linux-gnu/c++/14/bits/ctype_base.h \
+  /usr/include/aarch64-linux-gnu/c++/14/bits/ctype_inline.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/error_constants.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/gthr-default.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/gthr.h \
+  /usr/include/aarch64-linux-gnu/c++/14/bits/messages_members.h \
   /usr/include/aarch64-linux-gnu/c++/14/bits/os_defines.h \
+  /usr/include/aarch64-linux-gnu/c++/14/bits/time_members.h \
   /usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h \
   /usr/include/aarch64-linux-gnu/gnu/stubs.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/QEvent \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/QList \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/QMargins \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/QObject \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/QRect \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/QRectF \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/QSize \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/QSizeF \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/QTimer \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/QUrl \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/q20functional.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/q20iterator.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/q20memory.h \
@@ -341,13 +366,11 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qatomic.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qatomic_cxx11.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qbasicatomic.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/qbasictimer.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qbindingstorage.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qbytearray.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qbytearraylist.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qbytearrayview.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/qcalendar.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qchar.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qcompare.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qcompare_impl.h \
@@ -364,10 +387,10 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qcoreevent.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qdarwinhelpers.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qdatastream.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/qdatetime.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qdeadlinetimer.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qdebug.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qelapsedtimer.h \
+  /usr/include/aarch64-linux-gnu/qt6/QtCore/qendian.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qeventloop.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qexceptionhandling.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qflags.h \
@@ -380,7 +403,6 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qglobalstatic.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qhash.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qhashfunctions.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/qiodevice.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qiodevicebase.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qiterable.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qiterator.h \
@@ -394,7 +416,6 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qmargins.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qmath.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qmetacontainer.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/qmetaobject.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qmetatype.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qminmax.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qnamespace.h \
@@ -407,7 +428,6 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qoverload.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qpair.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qpoint.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/qpointer.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qprocessordetection.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qrect.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qrefcount.h \
@@ -444,7 +464,6 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qtdeprecationmarkers.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qtenvironmentvariables.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qtextstream.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/qtimer.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qtmetamacros.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qtnoop.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qtpreprocessorsupport.h \
@@ -454,98 +473,61 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qtversion.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qtversionchecks.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qtypeinfo.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/qtyperevision.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qtypes.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/qurl.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qutf8stringview.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qvariant.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qvarlengtharray.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtCore/qversionnumber.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qversiontagging.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qxptype_traits.h \
   /usr/include/aarch64-linux-gnu/qt6/QtCore/qyieldcpu.h \
+  /usr/include/aarch64-linux-gnu/qt6/QtGui/QFont \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/QGuiApplication \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/QImage \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/QMatrix4x4 \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/QTransform \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qbitmap.h \
+  /usr/include/aarch64-linux-gnu/qt6/QtGui/QPainter \
+  /usr/include/aarch64-linux-gnu/qt6/QtGui/qbrush.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qcolor.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qcursor.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qevent.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qeventpoint.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qgenericmatrix.h \
+  /usr/include/aarch64-linux-gnu/qt6/QtGui/qfont.h \
+  /usr/include/aarch64-linux-gnu/qt6/QtGui/qfontinfo.h \
+  /usr/include/aarch64-linux-gnu/qt6/QtGui/qfontmetrics.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qguiapplication.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qguiapplication_platform.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qicon.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qimage.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qinputdevice.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qinputmethod.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qkeysequence.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qmatrix4x4.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qpaintdevice.h \
+  /usr/include/aarch64-linux-gnu/qt6/QtGui/qpainter.h \
+  /usr/include/aarch64-linux-gnu/qt6/QtGui/qpen.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qpixelformat.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qpixmap.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qpointingdevice.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qpolygon.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qquaternion.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qregion.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qrgb.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qrgba64.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qscreen.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qscreen_platform.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qsurface.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qsurfaceformat.h \
+  /usr/include/aarch64-linux-gnu/qt6/QtGui/qtextoption.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qtgui-config.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qtguiexports.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qtguiglobal.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qtransform.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qvector2d.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qvector3d.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qvector4d.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qvectornd.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtGui/qwindow.h \
   /usr/include/aarch64-linux-gnu/qt6/QtGui/qwindowdefs.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtNetwork/qtnetwork-config.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtNetwork/qtnetworkexports.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtNetwork/qtnetworkglobal.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qjsnumbercoercion.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qjsprimitivevalue.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qjsvalue.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qqml.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qqmldebug.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qqmlerror.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qqmlinfo.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qqmllist.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qqmlparserstatus.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qqmlprivate.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qqmlpropertyvaluesource.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qqmlregistration.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qtqml-config.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qtqmlexports.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQml/qtqmlglobal.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQmlIntegration/qqmlintegration.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQuick/QQuickView \
-  /usr/include/aarch64-linux-gnu/qt6/QtQuick/qquickview.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQuick/qquickwindow.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQuick/qsggeometry.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQuick/qsgnode.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQuick/qsgrendererinterface.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQuick/qtquick-config.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQuick/qtquickexports.h \
-  /usr/include/aarch64-linux-gnu/qt6/QtQuick/qtquickglobal.h \
   /usr/include/aarch64-linux-gnu/sys/cdefs.h \
   /usr/include/aarch64-linux-gnu/sys/select.h \
   /usr/include/aarch64-linux-gnu/sys/single_threaded.h \
+  /usr/include/aarch64-linux-gnu/sys/socket.h \
+  /usr/include/aarch64-linux-gnu/sys/stat.h \
+  /usr/include/aarch64-linux-gnu/sys/ttydefaults.h \
   /usr/include/aarch64-linux-gnu/sys/types.h \
   /usr/include/alloca.h \
+  /usr/include/arpa/inet.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/asm-generic/int-ll64.h \
   /usr/include/asm-generic/posix_types.h \
+  /usr/include/asm-generic/socket.h \
+  /usr/include/asm-generic/sockios.h \
   /usr/include/asm-generic/types.h \
   /usr/include/assert.h \
   /usr/include/c++/14/algorithm \
+  /usr/include/c++/14/any \
   /usr/include/c++/14/array \
   /usr/include/c++/14/atomic \
   /usr/include/c++/14/backward/auto_ptr.h \
@@ -558,11 +540,14 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/c++/14/bits/allocator.h \
   /usr/include/c++/14/bits/atomic_base.h \
   /usr/include/c++/14/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/14/bits/basic_ios.h \
+  /usr/include/c++/14/bits/basic_ios.tcc \
   /usr/include/c++/14/bits/basic_string.h \
   /usr/include/c++/14/bits/basic_string.tcc \
   /usr/include/c++/14/bits/char_traits.h \
   /usr/include/c++/14/bits/charconv.h \
   /usr/include/c++/14/bits/chrono.h \
+  /usr/include/c++/14/bits/codecvt.h \
   /usr/include/c++/14/bits/concept_check.h \
   /usr/include/c++/14/bits/cpp_type_traits.h \
   /usr/include/c++/14/bits/cxxabi_forced.h \
@@ -572,37 +557,58 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/c++/14/bits/exception.h \
   /usr/include/c++/14/bits/exception_defines.h \
   /usr/include/c++/14/bits/exception_ptr.h \
+  /usr/include/c++/14/bits/forward_list.h \
+  /usr/include/c++/14/bits/forward_list.tcc \
+  /usr/include/c++/14/bits/fs_dir.h \
+  /usr/include/c++/14/bits/fs_fwd.h \
+  /usr/include/c++/14/bits/fs_ops.h \
+  /usr/include/c++/14/bits/fs_path.h \
   /usr/include/c++/14/bits/functexcept.h \
   /usr/include/c++/14/bits/functional_hash.h \
+  /usr/include/c++/14/bits/gslice.h \
+  /usr/include/c++/14/bits/gslice_array.h \
   /usr/include/c++/14/bits/hash_bytes.h \
   /usr/include/c++/14/bits/hashtable.h \
   /usr/include/c++/14/bits/hashtable_policy.h \
+  /usr/include/c++/14/bits/indirect_array.h \
   /usr/include/c++/14/bits/invoke.h \
   /usr/include/c++/14/bits/ios_base.h \
+  /usr/include/c++/14/bits/istream.tcc \
   /usr/include/c++/14/bits/list.tcc \
   /usr/include/c++/14/bits/locale_classes.h \
   /usr/include/c++/14/bits/locale_classes.tcc \
+  /usr/include/c++/14/bits/locale_conv.h \
+  /usr/include/c++/14/bits/locale_facets.h \
+  /usr/include/c++/14/bits/locale_facets.tcc \
+  /usr/include/c++/14/bits/locale_facets_nonio.h \
+  /usr/include/c++/14/bits/locale_facets_nonio.tcc \
   /usr/include/c++/14/bits/localefwd.h \
+  /usr/include/c++/14/bits/mask_array.h \
   /usr/include/c++/14/bits/memory_resource.h \
   /usr/include/c++/14/bits/memoryfwd.h \
   /usr/include/c++/14/bits/move.h \
   /usr/include/c++/14/bits/nested_exception.h \
   /usr/include/c++/14/bits/new_allocator.h \
   /usr/include/c++/14/bits/node_handle.h \
+  /usr/include/c++/14/bits/ostream.tcc \
   /usr/include/c++/14/bits/ostream_insert.h \
   /usr/include/c++/14/bits/parse_numbers.h \
   /usr/include/c++/14/bits/postypes.h \
   /usr/include/c++/14/bits/predefined_ops.h \
   /usr/include/c++/14/bits/ptr_traits.h \
+  /usr/include/c++/14/bits/quoted_string.h \
   /usr/include/c++/14/bits/range_access.h \
   /usr/include/c++/14/bits/refwrap.h \
   /usr/include/c++/14/bits/requires_hosted.h \
   /usr/include/c++/14/bits/shared_ptr.h \
   /usr/include/c++/14/bits/shared_ptr_atomic.h \
   /usr/include/c++/14/bits/shared_ptr_base.h \
+  /usr/include/c++/14/bits/slice_array.h \
   /usr/include/c++/14/bits/specfun.h \
+  /usr/include/c++/14/bits/sstream.tcc \
   /usr/include/c++/14/bits/std_abs.h \
   /usr/include/c++/14/bits/std_function.h \
+  /usr/include/c++/14/bits/std_thread.h \
   /usr/include/c++/14/bits/stl_algo.h \
   /usr/include/c++/14/bits/stl_algobase.h \
   /usr/include/c++/14/bits/stl_bvector.h \
@@ -628,12 +634,17 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/c++/14/bits/streambuf_iterator.h \
   /usr/include/c++/14/bits/string_view.tcc \
   /usr/include/c++/14/bits/stringfwd.h \
+  /usr/include/c++/14/bits/this_thread_sleep.h \
   /usr/include/c++/14/bits/uniform_int_dist.h \
   /usr/include/c++/14/bits/unique_ptr.h \
   /usr/include/c++/14/bits/unordered_map.h \
   /usr/include/c++/14/bits/uses_allocator.h \
   /usr/include/c++/14/bits/uses_allocator_args.h \
   /usr/include/c++/14/bits/utility.h \
+  /usr/include/c++/14/bits/valarray_after.h \
+  /usr/include/c++/14/bits/valarray_array.h \
+  /usr/include/c++/14/bits/valarray_array.tcc \
+  /usr/include/c++/14/bits/valarray_before.h \
   /usr/include/c++/14/bits/vector.tcc \
   /usr/include/c++/14/bits/version.h \
   /usr/include/c++/14/cassert \
@@ -643,6 +654,7 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/c++/14/climits \
   /usr/include/c++/14/clocale \
   /usr/include/c++/14/cmath \
+  /usr/include/c++/14/codecvt \
   /usr/include/c++/14/compare \
   /usr/include/c++/14/concepts \
   /usr/include/c++/14/cstddef \
@@ -652,6 +664,7 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/c++/14/cstring \
   /usr/include/c++/14/ctime \
   /usr/include/c++/14/cwchar \
+  /usr/include/c++/14/cwctype \
   /usr/include/c++/14/debug/assertions.h \
   /usr/include/c++/14/debug/debug.h \
   /usr/include/c++/14/exception \
@@ -662,29 +675,39 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/c++/14/ext/numeric_traits.h \
   /usr/include/c++/14/ext/string_conversions.h \
   /usr/include/c++/14/ext/type_traits.h \
+  /usr/include/c++/14/filesystem \
+  /usr/include/c++/14/forward_list \
   /usr/include/c++/14/functional \
   /usr/include/c++/14/initializer_list \
+  /usr/include/c++/14/iomanip \
+  /usr/include/c++/14/ios \
   /usr/include/c++/14/iosfwd \
+  /usr/include/c++/14/iostream \
+  /usr/include/c++/14/istream \
   /usr/include/c++/14/iterator \
   /usr/include/c++/14/limits \
   /usr/include/c++/14/list \
+  /usr/include/c++/14/locale \
   /usr/include/c++/14/map \
   /usr/include/c++/14/memory \
   /usr/include/c++/14/new \
   /usr/include/c++/14/numeric \
   /usr/include/c++/14/optional \
+  /usr/include/c++/14/ostream \
   /usr/include/c++/14/pstl/execution_defs.h \
   /usr/include/c++/14/pstl/glue_algorithm_defs.h \
   /usr/include/c++/14/pstl/glue_memory_defs.h \
   /usr/include/c++/14/pstl/glue_numeric_defs.h \
   /usr/include/c++/14/pstl/pstl_config.h \
   /usr/include/c++/14/ratio \
+  /usr/include/c++/14/sstream \
   /usr/include/c++/14/stdexcept \
   /usr/include/c++/14/stdlib.h \
   /usr/include/c++/14/streambuf \
   /usr/include/c++/14/string \
   /usr/include/c++/14/string_view \
   /usr/include/c++/14/system_error \
+  /usr/include/c++/14/thread \
   /usr/include/c++/14/tr1/bessel_function.tcc \
   /usr/include/c++/14/tr1/beta_function.tcc \
   /usr/include/c++/14/tr1/ell_integral.tcc \
@@ -702,23 +725,75 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/c++/14/typeinfo \
   /usr/include/c++/14/unordered_map \
   /usr/include/c++/14/utility \
+  /usr/include/c++/14/valarray \
   /usr/include/c++/14/variant \
   /usr/include/c++/14/vector \
   /usr/include/c++/14/version \
   /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/errno.h \
+  /usr/include/fcntl.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
+  /usr/include/libintl.h \
   /usr/include/limits.h \
+  /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/falloc.h \
   /usr/include/linux/limits.h \
   /usr/include/linux/posix_types.h \
   /usr/include/linux/sched/types.h \
+  /usr/include/linux/stat.h \
   /usr/include/linux/stddef.h \
   /usr/include/linux/types.h \
   /usr/include/locale.h \
   /usr/include/math.h \
+  /usr/include/netinet/in.h \
+  /usr/include/nlohmann/adl_serializer.hpp \
+  /usr/include/nlohmann/byte_container_with_subtype.hpp \
+  /usr/include/nlohmann/detail/abi_macros.hpp \
+  /usr/include/nlohmann/detail/conversions/from_json.hpp \
+  /usr/include/nlohmann/detail/conversions/to_chars.hpp \
+  /usr/include/nlohmann/detail/conversions/to_json.hpp \
+  /usr/include/nlohmann/detail/exceptions.hpp \
+  /usr/include/nlohmann/detail/hash.hpp \
+  /usr/include/nlohmann/detail/input/binary_reader.hpp \
+  /usr/include/nlohmann/detail/input/input_adapters.hpp \
+  /usr/include/nlohmann/detail/input/json_sax.hpp \
+  /usr/include/nlohmann/detail/input/lexer.hpp \
+  /usr/include/nlohmann/detail/input/parser.hpp \
+  /usr/include/nlohmann/detail/input/position_t.hpp \
+  /usr/include/nlohmann/detail/iterators/internal_iterator.hpp \
+  /usr/include/nlohmann/detail/iterators/iter_impl.hpp \
+  /usr/include/nlohmann/detail/iterators/iteration_proxy.hpp \
+  /usr/include/nlohmann/detail/iterators/iterator_traits.hpp \
+  /usr/include/nlohmann/detail/iterators/json_reverse_iterator.hpp \
+  /usr/include/nlohmann/detail/iterators/primitive_iterator.hpp \
+  /usr/include/nlohmann/detail/json_custom_base_class.hpp \
+  /usr/include/nlohmann/detail/json_pointer.hpp \
+  /usr/include/nlohmann/detail/json_ref.hpp \
+  /usr/include/nlohmann/detail/macro_scope.hpp \
+  /usr/include/nlohmann/detail/macro_unscope.hpp \
+  /usr/include/nlohmann/detail/meta/call_std/begin.hpp \
+  /usr/include/nlohmann/detail/meta/call_std/end.hpp \
+  /usr/include/nlohmann/detail/meta/cpp_future.hpp \
+  /usr/include/nlohmann/detail/meta/detected.hpp \
+  /usr/include/nlohmann/detail/meta/identity_tag.hpp \
+  /usr/include/nlohmann/detail/meta/is_sax.hpp \
+  /usr/include/nlohmann/detail/meta/std_fs.hpp \
+  /usr/include/nlohmann/detail/meta/type_traits.hpp \
+  /usr/include/nlohmann/detail/meta/void_t.hpp \
+  /usr/include/nlohmann/detail/output/binary_writer.hpp \
+  /usr/include/nlohmann/detail/output/output_adapters.hpp \
+  /usr/include/nlohmann/detail/output/serializer.hpp \
+  /usr/include/nlohmann/detail/string_concat.hpp \
+  /usr/include/nlohmann/detail/string_escape.hpp \
+  /usr/include/nlohmann/detail/value_t.hpp \
+  /usr/include/nlohmann/json.hpp \
+  /usr/include/nlohmann/json_fwd.hpp \
+  /usr/include/nlohmann/ordered_map.hpp \
+  /usr/include/nlohmann/thirdparty/hedley/hedley.hpp \
+  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
@@ -727,9 +802,11 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/include/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/termios.h \
   /usr/include/time.h \
+  /usr/include/unistd.h \
   /usr/include/wchar.h \
-  /usr/lib/gcc/aarch64-linux-gnu/14/include/float.h \
+  /usr/include/wctype.h \
   /usr/lib/gcc/aarch64-linux-gnu/14/include/limits.h \
   /usr/lib/gcc/aarch64-linux-gnu/14/include/stdarg.h \
   /usr/lib/gcc/aarch64-linux-gnu/14/include/stdbool.h \
@@ -739,6 +816,8 @@ CMakeFiles/MyQtQuickApp.dir/src/main.cpp.o: /home/landerson/PEGASUS/src/main.cpp
   /usr/lib/linux/uapi/arm64/asm/bitsperlong.h \
   /usr/lib/linux/uapi/arm64/asm/errno.h \
   /usr/lib/linux/uapi/arm64/asm/posix_types.h \
+  /usr/lib/linux/uapi/arm64/asm/socket.h \
+  /usr/lib/linux/uapi/arm64/asm/sockios.h \
   /usr/lib/linux/uapi/arm64/asm/types.h
 
 CMakeFiles/MyQtQuickApp.dir/src/ssd1306.cpp.o: /home/landerson/PEGASUS/src/ssd1306.cpp \
@@ -845,8 +924,10 @@ CMakeFiles/MyQtQuickApp.dir/src/ssd1306.cpp.o: /home/landerson/PEGASUS/src/ssd13
   /usr/include/asm-generic/ioctls.h \
   /usr/include/asm-generic/posix_types.h \
   /usr/include/asm-generic/types.h \
+  /usr/include/c++/14/algorithm \
   /usr/include/c++/14/backward/binders.h \
   /usr/include/c++/14/bit \
+  /usr/include/c++/14/bits/algorithmfwd.h \
   /usr/include/c++/14/bits/alloc_traits.h \
   /usr/include/c++/14/bits/allocator.h \
   /usr/include/c++/14/bits/basic_ios.h \
@@ -887,20 +968,24 @@ CMakeFiles/MyQtQuickApp.dir/src/ssd1306.cpp.o: /home/landerson/PEGASUS/src/ssd13
   /usr/include/c++/14/bits/refwrap.h \
   /usr/include/c++/14/bits/requires_hosted.h \
   /usr/include/c++/14/bits/std_abs.h \
+  /usr/include/c++/14/bits/stl_algo.h \
   /usr/include/c++/14/bits/stl_algobase.h \
   /usr/include/c++/14/bits/stl_bvector.h \
   /usr/include/c++/14/bits/stl_construct.h \
   /usr/include/c++/14/bits/stl_function.h \
+  /usr/include/c++/14/bits/stl_heap.h \
   /usr/include/c++/14/bits/stl_iterator.h \
   /usr/include/c++/14/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/14/bits/stl_iterator_base_types.h \
   /usr/include/c++/14/bits/stl_pair.h \
+  /usr/include/c++/14/bits/stl_tempbuf.h \
   /usr/include/c++/14/bits/stl_uninitialized.h \
   /usr/include/c++/14/bits/stl_vector.h \
   /usr/include/c++/14/bits/streambuf.tcc \
   /usr/include/c++/14/bits/streambuf_iterator.h \
   /usr/include/c++/14/bits/string_view.tcc \
   /usr/include/c++/14/bits/stringfwd.h \
+  /usr/include/c++/14/bits/uniform_int_dist.h \
   /usr/include/c++/14/bits/uses_allocator.h \
   /usr/include/c++/14/bits/uses_allocator_args.h \
   /usr/include/c++/14/bits/utility.h \
@@ -932,6 +1017,8 @@ CMakeFiles/MyQtQuickApp.dir/src/ssd1306.cpp.o: /home/landerson/PEGASUS/src/ssd13
   /usr/include/c++/14/istream \
   /usr/include/c++/14/new \
   /usr/include/c++/14/ostream \
+  /usr/include/c++/14/pstl/execution_defs.h \
+  /usr/include/c++/14/pstl/glue_algorithm_defs.h \
   /usr/include/c++/14/pstl/pstl_config.h \
   /usr/include/c++/14/stdexcept \
   /usr/include/c++/14/streambuf \
@@ -988,67 +1075,30 @@ MyQtQuickApp: /lib/aarch64-linux-gnu/libEGL.so.1 \
   /lib/aarch64-linux-gnu/libXdmcp.so.6 \
   /lib/aarch64-linux-gnu/libatomic.so.1 \
   /lib/aarch64-linux-gnu/libb2.so.1 \
-  /lib/aarch64-linux-gnu/libblkid.so.1 \
   /lib/aarch64-linux-gnu/libbrotlicommon.so.1 \
   /lib/aarch64-linux-gnu/libbrotlidec.so.1 \
   /lib/aarch64-linux-gnu/libbz2.so.1.0 \
   /lib/aarch64-linux-gnu/libc.so.6 \
   /lib/aarch64-linux-gnu/libcap.so.2 \
-  /lib/aarch64-linux-gnu/libcom_err.so.2 \
-  /lib/aarch64-linux-gnu/libcrypto.so.3 \
-  /lib/aarch64-linux-gnu/libcurl-gnutls.so.4 \
   /lib/aarch64-linux-gnu/libdbus-1.so.3 \
   /lib/aarch64-linux-gnu/libdouble-conversion.so.3 \
-  /lib/aarch64-linux-gnu/libduktape.so.207 \
   /lib/aarch64-linux-gnu/libexpat.so.1 \
-  /lib/aarch64-linux-gnu/libffi.so.8 \
   /lib/aarch64-linux-gnu/libfontconfig.so.1 \
   /lib/aarch64-linux-gnu/libfreetype.so.6 \
-  /lib/aarch64-linux-gnu/libgio-2.0.so.0 \
   /lib/aarch64-linux-gnu/libglib-2.0.so.0 \
-  /lib/aarch64-linux-gnu/libgmodule-2.0.so.0 \
-  /lib/aarch64-linux-gnu/libgmp.so.10 \
-  /lib/aarch64-linux-gnu/libgnutls.so.30 \
-  /lib/aarch64-linux-gnu/libgobject-2.0.so.0 \
   /lib/aarch64-linux-gnu/libgomp.so.1 \
   /lib/aarch64-linux-gnu/libgraphite2.so.3 \
-  /lib/aarch64-linux-gnu/libgssapi_krb5.so.2 \
   /lib/aarch64-linux-gnu/libharfbuzz.so.0 \
-  /lib/aarch64-linux-gnu/libhogweed.so.6 \
   /lib/aarch64-linux-gnu/libicudata.so.76 \
   /lib/aarch64-linux-gnu/libicui18n.so.76 \
   /lib/aarch64-linux-gnu/libicuuc.so.76 \
-  /lib/aarch64-linux-gnu/libidn2.so.0 \
-  /lib/aarch64-linux-gnu/libk5crypto.so.3 \
-  /lib/aarch64-linux-gnu/libkeyutils.so.1 \
-  /lib/aarch64-linux-gnu/libkrb5.so.3 \
-  /lib/aarch64-linux-gnu/libkrb5support.so.0 \
-  /lib/aarch64-linux-gnu/liblber.so.2 \
-  /lib/aarch64-linux-gnu/libldap.so.2 \
   /lib/aarch64-linux-gnu/libm.so.6 \
   /lib/aarch64-linux-gnu/libmd4c.so.0 \
-  /lib/aarch64-linux-gnu/libmount.so.1 \
   /lib/aarch64-linux-gnu/libmvec.so.1 \
-  /lib/aarch64-linux-gnu/libnettle.so.8 \
-  /lib/aarch64-linux-gnu/libnghttp2.so.14 \
-  /lib/aarch64-linux-gnu/libnghttp3.so.9 \
-  /lib/aarch64-linux-gnu/libngtcp2.so.16 \
-  /lib/aarch64-linux-gnu/libngtcp2_crypto_gnutls.so.8 \
-  /lib/aarch64-linux-gnu/libp11-kit.so.0 \
   /lib/aarch64-linux-gnu/libpcre2-16.so.0 \
   /lib/aarch64-linux-gnu/libpcre2-8.so.0 \
   /lib/aarch64-linux-gnu/libpng16.so.16 \
-  /lib/aarch64-linux-gnu/libproxy.so.1 \
-  /lib/aarch64-linux-gnu/libpsl.so.5 \
-  /lib/aarch64-linux-gnu/libresolv.so.2 \
-  /lib/aarch64-linux-gnu/librtmp.so.1 \
-  /lib/aarch64-linux-gnu/libsasl2.so.2 \
-  /lib/aarch64-linux-gnu/libselinux.so.1 \
-  /lib/aarch64-linux-gnu/libssh2.so.1 \
-  /lib/aarch64-linux-gnu/libssl.so.3 \
   /lib/aarch64-linux-gnu/libsystemd.so.0 \
-  /lib/aarch64-linux-gnu/libtasn1.so.6 \
-  /lib/aarch64-linux-gnu/libunistring.so.5 \
   /lib/aarch64-linux-gnu/libxcb.so.1 \
   /lib/aarch64-linux-gnu/libxkbcommon.so.0 \
   /lib/aarch64-linux-gnu/libz.so.1 \
@@ -1066,8 +1116,6 @@ MyQtQuickApp: /lib/aarch64-linux-gnu/libEGL.so.1 \
   /usr/lib/aarch64-linux-gnu/libQt6QmlWorkerScript.so.6.8.2 \
   /usr/lib/aarch64-linux-gnu/libQt6Quick.so.6.8.2 \
   /usr/lib/aarch64-linux-gnu/libc_nonshared.a \
-  /usr/lib/aarch64-linux-gnu/libproxy.so.1 \
-  /usr/lib/aarch64-linux-gnu/libproxy/libpxbackend-1.0.so \
   /usr/lib/aarch64-linux-gnu/Scrt1.o \
   /usr/lib/aarch64-linux-gnu/crti.o \
   /usr/lib/aarch64-linux-gnu/crtn.o \
@@ -1097,77 +1145,47 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/lib/aarch64-linux-gnu/libm.so:
 
+/usr/lib/aarch64-linux-gnu/libc.so:
+
 /usr/lib/aarch64-linux-gnu/crtn.o:
+
+/usr/lib/aarch64-linux-gnu/Scrt1.o:
 
 /usr/lib/aarch64-linux-gnu/libc_nonshared.a:
 
-/usr/lib/aarch64-linux-gnu/libQt6Quick.so.6.8.2:
-
 /usr/lib/aarch64-linux-gnu/libQt6QmlWorkerScript.so.6.8.2:
+
+/usr/lib/aarch64-linux-gnu/libQt6QmlModels.so.6.8.2:
+
+/usr/lib/aarch64-linux-gnu/libQt6Qml.so.6.8.2:
+
+/usr/lib/aarch64-linux-gnu/libQt6OpenGL.so.6.8.2:
 
 /usr/lib/aarch64-linux-gnu/libQt6Network.so.6.8.2:
 
 /usr/lib/aarch64-linux-gnu/libQt6Gui.so.6.8.2:
 
-/usr/lib/aarch64-linux-gnu/libQt6Core.so.6.8.2:
-
-/usr/lib/aarch64-linux-gnu/libOpenGL.so:
-
 /lib/aarch64-linux-gnu/libzstd.so.1:
-
-/lib/aarch64-linux-gnu/libssl.so.3:
-
-/lib/aarch64-linux-gnu/libssh2.so.1:
-
-/lib/aarch64-linux-gnu/libselinux.so.1:
-
-/lib/aarch64-linux-gnu/libsasl2.so.2:
-
-/lib/aarch64-linux-gnu/libproxy.so.1:
 
 /lib/aarch64-linux-gnu/libpng16.so.16:
 
 /lib/aarch64-linux-gnu/libpcre2-8.so.0:
 
-/lib/aarch64-linux-gnu/libp11-kit.so.0:
-
-/lib/aarch64-linux-gnu/libngtcp2_crypto_gnutls.so.8:
-
-/lib/aarch64-linux-gnu/libngtcp2.so.16:
-
-/lib/aarch64-linux-gnu/libmvec.so.1:
-
-/lib/aarch64-linux-gnu/libmount.so.1:
-
-/lib/aarch64-linux-gnu/libkrb5support.so.0:
-
-/usr/lib/aarch64-linux-gnu/libc.so:
-
-/lib/aarch64-linux-gnu/libk5crypto.so.3:
+/lib/aarch64-linux-gnu/libpcre2-16.so.0:
 
 /lib/aarch64-linux-gnu/libicui18n.so.76:
-
-/lib/aarch64-linux-gnu/libhogweed.so.6:
 
 /lib/aarch64-linux-gnu/libharfbuzz.so.0:
 
 /lib/aarch64-linux-gnu/libgraphite2.so.3:
 
-/lib/aarch64-linux-gnu/libgnutls.so.30:
-
-/lib/aarch64-linux-gnu/libgmp.so.10:
-
 /lib/aarch64-linux-gnu/libglib-2.0.so.0:
-
-/lib/aarch64-linux-gnu/libduktape.so.207:
 
 /lib/aarch64-linux-gnu/libdouble-conversion.so.3:
 
 /lib/aarch64-linux-gnu/libdbus-1.so.3:
 
-/lib/aarch64-linux-gnu/libcrypto.so.3:
-
-/lib/aarch64-linux-gnu/libcom_err.so.2:
+/lib/aarch64-linux-gnu/libbz2.so.1.0:
 
 /lib/aarch64-linux-gnu/libbrotlicommon.so.1:
 
@@ -1177,69 +1195,89 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /lib/aarch64-linux-gnu/libQt6DBus.so.6:
 
-/usr/include/wctype.h:
-
-/usr/include/unistd.h:
-
-/usr/include/linux/close_range.h:
-
-/usr/include/fcntl.h:
-
-/usr/include/c++/14/ostream:
-
-/usr/include/c++/14/istream:
-
-/usr/include/c++/14/bits/ostream.tcc:
-
-/usr/include/asm-generic/ioctl.h:
-
-/usr/include/aarch64-linux-gnu/sys/ttydefaults.h:
+/lib/aarch64-linux-gnu/libEGL.so.1:
 
 /usr/lib/gcc/aarch64-linux-gnu/14/crtbeginS.o:
 
 /usr/include/aarch64-linux-gnu/sys/ioctl.h:
 
-/usr/include/aarch64-linux-gnu/c++/14/bits/ctype_inline.h:
+/usr/lib/aarch64-linux-gnu/libOpenGL.so:
 
-/usr/include/aarch64-linux-gnu/c++/14/bits/ctype_base.h:
-
-/usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h:
-
-/usr/include/aarch64-linux-gnu/bits/struct_stat.h:
-
-/usr/include/aarch64-linux-gnu/bits/stat.h:
-
-/usr/include/linux/i2c-dev.h:
-
-/usr/include/aarch64-linux-gnu/bits/getopt_posix.h:
-
-/usr/include/aarch64-linux-gnu/bits/environments.h:
-
-/usr/include/c++/14/bits/basic_ios.tcc:
-
-/usr/include/aarch64-linux-gnu/bits/confname.h:
+/usr/lib/linux/uapi/arm64/asm/socket.h:
 
 /usr/lib/linux/uapi/arm64/asm/posix_types.h:
 
 /usr/lib/linux/uapi/arm64/asm/errno.h:
 
-/usr/lib/gcc/aarch64-linux-gnu/14/include/stddef.h:
-
 /usr/lib/gcc/aarch64-linux-gnu/14/include/stdbool.h:
 
 /usr/lib/gcc/aarch64-linux-gnu/14/include/limits.h:
 
-/lib/aarch64-linux-gnu/libkrb5.so.3:
+/usr/include/wctype.h:
+
+/usr/include/unistd.h:
 
 /usr/include/time.h:
 
+/usr/include/asm-generic/ioctl.h:
+
+/usr/include/nlohmann/thirdparty/hedley/hedley.hpp:
+
+/lib/aarch64-linux-gnu/libmvec.so.1:
+
+/usr/include/nlohmann/json_fwd.hpp:
+
+/usr/include/nlohmann/detail/value_t.hpp:
+
+/usr/include/nlohmann/detail/string_escape.hpp:
+
+/usr/include/nlohmann/detail/output/output_adapters.hpp:
+
+/usr/include/nlohmann/detail/output/binary_writer.hpp:
+
+/usr/include/nlohmann/detail/meta/void_t.hpp:
+
+/usr/include/nlohmann/detail/meta/is_sax.hpp:
+
+/usr/include/nlohmann/detail/meta/detected.hpp:
+
+/usr/include/nlohmann/detail/meta/cpp_future.hpp:
+
+/usr/include/nlohmann/detail/meta/call_std/begin.hpp:
+
+/usr/include/nlohmann/detail/json_ref.hpp:
+
+/usr/include/nlohmann/detail/iterators/json_reverse_iterator.hpp:
+
+/usr/include/nlohmann/detail/iterators/iterator_traits.hpp:
+
+/usr/include/nlohmann/detail/input/position_t.hpp:
+
+/usr/include/nlohmann/detail/input/lexer.hpp:
+
+/usr/include/wchar.h:
+
+/usr/include/nlohmann/detail/exceptions.hpp:
+
+/usr/include/nlohmann/detail/conversions/to_json.hpp:
+
+/usr/include/nlohmann/detail/conversions/from_json.hpp:
+
+/usr/include/netinet/in.h:
+
 /usr/include/math.h:
+
+/usr/include/linux/stat.h:
 
 /usr/include/linux/posix_types.h:
 
+/usr/include/linux/close_range.h:
+
 /usr/include/limits.h:
 
-/usr/include/features-time64.h:
+/usr/include/fcntl.h:
+
+/usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp:
 
 /usr/include/errno.h:
 
@@ -1249,15 +1287,7 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/c++/14/vector:
 
-/usr/lib/aarch64-linux-gnu/crti.o:
-
-/usr/include/c++/14/variant:
-
-/lib/aarch64-linux-gnu/libxcb.so.1:
-
-/usr/include/c++/14/bits/basic_ios.h:
-
-/usr/include/c++/14/utility:
+/usr/include/c++/14/valarray:
 
 /usr/include/c++/14/unordered_map:
 
@@ -1291,6 +1321,10 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/c++/14/stdlib.h:
 
+/usr/lib/aarch64-linux-gnu/libQt6Quick.so.6.8.2:
+
+/usr/include/c++/14/sstream:
+
 /usr/include/c++/14/ratio:
 
 /lib/aarch64-linux-gnu/libXau.so.6:
@@ -1305,6 +1339,8 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/c++/14/pstl/execution_defs.h:
 
+/usr/include/c++/14/ostream:
+
 /usr/include/c++/14/optional:
 
 /usr/include/c++/14/memory:
@@ -1315,7 +1351,7 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/c++/14/limits:
 
-/usr/include/c++/14/iterator:
+/usr/include/c++/14/istream:
 
 /usr/include/c++/14/initializer_list:
 
@@ -1345,6 +1381,8 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/c++/14/compare:
 
+/usr/include/c++/14/codecvt:
+
 /usr/include/c++/14/cmath:
 
 /usr/include/c++/14/clocale:
@@ -1353,13 +1391,21 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/c++/14/cerrno:
 
-/usr/include/c++/14/cctype:
-
 /usr/include/c++/14/cassert:
+
+/usr/include/nlohmann/detail/macro_scope.hpp:
 
 /usr/include/c++/14/bits/version.h:
 
 /usr/include/c++/14/bits/vector.tcc:
+
+/usr/include/c++/14/bits/valarray_before.h:
+
+/usr/include/c++/14/bits/valarray_array.tcc:
+
+/usr/include/c++/14/bits/valarray_after.h:
+
+/usr/include/c++/14/bits/utility.h:
 
 /usr/include/c++/14/bits/uses_allocator.h:
 
@@ -1393,9 +1439,7 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/c++/14/bits/stl_numeric.h:
 
-/usr/include/c++/14/new:
-
-/usr/include/c++/14/bits/stl_list.h:
+/usr/include/c++/14/bits/stl_multimap.h:
 
 /usr/include/c++/14/bits/stl_iterator_base_types.h:
 
@@ -1409,6 +1453,8 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/c++/14/bits/stl_algobase.h:
 
+/usr/include/c++/14/bits/std_thread.h:
+
 /lib/aarch64-linux-gnu/libgomp.so.1:
 
 /usr/include/c++/14/bits/std_function.h:
@@ -1417,25 +1463,29 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/c++/14/bits/std_abs.h:
 
+/usr/include/c++/14/bits/sstream.tcc:
+
 /usr/include/c++/14/bits/specfun.h:
+
+/usr/include/nlohmann/detail/conversions/to_chars.hpp:
 
 /usr/include/c++/14/bits/shared_ptr.h:
 
 /usr/include/c++/14/bits/requires_hosted.h:
 
-/lib/aarch64-linux-gnu/libgio-2.0.so.0:
-
 /usr/include/c++/14/bits/range_access.h:
+
+/usr/include/c++/14/bits/quoted_string.h:
 
 /usr/lib/gcc/aarch64-linux-gnu/14/include/syslimits.h:
 
 /usr/include/c++/14/bits/predefined_ops.h:
 
-/lib/aarch64-linux-gnu/libffi.so.8:
-
 /usr/include/c++/14/bits/postypes.h:
 
 /usr/include/c++/14/bits/ostream_insert.h:
+
+/usr/include/c++/14/bits/ostream.tcc:
 
 /usr/include/sched.h:
 
@@ -1445,17 +1495,39 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/c++/14/bits/move.h:
 
+/usr/include/nlohmann/detail/string_concat.hpp:
+
 /usr/include/c++/14/bits/memory_resource.h:
+
+/usr/include/c++/14/new:
+
+/usr/include/c++/14/bits/stl_list.h:
+
+/usr/include/c++/14/bits/mask_array.h:
 
 /usr/include/c++/14/bits/localefwd.h:
 
+/usr/include/c++/14/bits/locale_facets_nonio.tcc:
+
+/usr/include/c++/14/bits/locale_conv.h:
+
 /usr/include/c++/14/bits/locale_classes.tcc:
+
+/usr/include/c++/14/bits/istream.tcc:
 
 /usr/include/c++/14/bits/ios_base.h:
 
 /usr/include/c++/14/bits/invoke.h:
 
+/usr/include/c++/14/bits/indirect_array.h:
+
 /usr/include/c++/14/bits/hash_bytes.h:
+
+/usr/include/c++/14/bits/fs_path.h:
+
+/usr/include/c++/14/bits/fs_fwd.h:
+
+/usr/include/c++/14/bits/forward_list.h:
 
 /usr/include/c++/14/bits/exception_ptr.h:
 
@@ -1471,25 +1543,15 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/c++/14/bits/cpp_type_traits.h:
 
-/usr/include/c++/14/bits/char_traits.h:
+/usr/include/linux/i2c-dev.h:
 
-/usr/include/c++/14/bits/basic_string.tcc:
+/usr/include/aarch64-linux-gnu/bits/getopt_posix.h:
 
-/usr/include/c++/14/bits/basic_string.h:
+/usr/include/aarch64-linux-gnu/bits/posix1_lim.h:
 
-/usr/include/c++/14/bits/atomic_base.h:
+/usr/include/aarch64-linux-gnu/bits/long-double.h:
 
-/usr/include/c++/14/bits/allocated_ptr.h:
-
-/usr/include/c++/14/bits/align.h:
-
-/usr/include/c++/14/backward/binders.h:
-
-/usr/include/aarch64-linux-gnu/bits/stdint-intn.h:
-
-/usr/include/aarch64-linux-gnu/bits/fp-logb.h:
-
-/usr/include/aarch64-linux-gnu/bits/pthreadtypes.h:
+/usr/lib/aarch64-linux-gnu/cmake/Qt6Qml/Qt6QmlMacros.cmake:
 
 /usr/include/c++/14/tr1/poly_hermite.tcc:
 
@@ -1497,13 +1559,15 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/aarch64-linux-gnu/c++/14/bits/cpu_defines.h:
 
-/usr/include/aarch64-linux-gnu/bits/posix1_lim.h:
+/usr/include/aarch64-linux-gnu/bits/environments.h:
 
-/usr/include/aarch64-linux-gnu/bits/long-double.h:
-
-/lib/aarch64-linux-gnu/libblkid.so.1:
+/usr/lib/aarch64-linux-gnu/cmake/Qt6/Qt6Dependencies.cmake:
 
 /usr/include/aarch64-linux-gnu/bits/fp-fast.h:
+
+/usr/lib/aarch64-linux-gnu/libQt6Core.so.6.8.2:
+
+/usr/include/aarch64-linux-gnu/bits/termios-c_iflag.h:
 
 /usr/include/c++/14/bits/hashtable.h:
 
@@ -1513,9 +1577,9 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/share/cmake-3.31/Modules/Platform/Linux-GNU.cmake:
 
-/usr/share/cmake-3.31/Modules/Linker/GNU-CXX.cmake:
-
 /usr/share/cmake-3.31/Modules/Platform/Linker/GNU.cmake:
+
+/usr/include/c++/14/bits/valarray_array.h:
 
 /usr/share/cmake-3.31/Modules/MacroAddFileDependencies.cmake:
 
@@ -1525,11 +1589,7 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /home/landerson/PEGASUS/src/ssd1306.cpp:
 
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qarraydataops.h:
-
 /usr/share/cmake-3.31/Modules/Internal/CMakeCommonLinkerInformation.cmake:
-
-/usr/include/aarch64-linux-gnu/bits/select.h:
 
 /usr/share/cmake-3.31/Modules/FindThreads.cmake:
 
@@ -1557,23 +1617,43 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /lib/aarch64-linux-gnu/libfontconfig.so.1:
 
+/usr/include/nlohmann/detail/meta/type_traits.hpp:
+
 /usr/share/cmake-3.31/Modules/CheckLibraryExists.cmake:
 
 /usr/share/cmake-3.31/Modules/FindPkgConfig.cmake:
 
 /usr/include/aarch64-linux-gnu/bits/types/__locale_t.h:
 
+/usr/include/aarch64-linux-gnu/bits/fcntl.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qarraydata.h:
+
+/usr/include/nlohmann/detail/macro_unscope.hpp:
+
 /usr/share/cmake-3.31/Modules/CheckCXXCompilerFlag.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Quick/Qt6QuickDependencies.cmake:
 
+/usr/include/nlohmann/detail/meta/identity_tag.hpp:
+
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qglobal.h:
 
+/usr/include/aarch64-linux-gnu/c++/14/bits/ctype_inline.h:
+
+/usr/lib/linux/uapi/arm64/asm/types.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qtypeinfo.h:
+
 /usr/share/cmake-3.31/Modules/CMakeSystemSpecificInformation.cmake:
+
+/usr/include/nlohmann/detail/input/parser.hpp:
 
 /usr/share/cmake-3.31/Modules/Platform/Linux.cmake:
 
 /usr/share/cmake-3.31/Modules/CMakeLanguageInformation.cmake:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h:
 
 /usr/share/cmake-3.31/Modules/Platform/Linker/Linux-GNU.cmake:
 
@@ -1583,15 +1663,25 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicToolHelpers.cmake:
 
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qqmldebug.h:
+/usr/lib/aarch64-linux-gnu/crti.o:
+
+/usr/include/c++/14/variant:
+
+/usr/include/c++/14/bits/codecvt.h:
+
+/usr/include/aarch64-linux-gnu/sys/socket.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QuickTools/Qt6QuickToolsDependencies.cmake:
 
-/usr/include/aarch64-linux-gnu/qt6/QtCore/QEvent:
+/usr/include/c++/14/cctype:
+
+/usr/include/aarch64-linux-gnu/bits/termios-baud.h:
 
 /usr/include/c++/14/bits/stl_pair.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qrefcount.h:
+
+/usr/include/aarch64-linux-gnu/bits/in.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QuickTools/Qt6QuickToolsConfig.cmake:
 
@@ -1605,15 +1695,7 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Quick/Qt6QuickConfigVersionImpl.cmake:
 
-/usr/include/aarch64-linux-gnu/bits/setjmp.h:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicSbomSystemDepHelpers.cmake:
-
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Quick/Qt6QuickConfig.cmake:
-
-/usr/include/aarch64-linux-gnu/bits/stdint-least.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qset.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlWorkerScript/Qt6QmlWorkerScriptTargets-none.cmake:
 
@@ -1621,15 +1703,23 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlWorkerScript/Qt6QmlWorkerScriptConfig.cmake:
 
+/usr/include/nlohmann/detail/output/serializer.hpp:
+
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qatomic_cxx11.h:
+
+/usr/include/nlohmann/detail/input/json_sax.hpp:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlWorkerScript/Qt6QmlWorkerScriptAdditionalTargetInfo.cmake:
 
 /usr/include/c++/14/bits/node_handle.h:
 
+/usr/include/c++/14/bits/gslice_array.h:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlTools/Qt6QmlToolsTargets.cmake:
 
 /usr/include/stdc-predef.h:
+
+/usr/include/c++/14/locale:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLDependencies.cmake:
 
@@ -1647,11 +1737,11 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/aarch64-linux-gnu/bits/mathcalls.h:
 
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qmetacontainer.h:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlTools/Qt6QmlToolsConfigVersionImpl.cmake:
 
 /usr/share/cmake-3.31/Modules/CMakeSystemSpecificInitialize.cmake:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qqmllist.h:
 
 /usr/include/aarch64-linux-gnu/sys/select.h:
 
@@ -1683,6 +1773,8 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /lib/aarch64-linux-gnu/libGLdispatch.so.0:
 
+/usr/include/aarch64-linux-gnu/bits/types/struct_statx.h:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Network/Qt6NetworkConfig.cmake:
 
 /lib/aarch64-linux-gnu/libfreetype.so.6:
@@ -1691,17 +1783,11 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlIntegration/Qt6QmlIntegrationVersionlessAliasTargets.cmake:
 
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qevent.h:
+/usr/lib/linux/uapi/arm64/asm/sockios.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsVersionlessAliasTargets.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QuickTools/Qt6QuickToolsConfigVersion.cmake:
-
-/lib/aarch64-linux-gnu/libbz2.so.1.0:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qpointer.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qqmlprivate.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsConfig.cmake:
 
@@ -1710,6 +1796,8 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlMeta/Qt6QmlMetaTargets-none.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlIntegration/Qt6QmlIntegrationTargets.cmake:
+
+/usr/include/nlohmann/detail/input/input_adapters.hpp:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/FindWrapVulkanHeaders.cmake:
 
@@ -1723,7 +1811,9 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6GuiTools/Qt6GuiToolsAdditionalTargetInfo.cmake:
 
-/lib/aarch64-linux-gnu/libpsl.so.5:
+/usr/lib/aarch64-linux-gnu/cmake/Qt6QmlIntegration/Qt6QmlIntegrationConfigVersion.cmake:
+
+/usr/include/nlohmann/byte_container_with_subtype.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/pthread_stack_min-dynamic.h:
 
@@ -1735,17 +1825,19 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/share/cmake-3.31/Modules/CheckIncludeFileCXX.cmake:
 
-/lib/aarch64-linux-gnu/librtmp.so.1:
-
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/FindWrapAtomic.cmake:
 
 /usr/include/aarch64-linux-gnu/bits/posix2_lim.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicSbomGenerationHelpers.cmake:
 
+/usr/lib/aarch64-linux-gnu/cmake/Qt6Qml/Qt6QmlFindQmlscInternal.cmake:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlIntegration/Qt6QmlIntegrationConfigVersionImpl.cmake:
 
 /usr/include/c++/14/debug/debug.h:
+
+/usr/include/c++/14/bits/slice_array.h:
 
 /usr/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake:
 
@@ -1773,6 +1865,8 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicSbomFileHelpers.cmake:
 
+/usr/lib/aarch64-linux-gnu/cmake/Qt6DBusTools/Qt6DBusToolsConfigVersion.cmake:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake:
 
 /usr/include/c++/14/bits/parse_numbers.h:
@@ -1781,17 +1875,19 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicSbomDepHelpers.cmake:
 
+/usr/include/aarch64-linux-gnu/bits/struct_mutex.h:
+
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qmap.h:
+
+/usr/share/cmake-3.31/Modules/CMakeCommonLanguageInclude.cmake:
+
+/usr/lib/aarch64-linux-gnu/cmake/Qt6QuickTools/Qt6QuickToolsVersionlessTargets.cmake:
 
 /usr/include/aarch64-linux-gnu/c++/14/bits/c++locale.h:
 
+/usr/include/aarch64-linux-gnu/bits/stat.h:
+
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qline.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qmetacontainer.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/QTransform:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qtqmlglobal.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Core/Qt6CoreConfig.cmake:
 
@@ -1803,9 +1899,7 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicTargetHelpers.cmake:
 
-/usr/include/strings.h:
-
-/usr/include/aarch64-linux-gnu/bits/sched.h:
+/usr/include/aarch64-linux-gnu/qt6/QtGui/qpainter.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicSbomPurlHelpers.cmake:
 
@@ -1819,9 +1913,13 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Gui/Qt6GuiConfigVersionImpl.cmake:
 
+/usr/include/nlohmann/detail/iterators/iteration_proxy.hpp:
+
 /usr/include/c++/14/bits/shared_ptr_base.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Qml/Qt6QmlVersionlessAliasTargets.cmake:
+
+/usr/include/aarch64-linux-gnu/qt6/QtGui/qtextoption.h:
 
 /usr/include/c++/14/stdexcept:
 
@@ -1830,6 +1928,8 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qnamespace.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsConfigVersion.cmake:
+
+/usr/include/nlohmann/adl_serializer.hpp:
 
 /usr/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake:
 
@@ -1841,11 +1941,19 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/aarch64-linux-gnu/c++/14/bits/os_defines.h:
 
-/usr/lib/aarch64-linux-gnu/cmake/Qt6Qml/Qt6QmlMacros.cmake:
+/usr/include/aarch64-linux-gnu/qt6/QtGui/qpen.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicGitHelpers.cmake:
 
+/usr/include/aarch64-linux-gnu/bits/fp-logb.h:
+
+/usr/include/aarch64-linux-gnu/bits/stdint-intn.h:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicFinalizerHelpers.cmake:
+
+/usr/include/termios.h:
+
+/usr/include/c++/14/bits/fs_ops.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qdatastream.h:
 
@@ -1853,11 +1961,15 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qttranslation.h:
 
+/usr/include/c++/14/bits/locale_facets_nonio.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtGui/QPainter:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicAppleHelpers.cmake:
 
-/lib/aarch64-linux-gnu/liblber.so.2:
-
 /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/include/c++/14/bits/basic_string.tcc:
 
 /usr/include/c++/14/bits/hashtable_policy.h:
 
@@ -1893,23 +2005,15 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qsize.h:
 
-/usr/lib/aarch64-linux-gnu/cmake/Qt6/Qt6Dependencies.cmake:
-
 /usr/lib/aarch64-linux-gnu/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Core/Qt6CoreConfigVersion.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicCMakeHelpers.cmake:
 
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qvector4d.h:
-
 /home/landerson/PEGASUS/src/ssd1306.h:
 
 /usr/share/cmake-3.31/Modules/Platform/Linux-Initialize.cmake:
-
-/usr/include/c++/14/bits/locale_facets.h:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6DBus/Qt6DBusConfigVersionImpl.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Network/Qt6NetworkTargets.cmake:
 
@@ -1918,6 +2022,8 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/mocs_compilation.cpp.o:
 /usr/include/aarch64-linux-gnu/bits/types/__fpos_t.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qcoreevent.h:
+
+/usr/include/c++/14/bits/gslice.h:
 
 /home/landerson/PEGASUS/qml/qml.qrc:
 
@@ -1935,13 +2041,19 @@ MyQtQuickApp_autogen/CCBC4FUR7J/qrc_qml.cpp:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Quick/Qt6QuickConfigVersion.cmake:
 
-/lib/aarch64-linux-gnu/libkeyutils.so.1:
-
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Network/Qt6NetworkAdditionalTargetInfo.cmake:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qanystringview.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qfunctionaltools_impl.h:
+
+/usr/lib/aarch64-linux-gnu/cmake/Qt6Qml/Qt6QmlPlugins.cmake:
+
+/usr/include/features-time64.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios-misc.h:
+
+/usr/include/aarch64-linux-gnu/sys/ttydefaults.h:
 
 /usr/include/stdint.h:
 
@@ -1971,23 +2083,25 @@ MyQtQuickApp_autogen/CCBC4FUR7J/qrc_qml.cpp:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Quick/Qt6QuickPlugins.cmake:
 
+/usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicFindPackageHelpers.cmake:
+
 /usr/include/c++/14/bits/stl_algo.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qnativeinterface.h:
 
 /usr/include/aarch64-linux-gnu/bits/floatn-common.h:
 
+/usr/include/nlohmann/detail/iterators/iter_impl.hpp:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Network/Qt6NetworkConfigVersionImpl.cmake:
 
 /usr/include/c++/14/bits/erase_if.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qquaternion.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Core/Qt6CoreConfigExtras.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlMeta/Qt6QmlMetaConfigVersionImpl.cmake:
 
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qicon.h:
+/usr/include/nlohmann/detail/json_pointer.hpp:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlTools/Qt6QmlToolsConfig.cmake:
 
@@ -2019,9 +2133,13 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 
 /usr/share/cmake-3.31/Modules/Linker/GNU.cmake:
 
+/usr/include/aarch64-linux-gnu/bits/termios-c_lflag.h:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Qml/Qt6QmlPublicCMakeHelpers.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsAdditionalTargetInfo.cmake:
+
+/usr/include/nlohmann/detail/hash.hpp:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlIntegration/Qt6QmlIntegrationAdditionalTargetInfo.cmake:
 
@@ -2041,13 +2159,11 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Qml/Qt6QmlConfigVersionImpl.cmake:
 
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qiodevice.h:
+/usr/include/c++/14/forward_list:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qlogging.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicSbomLicenseHelpers.cmake:
-
-/lib/aarch64-linux-gnu/libresolv.so.2:
 
 /lib/aarch64-linux-gnu/libm.so.6:
 
@@ -2055,41 +2171,41 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6DBus/Qt6DBusTargets-none.cmake:
 
-/usr/lib/aarch64-linux-gnu/cmake/Qt6QmlIntegration/Qt6QmlIntegrationConfigVersion.cmake:
+/usr/lib/aarch64-linux-gnu/cmake/Qt6DBus/Qt6DBusAdditionalTargetInfo.cmake:
 
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qpointingdevice.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qsurfaceformat.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQuick/qquickwindow.h:
+/usr/include/aarch64-linux-gnu/bits/local_lim.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qstringconverter_base.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtFeature.cmake:
 
+/usr/lib/aarch64-linux-gnu/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake:
+
 /usr/include/aarch64-linux-gnu/bits/libc-header-start.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6DBusTools/Qt6DBusToolsConfigVersionImpl.cmake:
+
+/usr/include/aarch64-linux-gnu/bits/cpu-set.h:
+
+/usr/include/nlohmann/detail/meta/std_fs.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/posix_opt.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/mbstate_t.h:
 
-/usr/include/aarch64-linux-gnu/qt6/QtGui/QMatrix4x4:
+/usr/include/c++/14/bits/this_thread_sleep.h:
 
 /usr/share/cmake-3.31/Modules/Internal/CMakeCXXLinkerInformation.cmake:
-
-/lib/aarch64-linux-gnu/libidn2.so.0:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6DBus/Qt6DBusConfig.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6DBus/Qt6DBusDependencies.cmake:
 
+/usr/include/nlohmann/detail/input/binary_reader.hpp:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Qml/Qt6QmlDependencies.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Network/Qt6NetworkDependencies.cmake:
-
-/usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qtconfiginclude.h:
 
@@ -2097,21 +2213,21 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Gui/Qt6GuiDependencies.cmake:
 
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qendian.h:
+
 /usr/include/aarch64-linux-gnu/bits/atomic_wide_counter.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6DBus/Qt6DBusVersionlessAliasTargets.cmake:
 
 /usr/share/cmake-3.31/Modules/CMakeInitializeConfigs.cmake:
 
-/usr/lib/aarch64-linux-gnu/Scrt1.o:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qqml.h:
-
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicSbomHelpers.cmake:
 
 /usr/include/aarch64-linux-gnu/qt6/QtGui/qcolor.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Gui/Qt6GuiTargets-none.cmake:
+
+/usr/include/c++/14/bits/forward_list.tcc:
 
 /usr/include/aarch64-linux-gnu/bits/getopt_core.h:
 
@@ -2120,8 +2236,6 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qnumeric.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/QMargins:
 
 /usr/include/aarch64-linux-gnu/qt6/QtGui/qpixelformat.h:
 
@@ -2133,19 +2247,15 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Network/Qt6NetworkConfigVersion.cmake:
 
-/usr/lib/aarch64-linux-gnu/cmake/Qt6DBusTools/Qt6DBusToolsTargets-none.cmake:
+/usr/lib/aarch64-linux-gnu/cmake/Qt6QmlMeta/Qt6QmlMetaTargets.cmake:
 
-/lib/aarch64-linux-gnu/libgmodule-2.0.so.0:
+/usr/lib/aarch64-linux-gnu/cmake/Qt6DBusTools/Qt6DBusToolsTargets-none.cmake:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qhash.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6DBusTools/Qt6DBusToolsTargets.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6GuiTools/Qt6GuiToolsTargets.cmake:
-
-/usr/lib/aarch64-linux-gnu/libproxy/libpxbackend-1.0.so:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qjsprimitivevalue.h:
 
 /usr/include/c++/14/tr1/modified_bessel_func.tcc:
 
@@ -2165,37 +2275,23 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Gui/Qt6GuiTargets.cmake:
 
-/usr/include/c++/14/bits/utility.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qvector3d.h:
-
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Gui/Qt6GuiVersionlessAliasTargets.cmake:
 
-/lib/aarch64-linux-gnu/libbrotlidec.so.1:
-
-/usr/include/linux/sched/types.h:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake:
+/usr/include/aarch64-linux-gnu/bits/types/struct_statx_timestamp.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6GuiTools/Qt6GuiToolsConfig.cmake:
 
 /usr/share/cmake-3.31/Modules/Compiler/GNU-CXX.cmake:
 
-/lib/aarch64-linux-gnu/libnghttp3.so.9:
-
 /usr/lib/aarch64-linux-gnu/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersionImpl.cmake:
+
+/usr/include/c++/14/thread:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/Qt6VersionlessAliasTargets.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6CoreTools/Qt6CoreToolsTargets-none.cmake:
 
 /usr/share/cmake-3.31/Modules/FindOpenGL.cmake:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qwindow.h:
-
-/lib/aarch64-linux-gnu/libz.so.1:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6QuickTools/Qt6QuickToolsAdditionalTargetInfo.cmake:
 
 /usr/include/aarch64-linux-gnu/bits/endian.h:
 
@@ -2205,21 +2301,19 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake:
 
+/usr/include/nlohmann/ordered_map.hpp:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicSbomAttributionHelpers.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6QmlTools/Qt6QmlToolsConfigVersion.cmake:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6CoreTools/Qt6CoreToolsAdditionalTargetInfo.cmake:
 
-/usr/include/aarch64-linux-gnu/qt6/QtQmlIntegration/qqmlintegration.h:
-
-/usr/include/aarch64-linux-gnu/bits/unistd_ext.h:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicSbomPythonHelpers.cmake:
-
 /usr/include/aarch64-linux-gnu/bits/fcntl-linux.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qstringtokenizer.h:
+
+/usr/include/c++/14/bits/char_traits.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLAdditionalTargetInfo.cmake:
 
@@ -2227,37 +2321,107 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qeventloop.h:
 
+/lib/aarch64-linux-gnu/libbrotlidec.so.1:
+
+/usr/include/linux/sched/types.h:
+
+/usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake:
+
+/usr/include/aarch64-linux-gnu/bits/statx.h:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLConfigVersionImpl.cmake:
-
-/lib/aarch64-linux-gnu/libunistring.so.5:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/QTimer:
-
-/usr/include/c++/14/bit:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6/Qt6ConfigVersionImpl.cmake:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qcontainertools_impl.h:
 
+/usr/lib/aarch64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLVersionlessAliasTargets.cmake:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Qml/Qt6QmlAdditionalTargetInfo.cmake:
 
-/usr/include/c++/14/bits/atomic_lockfree_defines.h:
-
-/usr/include/c++/14/backward/auto_ptr.h:
-
-/usr/include/aarch64-linux-gnu/c++/14/bits/gthr.h:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersion.cmake:
-
-/usr/include/aarch64-linux-gnu/bits/math-vector.h:
-
 /usr/share/cmake-3.31/Modules/GNUInstallDirs.cmake:
+
+/usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/include/aarch64-linux-gnu/bits/pthreadtypes.h:
+
+/usr/include/strings.h:
+
+/usr/include/aarch64-linux-gnu/bits/sched.h:
+
+/usr/include/aarch64-linux-gnu/bits/select.h:
+
+/usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicSbomSystemDepHelpers.cmake:
+
+/usr/include/aarch64-linux-gnu/bits/setjmp.h:
+
+/usr/include/aarch64-linux-gnu/bits/sockaddr.h:
+
+/usr/include/nlohmann/detail/abi_macros.hpp:
+
+/usr/include/aarch64-linux-gnu/bits/socket.h:
+
+/usr/include/c++/14/bits/atomic_base.h:
+
+/lib/aarch64-linux-gnu/libz.so.1:
+
+/usr/lib/aarch64-linux-gnu/cmake/Qt6QuickTools/Qt6QuickToolsAdditionalTargetInfo.cmake:
+
+/usr/include/aarch64-linux-gnu/bits/socket_type.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/FILE.h:
+
+/usr/share/cmake-3.31/Modules/CMakeGenericSystem.cmake:
+
+/usr/include/aarch64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/aarch64-linux-gnu/bits/statx-generic.h:
+
+/usr/include/aarch64-linux-gnu/bits/stdint-least.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qset.h:
+
+/usr/lib/aarch64-linux-gnu/cmake/Qt6/Qt6ConfigVersionImpl.cmake:
+
+/usr/include/c++/14/bit:
+
+/usr/include/aarch64-linux-gnu/bits/stdint-uintn.h:
 
 /usr/include/aarch64-linux-gnu/bits/mathcalls-helper-functions.h:
 
 /usr/include/aarch64-linux-gnu/bits/stdlib-float.h:
 
+/usr/lib/aarch64-linux-gnu/cmake/Qt6QuickTools/Qt6QuickToolsTargets-none.cmake:
+
+/usr/lib/aarch64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsDependencies.cmake:
+
+/usr/include/aarch64-linux-gnu/bits/struct_rwlock.h:
+
 /usr/include/aarch64-linux-gnu/c++/14/bits/atomic_word.h:
+
+/usr/include/aarch64-linux-gnu/bits/struct_stat.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qarraydataops.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios-c_cc.h:
+
+/usr/include/aarch64-linux-gnu/bits/uio_lim.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtCore/q20memory.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtGui/qtguiexports.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios-c_cflag.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios-c_oflag.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios-struct.h:
+
+/usr/include/c++/14/bits/locale_facets.h:
+
+/usr/lib/aarch64-linux-gnu/cmake/Qt6DBus/Qt6DBusConfigVersionImpl.cmake:
+
+/usr/include/aarch64-linux-gnu/bits/termios-tcflow.h:
+
+/usr/include/aarch64-linux-gnu/bits/termios.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6Qml/Qt6QmlConfig.cmake:
 
@@ -2266,8 +2430,6 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 /usr/include/aarch64-linux-gnu/bits/thread-shared-types.h:
 
 /usr/include/aarch64-linux-gnu/bits/timesize.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qvectornd.h:
 
 /usr/include/aarch64-linux-gnu/bits/types.h:
 
@@ -2279,49 +2441,41 @@ CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 
 /usr/include/aarch64-linux-gnu/bits/types/__FILE.h:
 
-/usr/lib/aarch64-linux-gnu/libQt6QmlModels.so.6.8.2:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQuick/qquickview.h:
+/usr/include/nlohmann/detail/iterators/primitive_iterator.hpp:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qpair.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/__fpos64_t.h:
 
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qyieldcpu.h:
-
 /usr/include/aarch64-linux-gnu/bits/types/__mbstate_t.h:
 
 /usr/include/string.h:
 
+/usr/include/c++/14/bits/fs_dir.h:
+
 /usr/include/aarch64-linux-gnu/qt6/QtGui/qtransform.h:
 
-/usr/include/wchar.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qtqmlexports.h:
-
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qbytearrayview.h:
+
+/usr/include/aarch64-linux-gnu/bits/confname.h:
+
+/usr/include/c++/14/bits/basic_ios.tcc:
 
 /usr/include/aarch64-linux-gnu/bits/types/clock_t.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/locale_t.h:
 
-/lib/aarch64-linux-gnu/libnettle.so.8:
-
 /usr/include/stdio.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/clockid_t.h:
 
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qinputdevice.h:
+/usr/include/c++/14/filesystem:
 
 /usr/include/aarch64-linux-gnu/qt6/QtGui/qwindowdefs.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qdebug.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/cookie_io_functions_t.h:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qmatrix4x4.h:
 
 /usr/include/c++/14/bits/functexcept.h:
 
@@ -2347,7 +2501,9 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/CCBC4FUR7J/qrc_qml.cpp.o:
 
 /usr/include/aarch64-linux-gnu/qt6/QtGui/qpolygon.h:
 
-/usr/include/aarch64-linux-gnu/qt6/QtNetwork/qtnetworkglobal.h:
+/usr/include/c++/14/iterator:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_osockaddr.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/struct_sched_param.h:
 
@@ -2381,25 +2537,17 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/CCBC4FUR7J/qrc_qml.cpp.o:
 
 /usr/include/aarch64-linux-gnu/bits/uintn-identity.h:
 
-/lib/aarch64-linux-gnu/libldap.so.2:
+/usr/include/libintl.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qcompare_impl.h:
 
-/usr/include/aarch64-linux-gnu/qt6/QtCore/q20memory.h:
+/usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicSbomPythonHelpers.cmake:
 
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qtguiexports.h:
+/usr/include/aarch64-linux-gnu/bits/unistd_ext.h:
 
 /usr/include/aarch64-linux-gnu/bits/waitflags.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qdeadlinetimer.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qscreen.h:
-
-/usr/include/aarch64-linux-gnu/bits/types/FILE.h:
-
-/usr/share/cmake-3.31/Modules/CMakeGenericSystem.cmake:
-
-/usr/include/aarch64-linux-gnu/bits/waitstatus.h:
 
 /usr/include/c++/14/ctime:
 
@@ -2413,45 +2561,19 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/CCBC4FUR7J/qrc_qml.cpp.o:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qtnoop.h:
 
+/usr/include/aarch64-linux-gnu/c++/14/bits/ctype_base.h:
+
 /usr/include/aarch64-linux-gnu/c++/14/bits/error_constants.h:
 
 /usr/include/c++/14/bits/uses_allocator_args.h:
 
 /usr/include/aarch64-linux-gnu/c++/14/bits/gthr-default.h:
 
-/usr/include/c++/14/bits/istream.tcc:
+/usr/include/aarch64-linux-gnu/c++/14/bits/messages_members.h:
 
-/usr/include/aarch64-linux-gnu/qt6/QtCore/QObject:
+/usr/include/aarch64-linux-gnu/sys/stat.h:
 
-/usr/include/aarch64-linux-gnu/qt6/QtCore/QRect:
-
-/usr/lib/aarch64-linux-gnu/libQt6Qml.so.6.8.2:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/QRectF:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qshareddata_impl.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQuick/qsgnode.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/QList:
-
-/usr/include/aarch64-linux-gnu/bits/uio_lim.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/QSize:
-
-/usr/include/aarch64-linux-gnu/bits/fcntl.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qarraydata.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/QSizeF:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qoverload.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/QUrl:
-
-/lib/aarch64-linux-gnu/libgobject-2.0.so.0:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qconstructormacros.h:
+/usr/include/aarch64-linux-gnu/c++/14/bits/time_members.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/q20iterator.h:
 
@@ -2471,6 +2593,8 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/CCBC4FUR7J/qrc_qml.cpp.o:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qarraydatapointer.h:
 
+/usr/include/nlohmann/json.hpp:
+
 /usr/include/c++/14/bits/refwrap.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qconfig.h:
@@ -2478,8 +2602,6 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/CCBC4FUR7J/qrc_qml.cpp.o:
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qsharedpointer_impl.h:
 
 /usr/lib/aarch64-linux-gnu/libgcc_s.so.1:
-
-/usr/lib/gcc/aarch64-linux-gnu/14/include/float.h:
 
 /usr/include/c++/14/chrono:
 
@@ -2493,33 +2615,11 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/CCBC4FUR7J/qrc_qml.cpp.o:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qbasicatomic.h:
 
-/usr/lib/aarch64-linux-gnu/cmake/Qt6QmlMeta/Qt6QmlMetaTargets.cmake:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qbasictimer.h:
-
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qbindingstorage.h:
-
-/usr/lib/aarch64-linux-gnu/libproxy.so.1:
 
 /usr/include/c++/14/ext/string_conversions.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qtcore-config.h:
-
-/lib/aarch64-linux-gnu/libpcre2-16.so.0:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qcalendar.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qcontiguouscache.h:
-
-/usr/include/c++/14/bits/locale_facets.tcc:
-
-/usr/include/c++/14/bits/chrono.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/QGuiApplication:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qatomic.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qstring.h:
 
 /usr/lib/aarch64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLConfigVersion.cmake:
 
@@ -2527,11 +2627,23 @@ CMakeFiles/MyQtQuickApp.dir/MyQtQuickApp_autogen/CCBC4FUR7J/qrc_qml.cpp.o:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qcompilerdetection.h:
 
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qconstructormacros.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qcontiguouscache.h:
+
+/usr/include/c++/14/bits/locale_facets.tcc:
+
+/usr/include/aarch64-linux-gnu/qt6/QtGui/QGuiApplication:
+
+/usr/include/c++/14/bits/chrono.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qatomic.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qstring.h:
+
 MyQtQuickApp_autogen/mocs_compilation.cpp:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qcoreapplication.h:
-
-/lib/aarch64-linux-gnu/libtasn1.so.6:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qdarwinhelpers.h:
 
@@ -2543,23 +2655,21 @@ MyQtQuickApp_autogen/mocs_compilation.cpp:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qgenericatomic.h:
 
-/usr/include/c++/14/bits/ptr_traits.h:
-
-/usr/include/c++/14/bits/algorithmfwd.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qregion.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qiodevicebase.h:
-
 /usr/include/c++/14/tr1/poly_laguerre.tcc:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qiterable.h:
 
+/usr/include/aarch64-linux-gnu/c++/14/bits/gthr.h:
+
+/usr/include/c++/14/bits/atomic_lockfree_defines.h:
+
+/usr/lib/aarch64-linux-gnu/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersion.cmake:
+
+/usr/include/aarch64-linux-gnu/bits/math-vector.h:
+
+/usr/include/c++/14/backward/auto_ptr.h:
+
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qiterator.h:
-
-/usr/include/aarch64-linux-gnu/bits/types/wint_t.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qlatin1stringview.h:
 
 /usr/include/features.h:
 
@@ -2581,33 +2691,43 @@ MyQtQuickApp_autogen/mocs_compilation.cpp:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qmalloc.h:
 
+/lib/aarch64-linux-gnu/libxcb.so.1:
+
+/usr/include/c++/14/utility:
+
+/usr/include/c++/14/bits/basic_ios.h:
+
 /usr/include/aarch64-linux-gnu/bits/locale.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qmargins.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qmath.h:
 
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qmetaobject.h:
-
-/usr/include/aarch64-linux-gnu/bits/wctype-wchar.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qstringmatcher.h:
+/usr/include/nlohmann/detail/meta/call_std/end.hpp:
 
 /usr/include/c++/14/bits/functional_hash.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qmetatype.h:
 
+/usr/include/c++/14/bits/ptr_traits.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtGui/qregion.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qiodevicebase.h:
+
+/usr/include/c++/14/bits/algorithmfwd.h:
+
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qforeach.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qobject.h:
 
-/usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicFindPackageHelpers.cmake:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qqmlpropertyvaluesource.h:
-
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qobjectdefs.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qobjectdefs_impl.h:
+
+/usr/include/c++/14/bits/align.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qoverload.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qpoint.h:
 
@@ -2616,6 +2736,10 @@ MyQtQuickApp_autogen/mocs_compilation.cpp:
 /usr/include/aarch64-linux-gnu/gnu/stubs.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qrect.h:
+
+/usr/include/nlohmann/detail/json_custom_base_class.hpp:
+
+/usr/include/c++/14/bits/basic_string.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qscopeguard.h:
 
@@ -2626,6 +2750,8 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qshareddata.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qtenvironmentvariables.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qshareddata_impl.h:
 
 /usr/include/c++/14/bits/charconv.h:
 
@@ -2645,11 +2771,13 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qstringfwd.h:
 
+/usr/include/aarch64-linux-gnu/bits/wctype-wchar.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qstringmatcher.h:
+
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qstringview.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qqmlregistration.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qtcoreexports.h:
 
@@ -2661,10 +2789,6 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qtextstream.h:
 
-/usr/include/aarch64-linux-gnu/bits/stdint-uintn.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qtimer.h:
-
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qtpreprocessorsupport.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qtresource.h:
@@ -2673,35 +2797,15 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qtversionchecks.h:
 
-/usr/lib/linux/uapi/arm64/asm/types.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qtypeinfo.h:
-
-/usr/share/cmake-3.31/Modules/CMakeCommonLanguageInclude.cmake:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6QuickTools/Qt6QuickToolsVersionlessTargets.cmake:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qtyperevision.h:
-
 /usr/share/cmake-3.31/Modules/FindVulkan.cmake:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qtypes.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qurl.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qutf8stringview.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qvariant.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qvarlengtharray.h:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6QuickTools/Qt6QuickToolsTargets-none.cmake:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6QmlModels/Qt6QmlModelsDependencies.cmake:
-
-/usr/include/aarch64-linux-gnu/bits/struct_rwlock.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qversionnumber.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qfloat16.h:
 
@@ -2713,23 +2817,31 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 
 /usr/include/aarch64-linux-gnu/qt6/QtCore/qxptype_traits.h:
 
+/usr/include/aarch64-linux-gnu/bits/types/wint_t.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qlatin1stringview.h:
+
+/usr/include/aarch64-linux-gnu/qt6/QtGui/QFont:
+
 /usr/include/aarch64-linux-gnu/qt6/QtGui/QImage:
 
-/lib/aarch64-linux-gnu/libnghttp2.so.14:
+/usr/lib/gcc/aarch64-linux-gnu/14/include/stddef.h:
 
-/lib/aarch64-linux-gnu/libgssapi_krb5.so.2:
+/usr/include/aarch64-linux-gnu/qt6/QtGui/qbrush.h:
 
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qbitmap.h:
+/usr/include/nlohmann/detail/iterators/internal_iterator.hpp:
 
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qcursor.h:
+/usr/include/aarch64-linux-gnu/qt6/QtCore/qyieldcpu.h:
 
-/usr/include/c++/14/bits/stl_multimap.h:
+/usr/include/aarch64-linux-gnu/qt6/QtGui/qfont.h:
 
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qeventpoint.h:
+/usr/share/cmake-3.31/Modules/Linker/GNU-CXX.cmake:
 
-/usr/lib/aarch64-linux-gnu/cmake/Qt6DBus/Qt6DBusAdditionalTargetInfo.cmake:
+/usr/include/aarch64-linux-gnu/qt6/QtGui/qfontinfo.h:
 
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qgenericmatrix.h:
+/usr/include/aarch64-linux-gnu/qt6/QtGui/qfontmetrics.h:
+
+/usr/include/c++/14/any:
 
 /usr/include/c++/14/tr1/legendre_function.tcc:
 
@@ -2743,13 +2855,11 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 
 /usr/include/aarch64-linux-gnu/qt6/QtGui/qguiapplication_platform.h:
 
+/usr/include/c++/14/iomanip:
+
 /usr/lib/aarch64-linux-gnu/cmake/Qt6/QtPublicSbomOpsHelpers.cmake:
 
-/usr/include/aarch64-linux-gnu/qt6/QtCore/qdatetime.h:
-
 /usr/include/aarch64-linux-gnu/qt6/QtGui/qinputmethod.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qkeysequence.h:
 
 /usr/include/aarch64-linux-gnu/qt6/QtGui/qpaintdevice.h:
 
@@ -2757,61 +2867,7 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 
 /usr/include/aarch64-linux-gnu/qt6/QtGui/qrgba64.h:
 
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qjsnumbercoercion.h:
-
-/lib/aarch64-linux-gnu/libEGL.so.1:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qscreen_platform.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qsurface.h:
-
 /usr/include/aarch64-linux-gnu/qt6/QtGui/qtgui-config.h:
-
-/usr/include/aarch64-linux-gnu/bits/struct_mutex.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtNetwork/qtnetwork-config.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtNetwork/qtnetworkexports.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtGui/qvector2d.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qjsvalue.h:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6Qml/Qt6QmlPlugins.cmake:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qqmlerror.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qqmlinfo.h:
-
-/usr/include/aarch64-linux-gnu/bits/cpu-set.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qqmlparserstatus.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQml/qtqml-config.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQuick/QQuickView:
-
-/lib/aarch64-linux-gnu/libcurl-gnutls.so.4:
-
-/usr/include/aarch64-linux-gnu/bits/local_lim.h:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQuick/qsggeometry.h:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6Qml/Qt6QmlFindQmlscInternal.cmake:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQuick/qsgrendererinterface.h:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6OpenGL/Qt6OpenGLVersionlessAliasTargets.cmake:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQuick/qtquick-config.h:
-
-/usr/lib/aarch64-linux-gnu/libQt6OpenGL.so.6.8.2:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQuick/qtquickexports.h:
-
-/usr/lib/aarch64-linux-gnu/cmake/Qt6DBusTools/Qt6DBusToolsConfigVersion.cmake:
-
-/usr/include/aarch64-linux-gnu/qt6/QtQuick/qtquickglobal.h:
 
 /usr/include/aarch64-linux-gnu/bits/mathcalls-macros.h:
 
@@ -2821,11 +2877,17 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 
 /usr/include/alloca.h:
 
+/usr/include/arpa/inet.h:
+
 /usr/include/asm-generic/int-ll64.h:
 
 /usr/share/cmake-3.31/Modules/CheckCXXSourceCompiles.cmake:
 
 /usr/include/asm-generic/posix_types.h:
+
+/usr/include/asm-generic/socket.h:
+
+/usr/include/asm-generic/sockios.h:
 
 /usr/include/c++/14/algorithm:
 
@@ -2834,3 +2896,7 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 /usr/include/c++/14/array:
 
 /usr/include/c++/14/atomic:
+
+/usr/include/c++/14/backward/binders.h:
+
+/usr/include/c++/14/bits/allocated_ptr.h:
