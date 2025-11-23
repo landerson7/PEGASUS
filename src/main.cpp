@@ -96,7 +96,21 @@ static void readExact(int fd, uint8_t* buf, size_t n) {
 // Read one CBOR packet, decode, compute altitude (ft).
 // Returns true if successful and fills altitudeFt.
 static bool readAltitudeFromEsp32(int fd, double &altitudeFt) {
-    // 1) Read 4-byte big-endian length
+    // 1) Find sync header 0xAA 0x55
+    uint8_t b;
+    bool gotAA = false;
+
+    while (true) {
+        readExact(fd, &b, 1);
+        if (!gotAA) {
+            if (b == 0xAA) gotAA = true;
+        } else {
+            if (b == 0x55) break;      // header found
+            gotAA = (b == 0xAA);       // allow AA AA 55 behavior
+        }
+    }
+
+    // 2) Read 4-byte big-endian length
     uint8_t lenBuf[4];
     readExact(fd, lenBuf, 4);
 
@@ -104,15 +118,12 @@ static bool readAltitudeFromEsp32(int fd, double &altitudeFt) {
     std::memcpy(&lenNet, lenBuf, 4);
     uint32_t payloadLen = ntohl(lenNet);
 
-    // Sanity-check length: we expect ~50 bytes
-    if (payloadLen == 0 || payloadLen > 256) {
-        std::cerr << "Suspicious payload length (simple): " << payloadLen << "\n";
-        // Optionally flush junk and bail so main() can keep running
-        tcflush(fd, TCIFLUSH);
-        return false;
+    if (payloadLen == 0 || payloadLen >= 512) {
+        std::cerr << "Bad length: " << payloadLen << "\n";
+        return false; // just drop this frame, loop will look for next header
     }
 
-    // 2) Read CBOR payload
+    // 3) Read CBOR payload
     std::vector<uint8_t> payload(payloadLen);
     readExact(fd, payload.data(), payloadLen);
 
@@ -120,7 +131,7 @@ static bool readAltitudeFromEsp32(int fd, double &altitudeFt) {
         json j = json::from_cbor(payload);
 
         if (!j.contains("pressure")) {
-            std::cerr << "CBOR missing 'pressure' in: " << j.dump() << "\n";
+            std::cerr << "CBOR missing 'pressure': " << j.dump() << "\n";
             return false;
         }
 
@@ -137,7 +148,6 @@ static bool readAltitudeFromEsp32(int fd, double &altitudeFt) {
 
         double altitude_m  = 44330.0 * (1.0 - std::pow(pressure_hPa / p0_hPa, 0.1903));
         altitudeFt         = altitude_m * 3.28084;
-
         return true;
     } catch (const std::exception &e) {
         std::cerr << "CBOR decode error (len=" << payloadLen
@@ -145,6 +155,7 @@ static bool readAltitudeFromEsp32(int fd, double &altitudeFt) {
         return false;
     }
 }
+
 
 
 
