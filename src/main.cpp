@@ -28,7 +28,7 @@
 // CBOR / JSON
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
-
+//comment
 // ---------- Serial config ----------
 
 static const char* SERIAL_PORT = "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0";   // change to "/dev/ttyACM0" if needed
@@ -194,11 +194,11 @@ static QImage renderAltitudeFrame(double altitudeFt, bool haveAltitude) {
     const int H = SSD1306::Height;  // 64
 
     QImage frame(W, H, QImage::Format_Grayscale8);
-    frame.fill(Qt::black);
+    frame.fill(Qt::white);
 
     QPainter p(&frame);
     p.setRenderHint(QPainter::Antialiasing, true);
-    p.setPen(Qt::white);
+    p.setPen(Qt::black);
 
     // =========================
     // 1) Crosshair in the middle
