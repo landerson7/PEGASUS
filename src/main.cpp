@@ -96,94 +96,56 @@ static void readExact(int fd, uint8_t* buf, size_t n) {
 // Read one CBOR packet, decode, compute altitude (ft).
 // Returns true if successful and fills altitudeFt.
 static bool readAltitudeFromEsp32(int fd, double &altitudeFt) {
-    static bool   aligned    = false;
-    static uint8_t lenBuf[4];
+    // 1) Read 4-byte big-endian length
+    uint8_t lenBuf[4];
+    readExact(fd, lenBuf, 4);
 
-    while (true) {
-        if (!aligned) {
-            // ---- Resync phase: slide 4-byte window until we find a plausible length ----
-            uint8_t window[4];
-            readExact(fd, window, 4);
+    uint32_t lenNet = 0;
+    std::memcpy(&lenNet, lenBuf, 4);
+    uint32_t payloadLen = ntohl(lenNet);
 
-            while (true) {
-                uint32_t lenNet = 0;
-                std::memcpy(&lenNet, window, 4);
-                uint32_t payloadLen = ntohl(lenNet);
+    // Sanity-check length: we expect ~50 bytes
+    if (payloadLen == 0 || payloadLen > 256) {
+        std::cerr << "Suspicious payload length (simple): " << payloadLen << "\n";
+        // Optionally flush junk and bail so main() can keep running
+        tcflush(fd, TCIFLUSH);
+        return false;
+    }
 
-                if (payloadLen > 0 && payloadLen < 256) {
-                    // We consider this a plausible frame length
-                    std::memcpy(lenBuf, window, 4);
-                    aligned = true;
-                    break;
-                }
+    // 2) Read CBOR payload
+    std::vector<uint8_t> payload(payloadLen);
+    readExact(fd, payload.data(), payloadLen);
 
-                std::cerr << "Suspicious payload length (resync): " << payloadLen
-                          << " (bytes: 0x"
-                          << std::hex << std::setw(2) << std::setfill('0') << (int)window[0]
-                          << " 0x" << std::setw(2) << (int)window[1]
-                          << " 0x" << std::setw(2) << (int)window[2]
-                          << " 0x" << std::setw(2) << (int)window[3]
-                          << std::dec << ")\n";
+    try {
+        json j = json::from_cbor(payload);
 
-                // Slide window by 1 byte
-                window[0] = window[1];
-                window[1] = window[2];
-                window[2] = window[3];
-                readExact(fd, &window[3], 1);
-            }
-        } else {
-            // Already aligned: just read the next 4-byte length normally
-            readExact(fd, lenBuf, 4);
+        if (!j.contains("pressure")) {
+            std::cerr << "CBOR missing 'pressure' in: " << j.dump() << "\n";
+            return false;
         }
 
-        uint32_t lenNet = 0;
-        std::memcpy(&lenNet, lenBuf, 4);
-        uint32_t payloadLen = ntohl(lenNet);
+        double pressure_hPa = j["pressure"].get<double>();
 
-        // Sanity check in aligned mode
-        if (payloadLen == 0 || payloadLen >= 256) {
-            std::cerr << "Bad length while aligned: " << payloadLen << "\n";
-            aligned = false;
-            continue;  // go back to resync
+        static bool   baselineSet = false;
+        static double p0_hPa      = 1013.25;
+
+        if (!baselineSet) {
+            p0_hPa = pressure_hPa;
+            baselineSet = true;
+            std::cout << "Baseline pressure set to " << p0_hPa << " hPa\n";
         }
 
-        // Read the CBOR payload
-        std::vector<uint8_t> payload(payloadLen);
-        readExact(fd, payload.data(), payloadLen);
+        double altitude_m  = 44330.0 * (1.0 - std::pow(pressure_hPa / p0_hPa, 0.1903));
+        altitudeFt         = altitude_m * 3.28084;
 
-        try {
-            json j = json::from_cbor(payload);
-
-            if (!j.contains("pressure")) {
-                std::cerr << "CBOR missing 'pressure': " << j.dump() << "\n";
-                // treat as bad frame, force resync
-                aligned = false;
-                continue;
-            }
-
-            double pressure_hPa = j["pressure"].get<double>();
-
-            static bool   baselineSet = false;
-            static double p0_hPa      = 1013.25;
-
-            if (!baselineSet) {
-                p0_hPa = pressure_hPa;
-                baselineSet = true;
-                std::cout << "Baseline pressure set to " << p0_hPa << " hPa\n";
-            }
-
-            double altitude_m  = 44330.0 * (1.0 - std::pow(pressure_hPa / p0_hPa, 0.1903));
-            altitudeFt         = altitude_m * 3.28084;
-            return true;
-        } catch (const std::exception &e) {
-            std::cerr << "CBOR decode error (len=" << payloadLen
-                      << "): " << e.what() << "\n";
-            // Bad frame -> drop alignment and resync
-            aligned = false;
-            continue;
-        }
+        return true;
+    } catch (const std::exception &e) {
+        std::cerr << "CBOR decode error (len=" << payloadLen
+                  << "): " << e.what() << "\n";
+        return false;
     }
 }
+
 
 
 // ---------- Existing OLED helpers ----------
