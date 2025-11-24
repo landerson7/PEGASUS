@@ -17,19 +17,15 @@
 #include <unistd.h>
 #include <termios.h>
 #include <arpa/inet.h>
+//comment
+// CBOR / JSON
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
+// ---------- Serial config ----------
 
-// -----------------------------------------------------------
-// Global shared altitude value
-// -----------------------------------------------------------
-static std::mutex altMutex;
-static double g_lastAltitudeFt = 0.0;
-static bool   g_haveAltitude    = false;
-
-static const char* SERIAL_PORT = "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0";
-static const int SERIAL_BAUD = B115200;
+static const char* SERIAL_PORT = "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0";   // change to "/dev/ttyACM0" if needed
+static const int   SERIAL_BAUD = B115200;
 
 // -----------------------------------------------------------
 // Serial helpers
@@ -116,13 +112,13 @@ bool readAltitudeFrame(int fd, double& outAltFt) {
 
         double p = j["pressure"].get<double>();
 
-        static bool baselineSet = false;
-        static double p0 = 1013.25;
+        static bool   baselineSet = false;
+        static double p0_hPa      = 1016.0;
 
         if (!baselineSet) {
-            p0 = p;
+            p0_hPa = pressure_hPa;
             baselineSet = true;
-            std::cout << "Baseline: " << p0 << "\n";
+            std::cout << "Baseline pressure set to " << p0_hPa << " hPa\n";
         }
 
         double alt_m = 44330.0 * (1.0 - pow(p / p0, 0.1903));
