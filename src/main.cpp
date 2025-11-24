@@ -24,11 +24,10 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <arpa/inet.h>
-
+//comment
 // CBOR / JSON
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
-//comment
 // ---------- Serial config ----------
 
 static const char* SERIAL_PORT = "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0";   // change to "/dev/ttyACM0" if needed
@@ -137,14 +136,14 @@ static bool readAltitudeFromEsp32(int fd, double &altitudeFt) {
 
         double pressure_hPa = j["pressure"].get<double>();
 
-        //static bool   baselineSet = false;
-        static double p0_hPa      = 1013.25;
+        static bool   baselineSet = false;
+        static double p0_hPa      = 1016.0;
 
-        /*if (!baselineSet) {
+        if (!baselineSet) {
             p0_hPa = pressure_hPa;
             baselineSet = true;
             std::cout << "Baseline pressure set to " << p0_hPa << " hPa\n";
-        }*/
+        }
 
         double altitude_m  = 44330.0 * (1.0 - std::pow(pressure_hPa / p0_hPa, 0.1903));
         altitudeFt         = altitude_m * 3.28084;
