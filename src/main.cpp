@@ -137,14 +137,14 @@ static bool readAltitudeFromEsp32(int fd, double &altitudeFt) {
 
         double pressure_hPa = j["pressure"].get<double>();
 
-        static bool   baselineSet = false;
+        //static bool   baselineSet = false;
         static double p0_hPa      = 1013.25;
 
-        if (!baselineSet) {
+        /*if (!baselineSet) {
             p0_hPa = pressure_hPa;
             baselineSet = true;
             std::cout << "Baseline pressure set to " << p0_hPa << " hPa\n";
-        }
+        }*/
 
         double altitude_m  = 44330.0 * (1.0 - std::pow(pressure_hPa / p0_hPa, 0.1903));
         altitudeFt         = altitude_m * 3.28084;
