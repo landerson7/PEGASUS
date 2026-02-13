@@ -1,9 +1,0 @@
-# ninja log v5
-11	484	1771012046750616500	hud_autogen/timestamp	6f014aca0250242b
-11	484	1771012046750616500	hud_autogen/mocs_compilation.cpp	6f014aca0250242b
-11	484	1771012046750616500	/mnt/c/Users/Luke Anderson/Documents/Documents/UCF_Senior_Year/EEL_4914_Senior_Design_1/PEGASUS/GUI/hud/build/hud_autogen/timestamp	6f014aca0250242b
-11	484	1771012046750616500	/mnt/c/Users/Luke Anderson/Documents/Documents/UCF_Senior_Year/EEL_4914_Senior_Design_1/PEGASUS/GUI/hud/build/hud_autogen/mocs_compilation.cpp	6f014aca0250242b
-494	1998	1771012048275368600	CMakeFiles/hud.dir/hud_autogen/mocs_compilation.cpp.o	cfd4547783a5867a
-497	2125	1771012048390506900	CMakeFiles/hud.dir/main.cpp.o	f664110995ddb9f6
-500	2150	1771012048281653900	CMakeFiles/hud.dir/HudWidget.cpp.o	2ed176c618c6e654
-2159	2833	1771012049116315400	hud	9d95db3d17550800

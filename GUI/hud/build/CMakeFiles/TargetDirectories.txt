@@ -1,5 +1,0 @@
-/mnt/c/Users/Luke Anderson/Documents/Documents/UCF_Senior_Year/EEL_4914_Senior_Design_1/PEGASUS/GUI/hud/build/CMakeFiles/hud.dir
-/mnt/c/Users/Luke Anderson/Documents/Documents/UCF_Senior_Year/EEL_4914_Senior_Design_1/PEGASUS/GUI/hud/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/Luke Anderson/Documents/Documents/UCF_Senior_Year/EEL_4914_Senior_Design_1/PEGASUS/GUI/hud/build/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/Luke Anderson/Documents/Documents/UCF_Senior_Year/EEL_4914_Senior_Design_1/PEGASUS/GUI/hud/build/CMakeFiles/hud_autogen_timestamp_deps.dir
-/mnt/c/Users/Luke Anderson/Documents/Documents/UCF_Senior_Year/EEL_4914_Senior_Design_1/PEGASUS/GUI/hud/build/CMakeFiles/hud_autogen.dir
