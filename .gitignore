@@ -1,0 +1,25 @@
+# CMake build output
+build/
+**/build/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.ninja
+*.ninja_deps
+*.ninja_log
+compile_commands.json
+
+# Qt autogen
+*_autogen/
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
