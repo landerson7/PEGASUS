@@ -8,18 +8,22 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets Gui Sql)
+find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui SerialPort)
 
-qt_add_executable(hud
+add_executable(hud
   main.cpp
   HudWidget.h
   HudWidget.cpp
-  DataSource.h
   DummyDataSource.h
+  DataSource.h
+  HudSample.h
+  UartCborSource.h
+  UartCborSource.cpp
 )
 
 target_link_libraries(hud PRIVATE
-  Qt6::Widgets
-  Qt6::Gui
-  Qt6::Sql
+  Qt5::Core
+  Qt5::Widgets
+  Qt5::Gui
+  Qt5::SerialPort
 )
