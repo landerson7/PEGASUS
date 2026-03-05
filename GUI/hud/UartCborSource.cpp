@@ -355,19 +355,17 @@ void UartCborSource::computeAttitudeFallback(HudSample& s) {
 
     // Tilt-compensated heading from magnetometer
     // Normalize mag is optional; we just use ratios.
-    const double mx = s.mx;
-    const double my = s.my;
-    const double mz = s.mz;
+    const double mx = s.my;
+    const double my = s.mx;
+    const double mz = -s.mz;
 
     const double cr = std::cos(roll),  sr = std::sin(roll);
     const double cp = std::cos(pitch), sp = std::sin(pitch);
 
-    // Rotate mag into horizontal plane
     const double Xh = mx*cp + mz*sp;
-    const double Yh = -(mx*sr*sp + my*cr - mz*sr*cp);
+    const double Yh = mx*sr*sp + my*cr - mz*sr*cp;
 
-    // Heading: atan2(Yh, Xh) depends on your axis conventions.
-    double heading = atan2(Yh, Xh) * 180.0 / M_PI;
+    double heading = std::atan2(Yh, Xh) * 180.0 / M_PI;
 
     if (heading < 0)
         heading += 360.0;
