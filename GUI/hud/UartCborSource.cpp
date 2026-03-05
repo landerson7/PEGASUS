@@ -364,7 +364,7 @@ void UartCborSource::computeAttitudeFallback(HudSample& s) {
 
     // Rotate mag into horizontal plane
     const double Xh = mx*cp + mz*sp;
-    const double Yh = mx*sr*sp + my*cr - mz*sr*cp;
+    const double Yh = -(mx*sr*sp + my*cr - mz*sr*cp);
 
     // Heading: atan2(Yh, Xh) depends on your axis conventions.
     double heading = atan2(Yh, Xh) * 180.0 / M_PI;
