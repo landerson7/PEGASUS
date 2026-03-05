@@ -367,7 +367,16 @@ void UartCborSource::computeAttitudeFallback(HudSample& s) {
     const double Yh = mx*sr*sp + my*cr - mz*sr*cp;
 
     // Heading: atan2(Yh, Xh) depends on your axis conventions.
-    double heading = std::atan2(Yh, Xh) * (180.0 / M_PI);
+    double heading = atan2(Yh, Xh) * 180.0 / M_PI;
+
+    if (heading < 0)
+        heading += 360.0;
+
+    // Orlando magnetic declination
+    heading -= 6.3;
+
+    if (heading < 0) heading += 360.0;
+    if (heading >= 360) heading -= 360.0;
 
     // If it appears mirrored, flip sign:
     // heading = -heading;
