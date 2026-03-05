@@ -323,6 +323,10 @@ bool UartCborSource::parseDevLineToSample(const QByteArray& line, HudSample& out
     extractNumberAfter(line, "MY=", out.my);
     extractNumberAfter(line, "MZ=", out.mz);
 
+    extractNumberAfter(line, "R=", out.rollDeg);
+    extractNumberAfter(line, "P=", out.pitchDeg);
+    extractNumberAfter(line, "Y=", out.headingDeg);
+
     out.tsMs = 0; // DEV line doesn't carry time; ok for now
     return true;
 }
