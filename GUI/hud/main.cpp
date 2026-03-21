@@ -5,26 +5,11 @@
 #include <QDebug>
 #include <QCommandLineParser>
 #include <QProcessEnvironment>
+#include <QCoreApplication>
 
 #include "HudWidget.h"
 #include "DummyDataSource.h"
 #include "UartCborSource.h"
-
-static bool isDevMode(QApplication& app, QCommandLineParser& parser)
-{
-    QCommandLineOption devOpt(QStringList() << "d" << "dev",
-                              "Developer mode: render on primary display (no HDMI fullscreen).");
-    parser.addOption(devOpt);
-
-    // Also allow env HUD_DEV=1
-    const auto env = QProcessEnvironment::systemEnvironment();
-    const QString v = env.value("HUD_DEV").trimmed();
-    const bool envDev = (v == "1" ||
-                         v.compare("true", Qt::CaseInsensitive) == 0 ||
-                         v.compare("yes", Qt::CaseInsensitive) == 0);
-
-    return parser.isSet(devOpt) || envDev;
-}
 
 static QScreen* pickExternalScreen(QApplication& app)
 {
@@ -39,20 +24,23 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     app.setApplicationName("PEGASUS HUD");
 
+    qDebug() << "APP STARTED FROM:" << QCoreApplication::applicationFilePath();
+    qDebug() << "ARGS:" << app.arguments();
+
     QCommandLineParser parser;
     parser.setApplicationDescription("PEGASUS HUD");
     parser.addHelpOption();
 
     QCommandLineOption devOpt(QStringList() << "d" << "dev",
-                            "Developer mode: render on primary display.");
+                              "Developer mode: render on primary display.");
     QCommandLineOption dummyOpt(QStringList() << "dummy",
                                 "Use dummy values (no UART).");
     QCommandLineOption portOpt(QStringList() << "p" << "port",
-                            "UART port.",
-                            "path", "/dev/serial0");
+                               "UART port.",
+                               "path", "/dev/serial0");
     QCommandLineOption baudOpt(QStringList() << "b" << "baud",
-                            "UART baud rate.",
-                            "baud", "115200");
+                               "UART baud rate.",
+                               "baud", "115200");
 
     parser.addOption(devOpt);
     parser.addOption(dummyOpt);
@@ -62,13 +50,24 @@ int main(int argc, char *argv[])
     parser.process(app);
 
     const bool devMode = parser.isSet(devOpt);
+    const bool forceDummy = parser.isSet(dummyOpt);
+
     qDebug() << "DEV mode:" << devMode;
+    qDebug() << "Dummy flag:" << forceDummy;
 
     HudWidget hud;
     hud.resize(1280, 720);
 
-    // Show once first so a native window exists (prevents WSL/Wayland segfaults)
+    // Show once first so a native window exists
     hud.show();
+
+    // Test values at startup so you can verify the HUD can repaint
+    qDebug() << "Setting test values at startup";
+    hud.setHeadingDeg(123);
+    hud.setRollDeg(25);
+    hud.setPitchDeg(-10);
+    hud.setAltitudeFt(12345);
+    hud.setVSpeedFpm(800);
 
     // Screen placement after window exists
     QTimer::singleShot(0, [&](){
@@ -101,10 +100,19 @@ int main(int argc, char *argv[])
     dummy.periodSec = 5.0;
 
     UartCborSource uart(&app);
+
     QObject::connect(&uart, &UartCborSource::logLine, [&](const QString& s){
         qDebug().noquote() << s;
     });
+
     QObject::connect(&uart, &UartCborSource::sampleReady, [&](const HudSample& s){
+        qDebug() << "UART sampleReady:"
+                 << "hdg" << s.headingDeg
+                 << "roll" << s.rollDeg
+                 << "pitch" << s.pitchDeg
+                 << "alt" << s.altitudeFt
+                 << "vs" << s.vspeedFpm;
+
         hud.setHeadingDeg(s.headingDeg);
         hud.setRollDeg(s.rollDeg);
         hud.setPitchDeg(s.pitchDeg);
@@ -112,17 +120,21 @@ int main(int argc, char *argv[])
         hud.setVSpeedFpm(s.vspeedFpm);
     });
 
-    const bool forceDummy = parser.isSet(dummyOpt);
     if (!forceDummy) {
         const QString port = parser.value(portOpt);
         const int baud = parser.value(baudOpt).toInt();
+
+        qDebug() << "Starting UART on port" << port << "baud" << baud;
+
         if (!uart.start(port, baud)) {
             qDebug() << "UART failed; continuing in dummy mode.";
         } else {
-            // UART drives HUD via signal; no polling needed.
+            qDebug() << "UART start() succeeded; entering app event loop.";
             return app.exec();
         }
     }
+
+    qDebug() << "Running in dummy mode.";
 
     // Dummy polling @ ~60Hz
     QTimer tick;
@@ -130,6 +142,14 @@ int main(int argc, char *argv[])
 
     QObject::connect(&tick, &QTimer::timeout, [&](){
         HudSample s = dummy.read();
+
+        qDebug() << "DUMMY tick:"
+                 << "hdg" << s.headingDeg
+                 << "roll" << s.rollDeg
+                 << "pitch" << s.pitchDeg
+                 << "alt" << s.altitudeFt
+                 << "vs" << s.vspeedFpm;
+
         hud.setHeadingDeg(s.headingDeg);
         hud.setRollDeg(s.rollDeg);
         hud.setPitchDeg(s.pitchDeg);
