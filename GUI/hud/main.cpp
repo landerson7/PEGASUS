@@ -151,12 +151,12 @@ int main(int argc, char *argv[])
     });
 
     QObject::connect(&uart, &UartCborSource::sampleReady, [&](const HudSample& s){
-        qDebug() << "UART sampleReady:"
+       /* qDebug() << "UART sampleReady:"
                  << "hdg" << s.headingDeg
                  << "roll" << s.rollDeg
                  << "pitch" << s.pitchDeg
                  << "alt" << s.altitudeFt
-                 << "vs" << s.vspeedFpm;
+                 << "vs" << s.vspeedFpm;*/
 
         if (loggerReady) {
             logger.updateLatestSample(s);
