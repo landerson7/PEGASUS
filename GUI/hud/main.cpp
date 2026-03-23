@@ -6,9 +6,12 @@
 #include <QCommandLineParser>
 #include <QProcessEnvironment>
 #include <QCoreApplication>
+#include <QDir>
+#include <QStandardPaths>
 
 #include "HudWidget.h"
 #include "DummyDataSource.h"
+#include "HudLogger.h"
 #include "UartCborSource.h"
 
 static QScreen* pickExternalScreen(QApplication& app)
@@ -23,6 +26,7 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     app.setApplicationName("PEGASUS HUD");
+    app.setApplicationVersion("dev");
 
     qDebug() << "APP STARTED FROM:" << QCoreApplication::applicationFilePath();
     qDebug() << "ARGS:" << app.arguments();
@@ -54,6 +58,40 @@ int main(int argc, char *argv[])
 
     qDebug() << "DEV mode:" << devMode;
     qDebug() << "Dummy flag:" << forceDummy;
+
+    const QString appDataDir =
+        QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+    const QString logDbPath = QDir(appDataDir).filePath("hud_logs.sqlite");
+    QString gitBranch = qEnvironmentVariable("HUD_GIT_BRANCH");
+    if (gitBranch.isEmpty()) gitBranch = qEnvironmentVariable("GIT_BRANCH");
+    if (gitBranch.isEmpty()) gitBranch = "unknown";
+
+    QString gitCommit = qEnvironmentVariable("HUD_GIT_COMMIT");
+    if (gitCommit.isEmpty()) gitCommit = qEnvironmentVariable("GIT_COMMIT");
+    if (gitCommit.isEmpty()) gitCommit = "unknown";
+
+    HudLogger logger;
+    const bool loggerReady = logger.initialize(logDbPath) &&
+        logger.beginSession(app.applicationVersion(),
+                            gitBranch,
+                            gitCommit,
+                            QString("dev_mode=%1 force_dummy=%2")
+                                .arg(devMode ? "true" : "false")
+                                .arg(forceDummy ? "true" : "false"));
+
+    if (loggerReady) {
+        logger.logEvent("INFO", "Application", "application_launched",
+                        "Application launched",
+                        QString("argv=%1").arg(app.arguments().join(' ')));
+        logger.logEvent("INFO", "HudLogger", "database_open_success",
+                        "Database opened successfully",
+                        logger.databasePath());
+        logger.logEvent("INFO", "HudLogger", "logger_initialized",
+                        "Logger initialized",
+                        "SQLite logging is active");
+    } else {
+        qCritical().noquote() << "HUD logging initialization failed for" << logDbPath;
+    }
 
     HudWidget hud;
     hud.resize(1280, 720);
@@ -100,6 +138,13 @@ int main(int argc, char *argv[])
     dummy.periodSec = 5.0;
 
     UartCborSource uart(&app);
+    uart.setLogger(loggerReady ? &logger : nullptr);
+
+    QObject::connect(&hud, &HudWidget::frameRendered,
+                     [&](double displayMs, double displayRateHz){
+        if (!loggerReady) return;
+        logger.recordDisplayMetrics(displayMs, displayRateHz);
+    });
 
     QObject::connect(&uart, &UartCborSource::logLine, [&](const QString& s){
         qDebug().noquote() << s;
@@ -112,6 +157,10 @@ int main(int argc, char *argv[])
                  << "pitch" << s.pitchDeg
                  << "alt" << s.altitudeFt
                  << "vs" << s.vspeedFpm;
+
+        if (loggerReady) {
+            logger.updateLatestSample(s);
+        }
 
         hud.setHeadingDeg(s.headingDeg);
         hud.setRollDeg(s.rollDeg);
@@ -128,8 +177,27 @@ int main(int argc, char *argv[])
 
         if (!uart.start(port, baud)) {
             qDebug() << "UART failed; continuing in dummy mode.";
+            if (loggerReady) {
+                logger.logEvent("ERROR", "Application", "uart_start_failure",
+                                "UART failed; continuing in dummy mode",
+                                QString("port=%1 baud=%2").arg(port).arg(baud));
+            }
         } else {
             qDebug() << "UART start() succeeded; entering app event loop.";
+            if (loggerReady) {
+                logger.logEvent("INFO", "Application", "uart_start_success",
+                                "UART start succeeded",
+                                QString("port=%1 baud=%2").arg(port).arg(baud));
+            }
+
+            QObject::connect(&app, &QCoreApplication::aboutToQuit, [&](){
+                uart.stop();
+                if (!loggerReady) return;
+                logger.logEvent("INFO", "Application", "normal_shutdown",
+                                "Application shutting down normally");
+                logger.endSession("normal_shutdown", "aboutToQuit emitted");
+            });
+
             return app.exec();
         }
     }
@@ -142,6 +210,8 @@ int main(int argc, char *argv[])
 
     QObject::connect(&tick, &QTimer::timeout, [&](){
         HudSample s = dummy.read();
+        s.data_valid = true;
+        s.data_fresh = true;
 
         qDebug() << "DUMMY tick:"
                  << "hdg" << s.headingDeg
@@ -149,6 +219,10 @@ int main(int argc, char *argv[])
                  << "pitch" << s.pitchDeg
                  << "alt" << s.altitudeFt
                  << "vs" << s.vspeedFpm;
+
+        if (loggerReady) {
+            logger.updateLatestSample(s);
+        }
 
         hud.setHeadingDeg(s.headingDeg);
         hud.setRollDeg(s.rollDeg);
@@ -158,5 +232,12 @@ int main(int argc, char *argv[])
     });
 
     tick.start(16);
+    QObject::connect(&app, &QCoreApplication::aboutToQuit, [&](){
+        uart.stop();
+        if (!loggerReady) return;
+        logger.logEvent("INFO", "Application", "normal_shutdown",
+                        "Application shutting down normally");
+        logger.endSession("normal_shutdown", "aboutToQuit emitted");
+    });
     return app.exec();
 }

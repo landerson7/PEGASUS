@@ -1,7 +1,10 @@
 #include "HudWidget.h"
+#include <QElapsedTimer>
 #include <QPainter>
 #include <QPainterPath>
 #include <QtMath>
+
+#include <limits>
 
 HudWidget::HudWidget(QWidget *parent) : QWidget(parent)
 {
@@ -25,6 +28,10 @@ void HudWidget::setVSpeedFpm(double fpm)   { m_vspeedFpm = fpm; update(); }
 
 void HudWidget::paintEvent(QPaintEvent *)
 {
+    // Timing instrumentation start: QWidget render/update duration.
+    QElapsedTimer paintTimer;
+    paintTimer.start();
+
     QPainter p(this);
     p.setRenderHint(QPainter::Antialiasing, true);
     p.setRenderHint(QPainter::TextAntialiasing, true);
@@ -50,6 +57,23 @@ void HudWidget::paintEvent(QPaintEvent *)
     // little buttons in bottom-right (optional)
     QRectF iconArea(W*0.90, H*0.84, W*0.08, H*0.10);
     drawIconButtons(p, iconArea);
+
+    double displayRateHz = std::numeric_limits<double>::quiet_NaN();
+    if (!m_displayRateTimer.isValid()) {
+        m_displayRateTimer.start();
+        m_lastDisplayElapsedMs = 0;
+    } else {
+        const qint64 elapsedMs = m_displayRateTimer.elapsed();
+        const qint64 deltaMs = elapsedMs - m_lastDisplayElapsedMs;
+        if (deltaMs > 0) {
+            displayRateHz = 1000.0 / static_cast<double>(deltaMs);
+        }
+        m_lastDisplayElapsedMs = elapsedMs;
+    }
+
+    // Timing instrumentation end: QWidget render/update duration.
+    emit frameRendered(static_cast<double>(paintTimer.nsecsElapsed()) / 1000000.0,
+                       displayRateHz);
 }
 
 static QPen hudPen(double w = 2.0)

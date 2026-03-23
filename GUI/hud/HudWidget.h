@@ -1,5 +1,6 @@
 #pragma once
 #include <QWidget>
+#include <QElapsedTimer>
 
 class HudWidget : public QWidget
 {
@@ -12,6 +13,9 @@ public:
     void setPitchDeg(double deg);
     void setAltitudeFt(double ft);
     void setVSpeedFpm(double fpm);
+
+signals:
+    void frameRendered(double displayMs, double displayRateHz);
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -32,4 +36,7 @@ private:
     void drawIconButtons(QPainter &p, const QRectF &r);
 
     static double wrap360(double deg);
+
+    QElapsedTimer m_displayRateTimer;
+    qint64 m_lastDisplayElapsedMs = 0;
 };

@@ -1,8 +1,11 @@
 #pragma once
 #include <QObject>
 #include <QByteArray>
+#include <QElapsedTimer>
 #include <QSerialPort>
 #include "HudSample.h"
+
+class HudLogger;
 
 // Reads ESP32 output in either mode:
 // 1) DEV_MODE=0 binary frames: [AA][55][len u32 BE][CBOR][crc32 u32 BE]
@@ -16,6 +19,7 @@ public:
     bool start(const QString& portName, int baud=115200);
     void stop();
     bool isOpen() const { return m_serial.isOpen(); }
+    void setLogger(HudLogger* logger) { m_logger = logger; }
 
 signals:
     void sampleReady(const HudSample& s);
@@ -38,6 +42,10 @@ private:
 
     // --- Stats (optional) ---
     quint64 m_ok=0, m_badCrc=0, m_badLen=0, m_badCbor=0, m_textLines=0;
+    QElapsedTimer m_sampleRateTimer;
+    qint64 m_lastSampleElapsedMs = 0;
+    bool m_firstValidSampleSeen = false;
+    HudLogger* m_logger = nullptr;
 
     // helpers
     bool tryParseBinaryFrame();      // returns true if it consumed a full frame

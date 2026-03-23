@@ -1,9 +1,11 @@
 #include "UartCborSource.h"
+#include "HudLogger.h"
 
 #include <QtCore/QCborValue>
 #include <QtCore/QCborMap>
 #include <QtCore/QCborArray>
 #include <QtCore/QCborParserError>
+#include <QtCore/QElapsedTimer>
 
 #include <QtMath>
 #include <cmath>
@@ -25,25 +27,61 @@ bool UartCborSource::start(const QString& portName, int baud) {
 
     if (!m_serial.open(QIODevice::ReadOnly)) {
         emit logLine(QString("UART open failed: %1").arg(m_serial.errorString()));
+        if (m_logger) {
+            m_logger->logEvent("ERROR", "UartCborSource", "uart_open_failure",
+                               "UART open failed",
+                               QString("port=%1 baud=%2 error=%3")
+                                   .arg(portName)
+                                   .arg(baud)
+                                   .arg(m_serial.errorString()),
+                               QString::number(static_cast<int>(m_serial.error())));
+            m_logger->logEvent("ERROR", "Sensor", "sensor_initialization_failure",
+                               "Sensor initialization failed",
+                               QString("UART source failed on %1 @ %2").arg(portName).arg(baud));
+        }
         return false;
     }
 
     emit logLine(QString("UART opened: %1 @ %2").arg(portName).arg(baud));
+    if (m_logger) {
+        m_logger->logEvent("INFO", "UartCborSource", "uart_open_success",
+                           "UART opened successfully",
+                           QString("port=%1 baud=%2").arg(portName).arg(baud));
+        m_logger->logEvent("INFO", "Sensor", "sensor_initialization_success",
+                           "Sensor initialization succeeded",
+                           QString("UART source active on %1 @ %2").arg(portName).arg(baud));
+    }
     m_buf.clear();
     m_state = State::FindSync;
     m_expectedLen = 0;
     m_expectedCrc = 0;
     m_payload.clear();
+    m_sampleRateTimer.invalidate();
+    m_lastSampleElapsedMs = 0;
+    m_firstValidSampleSeen = false;
     return true;
 }
 
 void UartCborSource::stop() {
-    if (m_serial.isOpen()) m_serial.close();
+    if (m_serial.isOpen()) {
+        m_serial.close();
+        if (m_logger) {
+            m_logger->logEvent("INFO", "UartCborSource", "uart_stopped",
+                               "UART closed",
+                               "Serial port closed normally");
+        }
+    }
 }
 
 void UartCborSource::onError(QSerialPort::SerialPortError e) {
     if (e == QSerialPort::NoError) return;
     emit logLine(QString("UART error: %1").arg(m_serial.errorString()));
+    if (m_logger) {
+        m_logger->logEvent("ERROR", "UartCborSource", "uart_runtime_error",
+                           "UART runtime error",
+                           m_serial.errorString(),
+                           QString::number(static_cast<int>(e)));
+    }
 }
 
 quint32 UartCborSource::readU32BE(const uchar* p) {
@@ -69,6 +107,7 @@ double UartCborSource::wrap360(double deg) {
 }
 
 void UartCborSource::onReadyRead() {
+    // Timing instrumentation start: total UART read/parse handling.
     m_buf += m_serial.readAll();
 
     // Parse as much as possible.
@@ -89,6 +128,7 @@ void UartCborSource::onReadyRead() {
             break;
         }
     }
+    // Timing instrumentation end: total UART read/parse handling.
 }
 
 bool UartCborSource::tryParseTextLine() {
@@ -109,8 +149,30 @@ bool UartCborSource::tryParseTextLine() {
 
     HudSample s;
     if (parseDevLineToSample(line, s)) {
+        s.sensor_read_ms = 0.0;
+        s.decode_ms = 0.0;
         computeAttitudeFallback(s);
+        if (!m_sampleRateTimer.isValid()) {
+            m_sampleRateTimer.start();
+            m_lastSampleElapsedMs = 0;
+        } else {
+            const qint64 elapsedMs = m_sampleRateTimer.elapsed();
+            const qint64 deltaMs = elapsedMs - m_lastSampleElapsedMs;
+            if (deltaMs > 0) {
+                s.sensor_rate_hz = 1000.0 / static_cast<double>(deltaMs);
+            }
+            m_lastSampleElapsedMs = elapsedMs;
+        }
+        s.invalid_packets = static_cast<int>(m_badLen + m_badCrc + m_badCbor);
+        s.data_valid = true;
+        s.data_fresh = true;
         m_textLines++;
+        if (m_logger && !m_firstValidSampleSeen) {
+            m_logger->logEvent("INFO", "UartCborSource", "first_valid_sample",
+                               "First valid sample received",
+                               "Developer text mode sample parsed successfully");
+            m_firstValidSampleSeen = true;
+        }
         emit sampleReady(s);
     }
     return true;
@@ -118,6 +180,9 @@ bool UartCborSource::tryParseTextLine() {
 
 bool UartCborSource::tryParseBinaryFrame() {
     // Frame: [AA][55][len u32 BE][payload][crc u32 BE]
+    QElapsedTimer frameTimer;
+    frameTimer.start();
+    QElapsedTimer decodeTimer;
 
     while (true) {
         if (m_state == State::FindSync) {
@@ -143,6 +208,14 @@ bool UartCborSource::tryParseBinaryFrame() {
             if (m_expectedLen == 0 || m_expectedLen > MAX_LEN) {
                 m_badLen++;
                 emit logLine(QString("Bad frame len=%1; resync").arg(m_expectedLen));
+                if (m_logger) {
+                    m_logger->logEvent("ERROR", "UartCborSource", "bad_frame_length",
+                                       "Bad frame length",
+                                       QString("len=%1 max_len=%2").arg(m_expectedLen).arg(MAX_LEN));
+                    m_logger->logEvent("ERROR", "UartCborSource", "invalid_packet",
+                                       "Invalid or malformed packet",
+                                       QString("Rejected frame length %1").arg(m_expectedLen));
+                }
                 m_state = State::FindSync;
                 continue;
             }
@@ -169,21 +242,77 @@ bool UartCborSource::tryParseBinaryFrame() {
                 emit logLine(QString("CRC mismatch got=%1 exp=%2; resync")
                              .arg(crc, 8, 16, QChar('0'))
                              .arg(m_expectedCrc, 8, 16, QChar('0')));
+                if (m_logger) {
+                    m_logger->logEvent("ERROR", "UartCborSource", "crc_mismatch",
+                                       "CRC mismatch",
+                                       QString("got=%1 exp=%2")
+                                           .arg(crc, 8, 16, QChar('0'))
+                                           .arg(m_expectedCrc, 8, 16, QChar('0')));
+                    m_logger->logEvent("ERROR", "UartCborSource", "invalid_packet",
+                                       "Invalid or malformed packet",
+                                       "Packet failed CRC validation");
+                }
                 m_state = State::FindSync;
                 continue;
             }
 
             HudSample s;
+            // Timing instrumentation start: CBOR decode.
+            decodeTimer.restart();
             if (!decodeCborToSample(m_payload, s)) {
                 m_badCbor++;
                 m_state = State::FindSync;
                 continue;
             }
+            // Timing instrumentation end: CBOR decode.
+            s.decode_ms = static_cast<double>(decodeTimer.nsecsElapsed()) / 1000000.0;
 
             // if ESP32 hasn't populated euler yet, compute attitude from raw IMU here
             computeAttitudeFallback(s);
+            s.altitudeFt_time_meas = s.decode_ms;
+            s.vspeedFpm_time_meas = s.decode_ms;
+            s.pressureHpa_time_meas = s.decode_ms;
+            s.tempC_time_meas = s.decode_ms;
+            s.ax_time_meas = s.decode_ms;
+            s.ay_time_meas = s.decode_ms;
+            s.az_time_meas = s.decode_ms;
+            s.gx_time_meas = s.decode_ms;
+            s.gy_time_meas = s.decode_ms;
+            s.gz_time_meas = s.decode_ms;
+            s.mx_time_meas = s.decode_ms;
+            s.my_time_meas = s.decode_ms;
+            s.mz_time_meas = s.decode_ms;
+            s.rollDeg_time_meas = s.decode_ms;
+            s.pitchDeg_time_meas = s.decode_ms;
+            s.headingDeg_time_meas = s.decode_ms;
+
+            // Timing instrumentation start: sample-rate bookkeeping.
+            if (!m_sampleRateTimer.isValid()) {
+                m_sampleRateTimer.start();
+                m_lastSampleElapsedMs = 0;
+            } else {
+                const qint64 elapsedMs = m_sampleRateTimer.elapsed();
+                const qint64 deltaMs = elapsedMs - m_lastSampleElapsedMs;
+                if (deltaMs > 0) {
+                    s.sensor_rate_hz = 1000.0 / static_cast<double>(deltaMs);
+                }
+                m_lastSampleElapsedMs = elapsedMs;
+            }
+            // Timing instrumentation end: sample-rate bookkeeping.
+
+            const double frameTotalMs = static_cast<double>(frameTimer.nsecsElapsed()) / 1000000.0;
+            s.sensor_read_ms = qMax(0.0, frameTotalMs - s.decode_ms);
+            s.invalid_packets = static_cast<int>(m_badLen + m_badCrc + m_badCbor);
+            s.data_valid = true;
+            s.data_fresh = true;
 
             m_ok++;
+            if (m_logger && !m_firstValidSampleSeen) {
+                m_logger->logEvent("INFO", "UartCborSource", "first_valid_sample",
+                                   "First valid sample received",
+                                   "Binary CBOR frame decoded successfully");
+                m_firstValidSampleSeen = true;
+            }
             emit sampleReady(s);
             m_state = State::FindSync;
             return true; // parsed one full binary frame
@@ -203,6 +332,17 @@ bool UartCborSource::decodeCborToSample(const QByteArray& payload, HudSample& ou
     QCborValue root = QCborValue::fromCbor(payload, &err);
     if (err.error != QCborError::NoError || !root.isMap()) {
         emit logLine(QString("CBOR parse error: %1").arg((int)err.error));
+        if (m_logger) {
+            m_logger->logEvent("ERROR", "UartCborSource", "cbor_parse_error",
+                               "CBOR parse error",
+                               QString("error=%1 payload_bytes=%2")
+                                   .arg(static_cast<int>(err.error))
+                                   .arg(payload.size()),
+                               QString::number(static_cast<int>(err.error)));
+            m_logger->logEvent("ERROR", "UartCborSource", "invalid_packet",
+                               "Invalid or malformed packet",
+                               "CBOR payload could not be decoded");
+        }
         return false;
     }
 
