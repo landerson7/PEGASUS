@@ -1,5 +1,6 @@
 #include "HudLogger.h"
 
+#include <QDebug>
 #include <QDir>
 #include <QFileInfo>
 #include <QMetaObject>
