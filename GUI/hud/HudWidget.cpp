@@ -6,6 +6,8 @@
 
 #include <limits>
 
+float textMultiplier = 2;
+
 HudWidget::HudWidget(QWidget *parent) : QWidget(parent)
 {
     setAutoFillBackground(false);
@@ -49,14 +51,23 @@ void HudWidget::paintEvent(QPaintEvent *)
     QRectF altitudeRect(W*0.67, H*0.24, W*0.10, H*0.42);
     QRectF bottomRect(W*0.35, H*0.75, W*0.30, H*0.10);
 
+    p.save();
+
+    // Scale entire HUD to 50% around center of screen
+    p.translate(W / 2.0, H / 2.0);
+    p.scale(0.5, 0.5);
+    p.translate(-W / 2.0, -H / 2.0);
+
     drawHeadingTape(p, headingRect);
     drawAttitude(p, attitudeRect);
     drawAltitudeTape(p, altitudeRect);
     drawBottomReadouts(p, bottomRect);
 
     // little buttons in bottom-right (optional)
-    QRectF iconArea(W*0.90, H*0.84, W*0.08, H*0.10);
-    drawIconButtons(p, iconArea);
+    // QRectF iconArea(W*0.90, H*0.84, W*0.08, H*0.10);
+    // drawIconButtons(p, iconArea);
+
+    p.restore();
 
     double displayRateHz = std::numeric_limits<double>::quiet_NaN();
     if (!m_displayRateTimer.isValid()) {
@@ -111,7 +122,7 @@ void HudWidget::drawHeadingTape(QPainter &p, const QRectF &r)
         double deg = startDeg + i;
         double x = inner.left() + (deg - startDeg) * pxPerDeg;
 
-        double tickH = ( (int)qRound(deg) % 10 == 0 ) ? inner.height()*0.55 : inner.height()*0.35;
+        double tickH = ((int)qRound(deg) % 10 == 0) ? inner.height()*0.55 : inner.height()*0.35;
         p.drawLine(QPointF(x, inner.bottom()), QPointF(x, inner.bottom() - tickH));
 
         // labels for cardinal-ish around (simple)
@@ -125,8 +136,9 @@ void HudWidget::drawHeadingTape(QPainter &p, const QRectF &r)
             else label = QString::number((int)qRound(d));
 
             QFont f = p.font();
-            f.setPointSizeF(r.height()*0.18);
+            f.setPointSizeF(r.height()*0.18*textMultiplier);
             p.setFont(f);
+
             p.drawText(QRectF(x-20, inner.top(), 40, inner.height()*0.6),
                        Qt::AlignHCenter | Qt::AlignVCenter, label);
         }
@@ -138,13 +150,13 @@ void HudWidget::drawHeadingTape(QPainter &p, const QRectF &r)
     p.drawRect(readout);
 
     QFont f = p.font();
-    f.setPointSizeF(r.height()*0.22);
+    f.setPointSizeF(r.height()*0.22*textMultiplier);
     p.setFont(f);
     p.drawText(readout, Qt::AlignCenter, QString::number(m_headingDeg, 'f', 1) + "°");
 
     // "HEADING" label
     QFont f2 = p.font();
-    f2.setPointSizeF(r.height()*0.14);
+    f2.setPointSizeF(r.height()*0.14*textMultiplier);
     p.setFont(f2);
     p.drawText(QRectF(r.left(), r.bottom()+2, r.width(), r.height()*0.30),
                Qt::AlignHCenter | Qt::AlignTop, "HEADING");
@@ -192,7 +204,7 @@ void HudWidget::drawAttitude(QPainter &p, const QRectF &r)
     // Pitch ladder lines every 5 degrees (above and below horizon)
     p.setPen(hudPen(2.0));
     QFont f = p.font();
-    f.setPointSizeF(circle.height()*0.06);
+    f.setPointSizeF(circle.height()*0.06*textMultiplier);
     p.setFont(f);
 
     for (int deg = -30; deg <= 30; deg += 5) {
@@ -206,7 +218,7 @@ void HudWidget::drawAttitude(QPainter &p, const QRectF &r)
 
         p.drawLine(L, R);
 
-        // Labels for 10-degree marks (like your screenshot)
+        // Labels for 10-degree marks
         if (qAbs(deg) % 10 == 0) {
             QString t = QString::number(qAbs(deg));
             QRectF leftText(L.x() - 30, y - 10, 28, 20);
@@ -233,7 +245,7 @@ void HudWidget::drawAttitude(QPainter &p, const QRectF &r)
 
     // "ATTITUDE" label below
     QFont f3 = p.font();
-    f3.setPointSizeF(r.height()*0.06);
+    f3.setPointSizeF(r.height()*0.06*textMultiplier);
     p.setFont(f3);
     p.drawText(QRectF(r.left(), r.bottom()+4, r.width(), r.height()*0.20),
                Qt::AlignHCenter | Qt::AlignTop, "ATTITUDE");
@@ -258,12 +270,11 @@ void HudWidget::drawAltitudeTape(QPainter &p, const QRectF &r)
     const double pxPerFt = inner.height() / spanFt;
 
     const double centerAlt = m_altitudeFt;
-    const double startAlt = centerAlt + spanFt/2.0;
 
     // ticks every 50 ft, long every 100/200
     p.setPen(hudPen(2.0));
     QFont f = p.font();
-    f.setPointSizeF(r.height()*0.07);
+    f.setPointSizeF(r.height()*0.07*textMultiplier);
     p.setFont(f);
 
     for (int ft = -500; ft <= 500; ft += 50) {
@@ -291,19 +302,19 @@ void HudWidget::drawAltitudeTape(QPainter &p, const QRectF &r)
     p.drawRect(box);
 
     QFont f2 = p.font();
-    f2.setPointSizeF(r.height()*0.12);
+    f2.setPointSizeF(r.height()*0.12*textMultiplier);
     p.setFont(f2);
     p.drawText(box, Qt::AlignCenter, QString::number((int)qRound(m_altitudeFt)));
 
-    // "ALTITUDE" and vspeed text under (like screenshot)
+    // "ALTITUDE" and vspeed text under
     QFont f3 = p.font();
-    f3.setPointSizeF(r.height()*0.07);
+    f3.setPointSizeF(r.height()*0.07*textMultiplier);
     p.setFont(f3);
     p.drawText(QRectF(r.left(), r.bottom()+4, r.width(), r.height()*0.22),
                Qt::AlignHCenter | Qt::AlignTop, "ALTITUDE");
 
     QFont f4 = p.font();
-    f4.setPointSizeF(r.height()*0.07);
+    f4.setPointSizeF(r.height()*0.07*textMultiplier);
     p.setFont(f4);
     p.drawText(QRectF(r.left(), r.bottom()+r.height()*0.18, r.width(), r.height()*0.22),
                Qt::AlignHCenter | Qt::AlignTop,
@@ -324,10 +335,10 @@ void HudWidget::drawBottomReadouts(QPainter &p, const QRectF &r)
     p.drawLine(QPointF(r.center().x(), r.top()), QPointF(r.center().x(), r.bottom()));
 
     QFont label = p.font();
-    label.setPointSizeF(r.height()*0.18);
+    label.setPointSizeF(r.height()*0.18*textMultiplier);
 
     QFont value = p.font();
-    value.setPointSizeF(r.height()*0.26);
+    value.setPointSizeF(r.height()*0.26*textMultiplier);
 
     // Left: Roll
     p.setFont(label);
