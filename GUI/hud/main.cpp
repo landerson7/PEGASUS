@@ -116,6 +116,8 @@ int main(int argc, char *argv[])
         }
 
         if (devMode) {
+            hud.resize(640, 480);
+            hud.showNormal();
             if (auto* primary = app.primaryScreen()) {
                 hud.move(primary->geometry().topLeft());
             }
@@ -213,12 +215,13 @@ int main(int argc, char *argv[])
         s.data_valid = true;
         s.data_fresh = true;
 
-        qDebug() << "DUMMY tick:"
+        // Uncomment for raw data log
+        /*qDebug() << "DUMMY tick:"
                  << "hdg" << s.headingDeg
                  << "roll" << s.rollDeg
                  << "pitch" << s.pitchDeg
                  << "alt" << s.altitudeFt
-                 << "vs" << s.vspeedFpm;
+                 << "vs" << s.vspeedFpm;*/
 
         if (loggerReady) {
             logger.updateLatestSample(s);

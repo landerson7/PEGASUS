@@ -6,7 +6,7 @@
 
 #include <limits>
 
-float textMultiplier = 2;
+float textMultiplier = 1;
 
 HudWidget::HudWidget(QWidget *parent) : QWidget(parent)
 {
@@ -49,13 +49,13 @@ void HudWidget::paintEvent(QPaintEvent *)
     QRectF headingRect(W*0.30, H*0.05, W*0.40, H*0.10);
     QRectF attitudeRect(W*0.37, H*0.24, W*0.26, H*0.42);
     QRectF altitudeRect(W*0.67, H*0.24, W*0.10, H*0.42);
-    QRectF bottomRect(W*0.35, H*0.75, W*0.30, H*0.10);
+    QRectF bottomRect(W*0.33, H*0.73, W*0.34, H*0.14);
 
     p.save();
 
     // Scale entire HUD to 50% around center of screen
     p.translate(W / 2.0, H / 2.0);
-    p.scale(0.5, 0.5);
+    p.scale(0.45, 0.45);
     p.translate(-W / 2.0, -H / 2.0);
 
     drawHeadingTape(p, headingRect);
@@ -145,12 +145,12 @@ void HudWidget::drawHeadingTape(QPainter &p, const QRectF &r)
     }
 
     // Center numeric readout box
-    QRectF readout(r.center().x() - r.width()*0.07, r.center().y() - r.height()*0.12,
-                   r.width()*0.14, r.height()*0.24);
+    QRectF readout(r.center().x() - r.width()*0.14, r.center().y() - r.height()*0.21,
+                   r.width()*0.28, r.height()*0.42);
     p.drawRect(readout);
 
     QFont f = p.font();
-    f.setPointSizeF(r.height()*0.22*textMultiplier);
+    f.setPointSizeF(r.height()*0.45*textMultiplier);
     p.setFont(f);
     p.drawText(readout, Qt::AlignCenter, QString::number(m_headingDeg, 'f', 1) + "°");
 
@@ -236,19 +236,19 @@ void HudWidget::drawAttitude(QPainter &p, const QRectF &r)
     // Center little reference marker (fixed, not rolling)
     p.setPen(hudPen(2.5));
     const QPointF c = circle.center();
-    p.drawLine(QPointF(c.x() - circle.width()*0.10, c.y()),
-               QPointF(c.x() - circle.width()*0.02, c.y()));
-    p.drawLine(QPointF(c.x() + circle.width()*0.02, c.y()),
-               QPointF(c.x() + circle.width()*0.10, c.y()));
-    p.drawLine(QPointF(c.x(), c.y() - circle.height()*0.02),
-               QPointF(c.x(), c.y() + circle.height()*0.02));
+    p.drawLine(QPointF(c.x() - circle.width()*0.025, c.y()),
+               QPointF(c.x() - circle.width()*0.005, c.y()));
+    p.drawLine(QPointF(c.x() + circle.width()*0.005, c.y()),
+               QPointF(c.x() + circle.width()*0.025, c.y()));
+    p.drawLine(QPointF(c.x(), c.y() - circle.height()*0.005),
+               QPointF(c.x(), c.y() + circle.height()*0.005));
 
     // "ATTITUDE" label below
     QFont f3 = p.font();
-    f3.setPointSizeF(r.height()*0.06*textMultiplier);
+    f3.setPointSizeF(r.height()*0.14*textMultiplier);
     p.setFont(f3);
     p.drawText(QRectF(r.left(), r.bottom()+4, r.width(), r.height()*0.20),
-               Qt::AlignHCenter | Qt::AlignTop, "ATTITUDE");
+               Qt::AlignHCenter | Qt::AlignTop, "");
 
     p.restore();
 }
@@ -296,13 +296,13 @@ void HudWidget::drawAltitudeTape(QPainter &p, const QRectF &r)
     }
 
     // Current altitude readout box
-    QRectF box(r.left() + r.width()*0.20, r.center().y() - r.height()*0.07,
-               r.width()*0.60, r.height()*0.14);
+    QRectF box(r.left() + r.width()*0.12, r.center().y() - r.height()*0.10,
+               r.width()*0.76, r.height()*0.20);
     p.setPen(hudPen(2.0));
     p.drawRect(box);
 
     QFont f2 = p.font();
-    f2.setPointSizeF(r.height()*0.12*textMultiplier);
+    f2.setPointSizeF(r.height()*0.16*textMultiplier);
     p.setFont(f2);
     p.drawText(box, Qt::AlignCenter, QString::number((int)qRound(m_altitudeFt)));
 
@@ -312,14 +312,14 @@ void HudWidget::drawAltitudeTape(QPainter &p, const QRectF &r)
     p.setFont(f3);
     p.drawText(QRectF(r.left(), r.bottom()+4, r.width(), r.height()*0.22),
                Qt::AlignHCenter | Qt::AlignTop, "ALTITUDE");
-
+/*
     QFont f4 = p.font();
     f4.setPointSizeF(r.height()*0.07*textMultiplier);
     p.setFont(f4);
     p.drawText(QRectF(r.left(), r.bottom()+r.height()*0.18, r.width(), r.height()*0.22),
                Qt::AlignHCenter | Qt::AlignTop,
                QString("%1 FPM").arg((int)qRound(m_vspeedFpm)));
-
+*/
     p.restore();
 }
 
@@ -335,10 +335,10 @@ void HudWidget::drawBottomReadouts(QPainter &p, const QRectF &r)
     p.drawLine(QPointF(r.center().x(), r.top()), QPointF(r.center().x(), r.bottom()));
 
     QFont label = p.font();
-    label.setPointSizeF(r.height()*0.18*textMultiplier);
+    label.setPointSizeF(r.height()*0.14*textMultiplier);
 
     QFont value = p.font();
-    value.setPointSizeF(r.height()*0.26*textMultiplier);
+    value.setPointSizeF(r.height()*0.51*textMultiplier);
 
     // Left: Roll
     p.setFont(label);
