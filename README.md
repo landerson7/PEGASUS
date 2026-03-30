@@ -5,7 +5,7 @@ PEGASUS HUD is a C++ / Qt-based heads-up display for Raspberry Pi 4. It receives
 The active HUD application lives in `PEGASUS/GUI/hud/`. After a successful build, the executable is:
 
 ```text
-/home/pi/PEGASUS/GUI/hud/build/hud
+/home/landerson/PEGASUS/GUI/hud/build/hud
 ```
 
 ## Project Overview
@@ -98,10 +98,10 @@ sudo reboot
 
 ## Clone the Repository
 
-Clone the project into `/home/pi`:
+Clone the project into `/home/landerson`:
 
 ```bash
-cd /home/pi
+cd /home/landerson
 git clone https://github.com/landerson7/PEGASUS.git
 cd PEGASUS
 ```
@@ -111,7 +111,7 @@ cd PEGASUS
 Build the HUD from the `GUI/hud` directory:
 
 ```bash
-cd /home/pi/PEGASUS/GUI/hud
+cd /home/landerson/PEGASUS/GUI/hud
 rm -rf build
 cmake -S . -B build -G Ninja
 cmake --build build
@@ -122,7 +122,7 @@ cd build
 If `ninja-build` is not installed, use the default generator instead:
 
 ```bash
-cd /home/pi/PEGASUS/GUI/hud
+cd /home/landerson/PEGASUS/GUI/hud
 rm -rf build
 cmake -S . -B build
 cmake --build build
@@ -133,7 +133,7 @@ cd build
 The included `start.sh` script performs a clean rebuild and then launches the app:
 
 ```bash
-cd /home/pi/PEGASUS/GUI/hud
+cd /home/landerson/PEGASUS/GUI/hud
 chmod +x start.sh
 ./start.sh
 ```
@@ -143,16 +143,16 @@ chmod +x start.sh
 Manual run:
 
 ```bash
-/home/pi/PEGASUS/GUI/hud/build/hud
+/home/landerson/PEGASUS/GUI/hud/build/hud
 ```
 
 Useful runtime options:
 
 ```bash
-/home/pi/PEGASUS/GUI/hud/build/hud --dummy
-/home/pi/PEGASUS/GUI/hud/build/hud --dev
-/home/pi/PEGASUS/GUI/hud/build/hud --small-display
-/home/pi/PEGASUS/GUI/hud/build/hud --port /dev/serial0 --baud 115200
+/home/landerson/PEGASUS/GUI/hud/build/hud --dummy
+/home/landerson/PEGASUS/GUI/hud/build/hud --dev
+/home/landerson/PEGASUS/GUI/hud/build/hud --small-display
+/home/landerson/PEGASUS/GUI/hud/build/hud --port /dev/serial0 --baud 115200
 ```
 
 Expected behavior:
@@ -166,7 +166,7 @@ Expected behavior:
 
 ## Auto-Start on Boot (systemd)
 
-Build the project once before enabling the service so that `/home/pi/PEGASUS/GUI/hud/build/hud` exists.
+Build the project once before enabling the service so that `/home/landerson/PEGASUS/GUI/hud/build/hud` exists.
 
 Create the service file:
 
@@ -184,12 +184,12 @@ Wants=graphical.target
 
 [Service]
 Type=simple
-User=pi
-Group=pi
-WorkingDirectory=/home/pi/PEGASUS/GUI/hud
+User=landerson
+Group=landerson
+WorkingDirectory=/home/landerson/PEGASUS/GUI/hud
 Environment=DISPLAY=:0
 Environment=XDG_RUNTIME_DIR=/run/user/1000
-ExecStart=/home/pi/PEGASUS/GUI/hud/build/hud --small-display --port /dev/serial0 --baud 115200
+ExecStart=/home/landerson/PEGASUS/GUI/hud/build/hud --small-display --port /dev/serial0 --baud 115200
 Restart=on-failure
 RestartSec=2
 
@@ -222,7 +222,7 @@ sudo journalctl -u pegasus.service -f
 The HUD stores logs in a SQLite database created under Qt's `QStandardPaths::AppDataLocation`. When you run the app as user `pi`, the database is typically created somewhere under:
 
 ```text
-/home/pi/.local/share/
+/home/landerson/.local/share/
 ```
 
 Locate the database:
@@ -326,7 +326,7 @@ sudo reboot
 - Ensure `start.sh` is executable if you intend to use it directly:
 
 ```bash
-chmod +x /home/pi/PEGASUS/GUI/hud/start.sh
+chmod +x /home/landerson/PEGASUS/GUI/hud/start.sh
 ```
 
 ### Build failures
@@ -344,7 +344,7 @@ Fixes:
 - Remove the old build directory and configure from scratch:
 
 ```bash
-cd /home/pi/PEGASUS/GUI/hud
+cd /home/landerson/PEGASUS/GUI/hud
 rm -rf build
 cmake -S . -B build -G Ninja
 cmake --build build
@@ -357,7 +357,7 @@ cmake --build build
 Fast rebuild after source changes:
 
 ```bash
-cd /home/pi/PEGASUS/GUI/hud
+cd /home/landerson/PEGASUS/GUI/hud
 cmake --build build -j"$(nproc)"
 ```
 
