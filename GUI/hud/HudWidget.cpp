@@ -150,15 +150,15 @@ void HudWidget::drawHeadingTape(QPainter &p, const QRectF &r)
     }
 
     // Center numeric readout box — enlarged to prevent clipping
-    QRectF readout(r.center().x() - r.width()*0.18, r.center().y() - r.height()*0.28,
-                   r.width()*0.36, r.height()*0.56);
+    QRectF readout(r.center().x() - r.width()*0.24, r.center().y() - r.height()*0.38,
+               r.width()*0.48, r.height()*0.76);
     p.drawRect(readout);
 
     // Heading value font — matched to bottom readout value size
     // Bottom readouts use r.height()*0.51 on a rect of H*0.16 => effective ~H*0.0816
     // Here we target the same absolute size: bottomRect.height()*0.51 relative to this rect
     QFont f = p.font();
-    f.setPointSizeF(r.height()*0.34*textMultiplier);
+    f.setPointSizeF(r.height()*0.52*textMultiplier);
     p.setFont(f);
     p.drawText(readout, Qt::AlignCenter, QString::number(m_headingDeg, 'f', 1) + QStringLiteral("\u00B0"));
 
@@ -317,7 +317,7 @@ void HudWidget::drawAltitudeTape(QPainter &p, const QRectF &r)
 
     // "ALTITUDE" label under
     QFont f3 = p.font();
-    f3.setPointSizeF(r.height()*0.07*textMultiplier);
+    f3.setPointSizeF(r.height()*0.055*textMultiplier);
     p.setFont(f3);
     p.drawText(QRectF(r.left(), r.bottom()+4, r.width(), r.height()*0.22),
                Qt::AlignHCenter | Qt::AlignTop, "ALTITUDE");
