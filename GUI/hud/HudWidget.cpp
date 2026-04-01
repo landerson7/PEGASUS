@@ -50,11 +50,11 @@ void HudWidget::paintEvent(QPaintEvent *)
     // Heading tape: wider and taller to fit the readout text
     QRectF headingRect(W*0.25, H*0.03, W*0.50, H*0.13);
 
-    // Attitude indicator: shrunk to make room for larger readout boxes
-    QRectF attitudeRect(W*0.40, H*0.26, W*0.20, H*0.34);
+    // Attitude indicator: wider to prevent degree clipping
+    QRectF attitudeRect(W*0.37, H*0.26, W*0.26, H*0.34);
 
-    // Altitude tape: wider and taller for readable numbers, shifted up
-    QRectF altitudeRect(W*0.64, H*0.18, W*0.14, H*0.44);
+    // Altitude tape: wider for readable numbers, shifted up
+    QRectF altitudeRect(W*0.66, H*0.18, W*0.24, H*0.44);
 
     // Bottom readouts: taller to match the desired text size
     QRectF bottomRect(W*0.30, H*0.70, W*0.40, H*0.16);
