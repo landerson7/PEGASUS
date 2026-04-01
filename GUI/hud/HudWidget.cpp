@@ -54,7 +54,7 @@ void HudWidget::paintEvent(QPaintEvent *)
     QRectF attitudeRect(W*0.37, H*0.26, W*0.26, H*0.34);
 
     // Altitude tape: wider for readable numbers, shifted up
-    QRectF altitudeRect(W*0.66, H*0.18, W*0.24, H*0.44);
+    QRectF altitudeRect(W*0.63, H*0.18, W*0.24, H*0.44);
 
     // Bottom readouts: taller to match the desired text size
     QRectF bottomRect(W*0.30, H*0.70, W*0.40, H*0.16);
