@@ -39,6 +39,8 @@ int main(int argc, char *argv[])
                               "Developer mode: render on primary display.");
     QCommandLineOption dummyOpt(QStringList() << "dummy",
                                 "Use dummy values (no UART).");
+    QCommandLineOption smallDisplayOpt(QStringList() << "small-display",
+                                       "Tune text readability for the 3.5in 640x480 hardware display.");
     QCommandLineOption portOpt(QStringList() << "p" << "port",
                                "UART port.",
                                "path", "/dev/serial0");
@@ -48,6 +50,7 @@ int main(int argc, char *argv[])
 
     parser.addOption(devOpt);
     parser.addOption(dummyOpt);
+    parser.addOption(smallDisplayOpt);
     parser.addOption(portOpt);
     parser.addOption(baudOpt);
 
@@ -55,9 +58,11 @@ int main(int argc, char *argv[])
 
     const bool devMode = parser.isSet(devOpt);
     const bool forceDummy = parser.isSet(dummyOpt);
+    const bool smallDisplayMode = parser.isSet(smallDisplayOpt);
 
     qDebug() << "DEV mode:" << devMode;
     qDebug() << "Dummy flag:" << forceDummy;
+    qDebug() << "Small display mode:" << smallDisplayMode;
 
     const QString appDataDir =
         QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
@@ -95,6 +100,10 @@ int main(int argc, char *argv[])
 
     HudWidget hud;
     hud.resize(1280, 720);
+    if (smallDisplayMode) {
+        hud.setTextScale(1.0);
+        hud.setNumericScale(1.10);
+    }
 
     // Show once first so a native window exists
     hud.show();
@@ -116,8 +125,15 @@ int main(int argc, char *argv[])
         }
 
         if (devMode) {
-            hud.resize(640, 480);
-            hud.showNormal();
+            if (smallDisplayMode) {
+                hud.resize(640, 480);
+                hud.showNormal();
+                if (auto* primary = app.primaryScreen()) {
+                    const QRect screen = primary->availableGeometry();
+                    hud.move(screen.center() - hud.rect().center());
+                }
+                return;
+            }
             if (auto* primary = app.primaryScreen()) {
                 hud.move(primary->geometry().topLeft());
             }

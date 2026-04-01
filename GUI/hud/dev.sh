@@ -5,5 +5,5 @@ rm -rf build
 cmake -S . -B build -G Ninja
 cmake --build build
 cd ./build
-./hud --dev
+./hud --dev --dummy --small-display
 echo $?
