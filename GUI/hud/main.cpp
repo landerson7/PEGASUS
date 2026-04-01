@@ -101,8 +101,8 @@ int main(int argc, char *argv[])
     HudWidget hud;
     hud.resize(1280, 720);
     if (smallDisplayMode) {
-        hud.setTextScale(1.0);
-        hud.setNumericScale(1.10);
+        //hud.setTextScale(1.0);
+        //hud.setNumericScale(1.10);
     }
 
     // Show once first so a native window exists
