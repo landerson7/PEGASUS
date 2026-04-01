@@ -53,8 +53,8 @@ void HudWidget::paintEvent(QPaintEvent *)
     // Attitude indicator: shrunk to make room for larger readout boxes
     QRectF attitudeRect(W*0.40, H*0.26, W*0.20, H*0.34);
 
-    // Altitude tape: wider and taller for readable numbers
-    QRectF altitudeRect(W*0.64, H*0.22, W*0.14, H*0.44);
+    // Altitude tape: wider and taller for readable numbers, shifted up
+    QRectF altitudeRect(W*0.64, H*0.18, W*0.14, H*0.44);
 
     // Bottom readouts: taller to match the desired text size
     QRectF bottomRect(W*0.30, H*0.70, W*0.40, H*0.16);
@@ -122,10 +122,17 @@ void HudWidget::drawHeadingTape(QPainter &p, const QRectF &r)
     const double centerHdg = m_headingDeg;
     const double startDeg = centerHdg - 30.0;
 
-    // ticks every 5 degrees, longer every 10
+    // Center numeric readout box — enlarged with padding
+    QRectF readout(r.center().x() - r.width()*0.24, r.center().y() - r.height()*0.38,
+                   r.width()*0.48, r.height()*0.76);
+
+    // ticks every 5 degrees, longer every 10 — skip ticks inside the readout box
     for (int i = 0; i <= 60; i += 5) {
         double deg = startDeg + i;
         double x = inner.left() + (deg - startDeg) * pxPerDeg;
+
+        // Skip ticks that fall inside the readout box
+        if (x >= readout.left() && x <= readout.right()) continue;
 
         double tickH = ((int)qRound(deg) % 10 == 0) ? inner.height()*0.55 : inner.height()*0.35;
         p.drawLine(QPointF(x, inner.bottom()), QPointF(x, inner.bottom() - tickH));
@@ -149,18 +156,14 @@ void HudWidget::drawHeadingTape(QPainter &p, const QRectF &r)
         }
     }
 
-    // Center numeric readout box — enlarged to prevent clipping
-    QRectF readout(r.center().x() - r.width()*0.24, r.center().y() - r.height()*0.38,
-               r.width()*0.48, r.height()*0.76);
     p.drawRect(readout);
 
-    // Heading value font — matched to bottom readout value size
-    // Bottom readouts use r.height()*0.51 on a rect of H*0.16 => effective ~H*0.0816
-    // Here we target the same absolute size: bottomRect.height()*0.51 relative to this rect
+    // Heading value font — large and readable
     QFont f = p.font();
     f.setPointSizeF(r.height()*0.52*textMultiplier);
     p.setFont(f);
-    p.drawText(readout, Qt::AlignCenter, QString::number(m_headingDeg, 'f', 1) + QStringLiteral("\u00B0"));
+    QRectF readoutPadded = readout.adjusted(4, 4, -4, -4);
+    p.drawText(readoutPadded, Qt::AlignCenter, QString::number(m_headingDeg, 'f', 1) + QStringLiteral("\u00B0"));
 
     // "HEADING" label
     QFont f2 = p.font();
@@ -279,7 +282,11 @@ void HudWidget::drawAltitudeTape(QPainter &p, const QRectF &r)
 
     const double centerAlt = m_altitudeFt;
 
-    // ticks every 50 ft, long every 100/200
+    // Current altitude readout box — enlarged with padding
+    QRectF box(r.left() + r.width()*0.06, r.center().y() - r.height()*0.14,
+               r.width()*0.88, r.height()*0.28);
+
+    // ticks every 50 ft, long every 100/200 — skip ticks inside the readout box
     p.setPen(hudPen(2.0));
     QFont f = p.font();
     f.setPointSizeF(r.height()*0.06*textMultiplier);
@@ -288,6 +295,9 @@ void HudWidget::drawAltitudeTape(QPainter &p, const QRectF &r)
     for (int ft = -500; ft <= 500; ft += 50) {
         double alt = centerAlt + ft;
         double y = inner.center().y() + (-ft * pxPerFt);
+
+        // Skip ticks that fall inside the readout box
+        if (y >= box.top() && y <= box.bottom()) continue;
 
         bool major = ((int)qRound(alt) % 200 == 0);
         bool med   = ((int)qRound(alt) % 100 == 0);
@@ -303,9 +313,6 @@ void HudWidget::drawAltitudeTape(QPainter &p, const QRectF &r)
         }
     }
 
-    // Current altitude readout box — enlarged to prevent clipping
-    QRectF box(r.left() + r.width()*0.06, r.center().y() - r.height()*0.14,
-               r.width()*0.88, r.height()*0.28);
     p.setPen(hudPen(2.0));
     p.drawRect(box);
 
@@ -313,11 +320,12 @@ void HudWidget::drawAltitudeTape(QPainter &p, const QRectF &r)
     QFont f2 = p.font();
     f2.setPointSizeF(r.height()*0.18*textMultiplier);
     p.setFont(f2);
-    p.drawText(box, Qt::AlignCenter, QString::number((int)qRound(m_altitudeFt)));
+    QRectF boxPadded = box.adjusted(4, 4, -4, -4);
+    p.drawText(boxPadded, Qt::AlignCenter, QString::number((int)qRound(m_altitudeFt)));
 
     // "ALTITUDE" label under
     QFont f3 = p.font();
-    f3.setPointSizeF(r.height()*0.055*textMultiplier);
+    f3.setPointSizeF(r.height()*0.07*textMultiplier);
     p.setFont(f3);
     p.drawText(QRectF(r.left(), r.bottom()+4, r.width(), r.height()*0.22),
                Qt::AlignHCenter | Qt::AlignTop, "ALTITUDE");
