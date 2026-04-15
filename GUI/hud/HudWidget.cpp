@@ -200,8 +200,8 @@ void HudWidget::drawAttitude(QPainter &p, const QRectF &r)
     QRectF groundRect(circle.left(), circle.top(), circle.width(), horizonY - circle.top());
     QRectF skyRect(circle.left(), horizonY, circle.width(), circle.bottom() - horizonY);
 
-    p.fillRect(skyRect, QColor(20, 80, 140));     // blue
-    p.fillRect(groundRect, QColor(45, 45, 45));   // dark gray
+    p.fillRect(skyRect, QColor(45, 45, 45));     // dark gray
+    p.fillRect(groundRect, QColor(20, 80, 140));   // blue
 
     // Roll rotation around center for ladder lines
     p.save();
