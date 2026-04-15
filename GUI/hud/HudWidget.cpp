@@ -28,6 +28,12 @@ void HudWidget::setPitchDeg(double deg)    { m_pitchDeg = deg; update(); }
 void HudWidget::setAltitudeFt(double ft)   { m_altitudeFt = ft; update(); }
 void HudWidget::setVSpeedFpm(double fpm)   { m_vspeedFpm = fpm; update(); }
 
+void HudWidget::setPressureHpa(double hpa)
+{
+    m_pressureHpa = hpa;
+    update(); // forces redraw
+}
+
 void HudWidget::paintEvent(QPaintEvent *)
 {
     // Timing instrumentation start: QWidget render/update duration.
@@ -351,6 +357,14 @@ void HudWidget::drawBottomReadouts(QPainter &p, const QRectF &r)
     QFont value = p.font();
     value.setPointSizeF(r.height()*0.51*textMultiplier);
 
+    const double pressureGap = 12.0;
+    const double pressurePadding = 28.0;
+    const QFontMetricsF pressureMetrics(value);
+    const double pressureWidth = qMax((r.width() / 2.0) * 0.45,
+                                      pressureMetrics.horizontalAdvance(QStringLiteral("0000.0")) + pressurePadding);
+    QRectF pressureRect(r.right() + pressureGap, r.top(), pressureWidth, r.height());
+    p.drawRoundedRect(pressureRect, 2, 2);
+
     // Left: Roll
     p.setFont(label);
     p.drawText(QRectF(r.left(), r.top()+6, r.width()/2, r.height()*0.35),
@@ -368,6 +382,15 @@ void HudWidget::drawBottomReadouts(QPainter &p, const QRectF &r)
     p.drawText(QRectF(r.center().x(), r.top()+r.height()*0.35, r.width()/2, r.height()*0.55),
                Qt::AlignHCenter | Qt::AlignVCenter,
                QString("%1\u00B0").arg(m_pitchDeg, 0, 'f', 1));
+
+    // Pressure
+    p.setFont(label);
+    p.drawText(QRectF(pressureRect.left(), pressureRect.top()+6, pressureRect.width(), pressureRect.height()*0.35),
+               Qt::AlignHCenter | Qt::AlignVCenter, "PRESS");
+    p.setFont(value);
+    p.drawText(QRectF(pressureRect.left(), pressureRect.top()+pressureRect.height()*0.35, pressureRect.width(), pressureRect.height()*0.55),
+               Qt::AlignHCenter | Qt::AlignVCenter,
+               QString("%1").arg(m_pressureHpa, 0, 'f', 1));
 
     p.restore();
 }

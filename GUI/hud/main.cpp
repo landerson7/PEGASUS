@@ -185,6 +185,7 @@ int main(int argc, char *argv[])
         hud.setPitchDeg(s.pitchDeg);
         hud.setAltitudeFt(s.altitudeFt);
         hud.setVSpeedFpm(s.vspeedFpm);
+        hud.setPressureHpa(s.pressureHpa);
     });
 
     if (!forceDummy) {

@@ -15,6 +15,8 @@ public:
     void setVSpeedFpm(double fpm);
     void setTextScale(double scale);
     void setNumericScale(double scale);
+    void setPressureHpa(double hpa);
+
 
 signals:
     void frameRendered(double displayMs, double displayRateHz);
@@ -31,6 +33,7 @@ private:
     double m_vspeedFpm  = -164;
     double m_textScale = 1.0;
     double m_numericScale = 1.0;
+    double m_pressureHpa = 1013.25;
 
     // Drawing helpers
     void drawHeadingTape(QPainter &p, const QRectF &r);
