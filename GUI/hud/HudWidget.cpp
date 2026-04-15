@@ -193,7 +193,7 @@ void HudWidget::drawAttitude(QPainter &p, const QRectF &r)
     // Horizon / pitch ladder:
     // Map pitch degrees to pixels; positive pitch means nose up => horizon moves down.
     const double pxPerDeg = circle.height() / 30.0; // ~30° visible vertically
-    const double horizonY = circle.center().y() + (-m_pitchDeg * pxPerDeg);
+    const double horizonY = circle.center().y() + (m_pitchDeg * pxPerDeg);
 
     // Draw "sky" and "ground"
     // Regions are in pre-rotation (180°-flipped) coordinates: top↔bottom are inverted visually.
