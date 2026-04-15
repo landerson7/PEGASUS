@@ -64,7 +64,7 @@ void HudWidget::paintEvent(QPaintEvent *)
     // Scale entire HUD to 50% around center of screen
     p.translate(W / 2.0, H / 2.0);
     p.rotate(180);
-    p.scale(0.425, 0.425);
+    p.scale(0.2, 0.2);
     p.translate(-W / 2.0, -H / 2.0);
 
     drawHeadingTape(p, headingRect);
