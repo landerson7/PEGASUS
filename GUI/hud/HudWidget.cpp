@@ -196,8 +196,9 @@ void HudWidget::drawAttitude(QPainter &p, const QRectF &r)
     const double horizonY = circle.center().y() + (-m_pitchDeg * pxPerDeg);
 
     // Draw "sky" and "ground"
-    QRectF skyRect(circle.left(), circle.top(), circle.width(), horizonY - circle.top());
-    QRectF groundRect(circle.left(), horizonY, circle.width(), circle.bottom() - horizonY);
+    // Regions are in pre-rotation (180°-flipped) coordinates: top↔bottom are inverted visually.
+    QRectF groundRect(circle.left(), circle.top(), circle.width(), horizonY - circle.top());
+    QRectF skyRect(circle.left(), horizonY, circle.width(), circle.bottom() - horizonY);
 
     p.fillRect(skyRect, QColor(20, 80, 140));     // blue
     p.fillRect(groundRect, QColor(45, 45, 45));   // dark gray
@@ -205,7 +206,7 @@ void HudWidget::drawAttitude(QPainter &p, const QRectF &r)
     // Roll rotation around center for ladder lines
     p.save();
     p.translate(circle.center());
-    p.rotate(-m_rollDeg); // negative to match typical aircraft convention
+    p.rotate(m_rollDeg); // positive = CW visually after the global 180° flip
     p.translate(-circle.center());
 
     // Horizon line
@@ -220,7 +221,7 @@ void HudWidget::drawAttitude(QPainter &p, const QRectF &r)
 
     for (int deg = -30; deg <= 30; deg += 5) {
         if (deg == 0) continue;
-        double y = horizonY - (deg * pxPerDeg);
+        double y = horizonY + (deg * pxPerDeg);
         if (y < circle.top()-20 || y > circle.bottom()+20) continue;
 
         double halfLen = (qAbs(deg) % 10 == 0) ? circle.width()*0.22 : circle.width()*0.16;
